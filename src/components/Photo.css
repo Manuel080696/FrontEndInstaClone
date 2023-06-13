@@ -1,0 +1,27 @@
+.post {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-image {
+  width: 300px;
+  margin-bottom: 1rem;
+}
+
+ul {
+  list-style: none;
+}
+
+#post-user {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+
+.post-user-userAvatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-size: cover;
+}
