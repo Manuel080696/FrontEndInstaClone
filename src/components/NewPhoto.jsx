@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { sendTweetService } from "../services";
+import { sendPhotoService } from "../services";
 import { AuthContext } from "../context/AuthContext";
 
 export const NewPhoto = ({ addPhoto }) => {
@@ -15,7 +15,7 @@ export const NewPhoto = ({ addPhoto }) => {
 
       const data = new FormData(e.target);
 
-      const photo = await sendTweetService({ data, token });
+      const photo = await sendPhotoService({ data, token });
 
       addPhoto(photo);
       e.target.reset();
@@ -30,10 +30,13 @@ export const NewPhoto = ({ addPhoto }) => {
   return (
     <form onSubmit={handleSubmit}>
       <h1>Add new Photo</h1>
-
       <fieldset>
-        <label htmlFor="text">Text</label>
-        <input type="text" id="text" name="text" required />
+        <label htmlFor="place">Place</label>
+        <input type="text" id="place" name="place" required />
+      </fieldset>
+      <fieldset>
+        <label htmlFor="description">Description</label>
+        <input type="text" id="description" name="description" required />
       </fieldset>
       <fieldset>
         <label htmlFor="image">Image(optional)</label>

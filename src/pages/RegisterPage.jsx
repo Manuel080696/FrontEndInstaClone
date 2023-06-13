@@ -4,18 +4,14 @@ import { useNavigate } from "react-router-dom";
 
 export const RegisterPage = () => {
   const navigate = useNavigate();
-  const [name, setName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [userName, setUserName] = useState("");
   const [pass1, setPass1] = useState("");
   const [pass2, setPass2] = useState("");
-  const [birthday, setBirthday] = useState("");
   const [avatar, setAvatar] = useState(null);
   const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const data = new FormData(e.target);
     setError("");
 
     if (pass1 !== pass2) {
@@ -25,12 +21,7 @@ export const RegisterPage = () => {
 
     try {
       await registerUserService({
-        name,
-        lastName,
-        email,
-        userName,
-        password: pass1,
-        birthday,
+        data,
       });
       navigate("/login");
     } catch (error) {
@@ -50,7 +41,6 @@ export const RegisterPage = () => {
             name="name"
             required
             placeholder="Insert name..."
-            onChange={(e) => setName(e.target.value)}
           />
         </fieldset>
         <fieldset>
@@ -61,7 +51,6 @@ export const RegisterPage = () => {
             name="lastName"
             required
             placeholder="Insert last name..."
-            onChange={(e) => setLastName(e.target.value)}
           />
         </fieldset>
         <fieldset>
@@ -72,7 +61,6 @@ export const RegisterPage = () => {
             name="email"
             required
             placeholder="Inser an email..."
-            onChange={(e) => setEmail(e.target.value)}
           />
         </fieldset>
         <fieldset>
@@ -80,10 +68,9 @@ export const RegisterPage = () => {
           <input
             type="text"
             id="username"
-            name="username"
+            name="userName"
             required
             placeholder="Insert a username..."
-            onChange={(e) => setUserName(e.target.value)}
           />
         </fieldset>
         <fieldset>
@@ -91,7 +78,7 @@ export const RegisterPage = () => {
           <input
             type="password"
             id="pass1"
-            name="pass1"
+            name="password"
             required
             placeholder="Insert a password..."
             onChange={(e) => setPass1(e.target.value)}
@@ -102,7 +89,7 @@ export const RegisterPage = () => {
           <input
             type="password"
             id="pass2"
-            name="pass2"
+            name="password2"
             required
             placeholder="Repeat the password..."
             onChange={(e) => setPass2(e.target.value)}
@@ -110,12 +97,7 @@ export const RegisterPage = () => {
         </fieldset>
         <fieldset>
           <label htmlFor="birthday">Name</label>
-          <input
-            type="date"
-            id="birthday"
-            name="birthday"
-            onChange={(e) => setBirthday(e.target.value)}
-          />
+          <input type="date" id="birthday" name="birthday" />
         </fieldset>
         <fieldset>
           <label htmlFor="avatar">Image(optional)</label>

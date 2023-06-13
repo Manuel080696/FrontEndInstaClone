@@ -36,27 +36,10 @@ export const getSinglePhotoService = async (id) => {
   return json.data;
 };
 
-export const registerUserService = async ({
-  name,
-  lastName,
-  email,
-  userName,
-  password,
-  birthday,
-}) => {
+export const registerUserService = async ({ data }) => {
   const response = await fetch(`${import.meta.env.VITE_APP_BACKEND}/user`, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      name,
-      lastName,
-      email,
-      userName,
-      password,
-      birthday,
-    }),
+    body: data,
   });
 
   const json = await response.json();
@@ -64,6 +47,7 @@ export const registerUserService = async ({
   if (!response.ok) {
     throw new Error(json.message);
   }
+  return json.data;
 };
 
 export const logInUserService = async ({ email, password }) => {
@@ -113,8 +97,8 @@ export const getUserDataService = async (id) => {
   return json.data;
 };
 
-export const sendTweetService = async ({ data, token }) => {
-  const response = await fetch(`${import.meta.env.VITE_APP_BACKEND}/`, {
+export const sendPhotoService = async ({ data, token }) => {
+  const response = await fetch(`${import.meta.env.VITE_APP_BACKEND}/photos`, {
     method: "POST",
     body: data,
     headers: {
@@ -123,12 +107,13 @@ export const sendTweetService = async ({ data, token }) => {
   });
 
   const json = await response.json();
+  console.log(json);
 
   if (!response.ok) {
     throw new Error(json.message);
   }
-
-  return json.data;
+  console.log(json.data);
+  return json.data[0];
 };
 
 export const deletePhotoService = async ({ id, token }) => {

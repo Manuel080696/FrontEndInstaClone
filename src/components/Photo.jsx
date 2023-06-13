@@ -22,7 +22,6 @@ export const Photo = ({ photo, removePhoto }) => {
         const ruta = `${import.meta.env.VITE_APP_BACKEND}/uploads/avatar/${
           data.userData[0].avatar
         }`;
-        console.log(ruta);
         setAvatar(ruta);
       } catch (error) {
         setError(error.message);
