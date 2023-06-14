@@ -80,6 +80,8 @@ export const getMyDataUserService = async ({ token }) => {
     throw new Error(json.message);
   }
 
+  console.log(json);
+
   return json.data;
 };
 
@@ -107,12 +109,10 @@ export const sendPhotoService = async ({ data, token }) => {
   });
 
   const json = await response.json();
-  console.log(json);
 
   if (!response.ok) {
     throw new Error(json.message);
   }
-  console.log(json.data);
   return json.data[0];
 };
 

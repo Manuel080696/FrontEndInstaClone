@@ -9,7 +9,7 @@ const usePhotos = (id) => {
   useEffect(() => {
     const loadPhotos = async () => {
       try {
-        setLoading(true);
+        setLoading(false);
 
         const data = id
           ? await getUserPhotosService(id)
@@ -18,14 +18,13 @@ const usePhotos = (id) => {
         setPhotos(data);
       } catch (error) {
         setError(error.message);
-      } finally {
-        setLoading(false);
       }
     };
     loadPhotos();
-  }, [id]);
+  }, [id, loading]);
 
   const addPhoto = (photo) => {
+    setLoading(true);
     setPhotos([photo, ...photos]);
   };
 

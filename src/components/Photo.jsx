@@ -27,8 +27,8 @@ export const Photo = ({ photo, removePhoto }) => {
         setError(error.message);
       }
     };
-    getUserAvatar(photo.userID);
-  }, [avatar]);
+    getUserAvatar(photo.userID || photo.id);
+  }, [photo.userID, avatar, photo.id]);
 
   const deletephoto = async (id) => {
     try {
