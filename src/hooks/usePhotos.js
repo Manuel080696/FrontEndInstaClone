@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { getAllPhotosService, getUserPhotosService } from "../services";
+import { AuthContext } from "../context/AuthContext";
 
 const usePhotos = (id) => {
   const [photos, setPhotos] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const { token } = useContext(AuthContext);
 
   useEffect(() => {
     const loadPhotos = async () => {
@@ -12,16 +14,18 @@ const usePhotos = (id) => {
         setLoading(false);
 
         const data = id
-          ? await getUserPhotosService(id)
-          : await getAllPhotosService();
+          ? await getUserPhotosService(id, token)
+          : await getAllPhotosService(token);
 
         setPhotos(data);
       } catch (error) {
         setError(error.message);
+      } finally {
+        setLoading(false);
       }
     };
     loadPhotos();
-  }, [id, loading]);
+  }, [id, loading, token]);
 
   const addPhoto = (photo) => {
     setLoading(true);

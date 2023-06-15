@@ -1,5 +1,9 @@
-export const getAllPhotosService = async () => {
-  const response = await fetch(`${import.meta.env.VITE_APP_BACKEND}/photos`);
+export const getAllPhotosService = async (token) => {
+  const response = await fetch(`${import.meta.env.VITE_APP_BACKEND}/photos`, {
+    headers: {
+      Authorization: token,
+    },
+  });
 
   const json = await response.json();
 
@@ -10,10 +14,16 @@ export const getAllPhotosService = async () => {
   return json.data;
 };
 
-export const getUserPhotosService = async (id) => {
+export const getUserPhotosService = async (id, token) => {
   const response = await fetch(
-    `${import.meta.env.VITE_APP_BACKEND}/user/${id}/photos`
+    `${import.meta.env.VITE_APP_BACKEND}/user/${id}/photos`,
+    {
+      headers: {
+        Authorization: token,
+      },
+    }
   );
+
   const json = await response.json();
 
   if (!response.ok) {
@@ -67,12 +77,10 @@ export const logInUserService = async ({ email, password }) => {
   return json.data;
 };
 
-export const getMyDataUserService = async ({ token }) => {
-  const response = await fetch(`${import.meta.env.VITE_APP_BACKEND}/user`, {
-    headers: {
-      Authorization: token,
-    },
-  });
+export const getUserDataService = async (id) => {
+  const response = await fetch(
+    `${import.meta.env.VITE_APP_BACKEND}/user/${id}`
+  );
 
   const json = await response.json();
 
@@ -80,16 +88,61 @@ export const getMyDataUserService = async ({ token }) => {
     throw new Error(json.message);
   }
 
-  console.log(json);
+  return json.data;
+};
+
+export const likePhotoService = async (token, id) => {
+  const response = await fetch(
+    `${import.meta.env.VITE_APP_BACKEND}/photos/${id}/like`,
+    {
+      method: "POST",
+      headers: {
+        Authorization: token,
+      },
+    }
+  );
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+
+  return json.data[0];
+};
+
+export const commentPhotoServices = async (token, id, comment) => {
+  const response = await fetch(
+    `${import.meta.env.VITE_APP_BACKEND}/photos/${id}/comment`,
+    {
+      method: "POST",
+      body: JSON.stringify({ comment }),
+
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+      },
+    }
+  );
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
 
   return json.data;
 };
 
-export const getUserDataService = async (id) => {
+export const deleteCommentServices = async ({ token, id, idComment }) => {
   const response = await fetch(
-    `${import.meta.env.VITE_APP_BACKEND}/user/${id}`
-  );
+    `${import.meta.env.VITE_APP_BACKEND}/photos/${id}/uncomment/${idComment}`,
+    {
+      method: "DELETE",
 
+      headers: {
+        Authorization: token,
+      },
+    }
+  );
   const json = await response.json();
 
   if (!response.ok) {
@@ -113,6 +166,7 @@ export const sendPhotoService = async ({ data, token }) => {
   if (!response.ok) {
     throw new Error(json.message);
   }
+
   return json.data[0];
 };
 

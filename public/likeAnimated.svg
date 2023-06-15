@@ -1,0 +1,67 @@
+<svg id="e21sWEYgAPk1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" 
+shape-rendering="geometricPrecision" text-rendering="geometricPrecision">
+<style><![CDATA[
+#e21sWEYgAPk2_ts {animation: e21sWEYgAPk2_ts__ts 600ms linear 1 normal forwards}@keyframes e21sWEYgAPk2_ts__ts 
+{ 0% {transform: translate(256px,256.000006px) scale(0.707004,0.707004)} 16.666667% {transform: translate(256px,256.000006px) 
+scale(0.587585,0.587583)} 33.333333% {transform: translate(256px,256.000006px) scale(0.707004,0.707004)} 100% {transform: translate(256px,256.000006px) 
+scale(0.707004,0.707004)}} #e21sWEYgAPk3_ts {animation: e21sWEYgAPk3_ts__ts 600ms linear 1 normal forwards}@keyframes e21sWEYgAPk3_ts__ts 
+{ 0% {transform: translate(256px,256.000502px) scale(0.707004,0.707004)} 16.666667% {transform: translate(256px,256.000502px) 
+scale(0.587585,0.587583)} 33.333333% {transform: translate(256px,256.000502px) scale(0.707004,0.707004)} 100% 
+{transform: translate(256px,256.000502px) scale(0.707004,0.707004)}} #e21sWEYgAPk4_to {animation: e21sWEYgAPk4_to__to 600ms linear 1 normal forwards}
+@keyframes e21sWEYgAPk4_to__to { 0% {transform: translate(94.842143px,112.393759px)} 41.666667% {transform: translate(94.842143px,112.393759px)} 83.333333% 
+{transform: translate(6.559596px,24.1119px)} 100% {transform: translate(6.559596px,24.1119px)}} #e21sWEYgAPk4_ts 
+{animation: e21sWEYgAPk4_ts__ts 600ms linear 1 normal forwards}@keyframes e21sWEYgAPk4_ts__ts 
+{ 0% {transform: scale(0,0)} 41.666667% {transform: scale(0.5,0.5)} 83.333333% {transform: scale(0.88,0.88)} 100% 
+{transform: scale(0.88,0.88)}} #e21sWEYgAPk4 {animation: e21sWEYgAPk4_c_o 600ms linear 1 normal forwards}@keyframes e21sWEYgAPk4_c_o 
+{ 0% {opacity: 0} 41.666667% {opacity: 1} 83.333333% {opacity: 0} 100% {opacity: 0}} #e21sWEYgAPk5_to {animation: e21sWEYgAPk5_to__to 600ms linear 1 normal forwards}
+@keyframes e21sWEYgAPk5_to__to { 0% {transform: translate(58.652653px,255.999998px)} 41.666667% {transform: translate(58.652653px,255.999998px)} 83.333333% 
+{transform: translate(6.559596px,255.999996px)} 100% {transform: translate(6.559596px,255.999996px)}} #e21sWEYgAPk5_ts 
+{animation: e21sWEYgAPk5_ts__ts 600ms linear 1 normal forwards}@keyframes e21sWEYgAPk5_ts__ts { 0% {transform: rotate(-45deg) scale(0,0)} 41.666667% 
+{transform: rotate(-45deg) scale(0.5,0.5)} 83.333333% {transform: rotate(-45deg) scale(0.88,0.88)} 100% {transform: rotate(-45deg) scale(0.88,0.88)}}
+ #e21sWEYgAPk5 {animation: e21sWEYgAPk5_c_o 600ms linear 1 normal forwards}@keyframes e21sWEYgAPk5_c_o { 0% {opacity: 0} 41.666667% {opacity: 1} 83.333333% 
+ {opacity: 0} 100% {opacity: 0}} #e21sWEYgAPk6_to {animation: e21sWEYgAPk6_to__to 600ms linear 1 normal forwards}@keyframes e21sWEYgAPk6_to__to 
+ { 0% {transform: translate(420.899445px,108.652208px)} 41.666667% {transform: translate(420.899445px,108.652208px)} 83.333333% 
+ {transform: translate(500.419856px,29.131805px)} 100% {transform: translate(500.419856px,29.131805px)}} #e21sWEYgAPk6_ts 
+ {animation: e21sWEYgAPk6_ts__ts 600ms linear 1 normal forwards}@keyframes e21sWEYgAPk6_ts__ts { 0% 
+ {transform: scale(0,0)} 41.666667% {transform: scale(-0.5,0.5)} 83.333333% {transform: scale(-0.878973,0.878969)} 100% 
+ {transform: scale(-0.878973,0.878969)}} #e21sWEYgAPk6 {animation: e21sWEYgAPk6_c_o 600ms linear 1 normal forwards}@keyframes e21sWEYgAPk6_c_o 
+ { 0% {opacity: 0} 41.666667% {opacity: 1} 83.333333% {opacity: 0} 100% {opacity: 0}} #e21sWEYgAPk7_to {animation: e21sWEYgAPk7_to__to 600ms linear 1 normal forwards}
+ @keyframes e21sWEYgAPk7_to__to { 0% {transform: translate(447.171311px,255.999999px)} 41.666667% {transform: translate(447.171311px,255.999999px)} 65%
+  {transform: translate(476.30057px,255.999999px)} 83.333333% {transform: translate(500.419856px,255.999998px)} 100% 
+  {transform: translate(500.419856px,255.999998px)}} #e21sWEYgAPk7_ts 
+  {animation: e21sWEYgAPk7_ts__ts 600ms linear 1 normal forwards}@keyframes e21sWEYgAPk7_ts__ts 
+  { 0% {transform: rotate(45deg) scale(0,0)} 41.666667% {transform: rotate(45deg) scale(-0.5,0.5)} 83.333333% 
+  {transform: rotate(45deg) scale(-0.878973,0.878969)} 100% {transform: rotate(45deg) scale(-0.878973,0.878969)}}
+   #e21sWEYgAPk7 {animation: e21sWEYgAPk7_c_o 600ms linear 1 normal forwards}@keyframes e21sWEYgAPk7_c_o
+    { 0% {opacity: 0} 41.666667% {opacity: 1} 83.333333% {opacity: 0} 100% {opacity: 0}} #e21sWEYgAPk8_to 
+    {animation: e21sWEYgAPk8_to__to 600ms linear 1 normal forwards}@keyframes e21sWEYgAPk8_to__to 
+    { 0% {offset-distance: 0%} 41.666667% {offset-distance: 0%} 83.333333% {offset-distance: 100%} 100% {offset-distance: 100%}} 
+    #e21sWEYgAPk8_ts {animation: e21sWEYgAPk8_ts__ts 600ms linear 1 normal forwards}@keyframes e21sWEYgAPk8_ts__ts 
+    { 0% {transform: rotate(-44.828494deg) scale(0,0)} 41.666667% {transform: rotate(-44.828494deg) 
+    scale(-0.5,0.5)} 83.333333% {transform: rotate(-44.828494deg) scale(-0.878973,0.878969)} 
+    100% {transform: rotate(-44.828494deg) scale(-0.878973,0.878969)}} #e21sWEYgAPk8
+     {animation: e21sWEYgAPk8_c_o 600ms linear 1 normal forwards}@keyframes e21sWEYgAPk8_c_o 
+     { 0% {opacity: 0} 41.666667% {opacity: 1} 83.333333% {opacity: 0} 100% {opacity: 0}} #e21sWEYgAPk9_to 
+     {animation: e21sWEYgAPk9_to__to 600ms linear 1 normal forwards}@keyframes e21sWEYgAPk9_to__to 
+     { 0% {transform: translate(364.66207px,367.998155px)} 41.666667% {transform: translate(364.66207px,367.998155px)} 
+     83.333333% {transform: translate(512px,512px)} 100% {transform: translate(512px,512px)}} #e21sWEYgAPk9_ts
+      {animation: e21sWEYgAPk9_ts__ts 600ms linear 1 normal forwards}@keyframes e21sWEYgAPk9_ts__ts { 0% {transform: scale(0,0)}
+       41.666667% {transform: scale(-0.5,-0.5)} 83.333333% {transform: scale(-0.88,-0.88)} 100% {transform: scale(-0.88,-0.88)}}
+        #e21sWEYgAPk9 {animation: e21sWEYgAPk9_c_o 600ms linear 1 normal forwards}@keyframes e21sWEYgAPk9_c_o { 0% {opacity: 0} 
+        41.666667% {opacity: 1} 83.333333% {opacity: 0} 100% {opacity: 0}} #e21sWEYgAPk10_to {animation: e21sWEYgAPk10_to__to 600ms linear 1 normal forwards}
+        @keyframes e21sWEYgAPk10_to__to { 0% {transform: translate(255.765863px,440.527302px)} 41.666667% {transform: translate(255.765863px,440.527302px)} 
+        83.333333% {transform: translate(256px,548.988891px)} 100% {transform: translate(256px,548.988891px)}} #e21sWEYgAPk10_ts 
+        {animation: e21sWEYgAPk10_ts__ts 600ms linear 1 normal forwards}@keyframes e21sWEYgAPk10_ts__ts { 0% {transform: rotate(45deg) scale(0,0)} 
+        41.666667% {transform: rotate(45deg) scale(-0.5,-0.5)} 83.333333% {transform: rotate(45deg) scale(-0.88,-0.88)} 100% {transform: rotate(45deg) 
+        scale(-0.88,-0.88)}} #e21sWEYgAPk10 {animation: e21sWEYgAPk10_c_o 600ms linear 1 normal forwards}@keyframes e21sWEYgAPk10_c_o {
+             0% {opacity: 0} 41.666667% {opacity: 1} 83.333333% {opacity: 0} 100% {opacity: 0}} #e21sWEYgAPk11_to 
+             {animation: e21sWEYgAPk11_to__to 600ms linear 1 normal forwards}@keyframes e21sWEYgAPk11_to__to { 
+                0% {transform: translate(146.981989px,363.098248px)} 41.666667% {transform: translate(146.981989px,363.098248px)} 
+                83.333333% {transform: translate(0px,512px)} 100% {transform: translate(0px,512px)}} #e21sWEYgAPk11_ts 
+                {animation: e21sWEYgAPk11_ts__ts 600ms linear 1 normal forwards}@keyframes e21sWEYgAPk11_ts__ts { 0% {transform: scale(0,0)} 
+                41.666667% {transform: scale(0.5,-0.5)} 83.333333% {transform: scale(0.88,-0.88)} 100% {transform: scale(0.88,-0.88)}}
+                 #e21sWEYgAPk11 {animation: e21sWEYgAPk11_c_o 600ms linear 1 normal forwards}@keyframes e21sWEYgAPk11_c_o { 0% {opacity: 0} 
+                 41.666667% {opacity: 1} 83.333333% {opacity: 0} 100% {opacity: 0}}
+]]></style>
+<g id="e21sWEYgAPk2_ts" transform="translate(256,256.000006) scale(0.707004,0.707004)">
+<path d="M474.655,74.503C449.169,45.72,413.943,29.87,375.467,29.87c-30.225,0-58.5,12.299-81.767,35.566-15.522,15.523-28.33,35.26-37.699,57.931-9.371-22.671-22.177-42.407-37.699-57.931C195.035,42.169,166.76,29.87,136.535,29.87c-38.477,0-73.702,15.851-99.188,44.634C13.612,101.305,0,137.911,0,174.936c0,44.458,13.452,88.335,39.981,130.418c21.009,33.324,50.227,65.585,86.845,95.889c62.046,51.348,123.114,78.995,125.683,80.146c2.203.988,4.779.988,6.981,0c2.57-1.151,63.637-28.798,125.683-80.146c36.618-30.304,65.836-62.565,86.845-95.889C498.548,263.271,512,219.394,512,174.936c0-37.025-13.612-73.631-37.345-100.433Z" transform="translate(-256,-256.000006)" fill="#ff6647" stroke-dashoffset="5"/></g><g id="e21sWEYgAPk3_ts" transform="translate(256,256.000502) scale(0.707004,0.707004)"><path d="M160.959,401.243c-36.618-30.304-65.836-62.565-86.845-95.889-26.529-42.083-39.981-85.961-39.981-130.418c0-37.025,13.612-73.631,37.345-100.433c21.44-24.213,49.775-39.271,81.138-43.443-5.286-.786-10.653-1.189-16.082-1.189-38.477,0-73.702,15.851-99.188,44.634C13.612,101.305,0,137.911,0,174.936c0,44.458,13.452,88.335,39.981,130.418c21.009,33.324,50.227,65.585,86.845,95.889c62.046,51.348,123.114,78.995,125.683,80.146c2.203.988,4.779.988,6.981,0c.689-.308,5.586-2.524,13.577-6.588-21.813-11.092-66.696-35.976-112.108-73.558Z" transform="translate(-256,-256.000502)" fill="#e35336"/></g><g id="e21sWEYgAPk4_to" transform="translate(94.842143,112.393759)"><g id="e21sWEYgAPk4_ts" transform="scale(0,0)"><line id="e21sWEYgAPk4" x1="26.052141" y1="26.052141" x2="-26.052141" y2="-26.052141" transform="translate(-26.052141,-26.052898)" opacity="0" fill="none" stroke="#e35336" stroke-width="7" stroke-linecap="round"/></g></g><g id="e21sWEYgAPk5_to" transform="translate(58.652653,255.999998)"><g id="e21sWEYgAPk5_ts" transform="rotate(-45) scale(0,0)"><line id="e21sWEYgAPk5" x1="26.052141" y1="26.052141" x2="-26.052141" y2="-26.052141" transform="translate(-26.052141,-26.052898)" opacity="0" fill="none" stroke="#e35336" stroke-width="7" stroke-linecap="round"/></g></g><g id="e21sWEYgAPk6_to" transform="translate(420.899445,108.652208)"><g id="e21sWEYgAPk6_ts" transform="scale(0,0)"><line id="e21sWEYgAPk6" x1="26.052141" y1="26.052141" x2="-26.052141" y2="-26.052141" transform="translate(-26.052141,-26.051349)" opacity="0" fill="none" stroke="#e35336" stroke-width="7" stroke-linecap="round"/></g></g><g id="e21sWEYgAPk7_to" transform="translate(447.171311,255.999999)"><g id="e21sWEYgAPk7_ts" transform="rotate(45) scale(0,0)"><line id="e21sWEYgAPk7" x1="26.052141" y1="26.052141" x2="-26.052141" y2="-26.052141" transform="translate(-26.052141,-26.051349)" opacity="0" fill="none" stroke="#e35336" stroke-width="7" stroke-linecap="round"/></g></g><g id="e21sWEYgAPk8_to" style="offset-path:path('M256,115.105411C255.734192,114.894652,255.551053,80.966801,256,0');offset-rotate:0deg"><g id="e21sWEYgAPk8_ts" transform="rotate(-44.828494) scale(0,0)"><line id="e21sWEYgAPk8" x1="26.052141" y1="26.052141" x2="-26.052141" y2="-26.052141" transform="translate(-26.052141,-26.051349)" opacity="0" fill="none" stroke="#e35336" stroke-width="7" stroke-linecap="round"/></g></g><g id="e21sWEYgAPk9_to" transform="translate(364.66207,367.998155)"><g id="e21sWEYgAPk9_ts" transform="scale(0,0)"><line id="e21sWEYgAPk9" x1="26.052141" y1="26.052141" x2="-26.052141" y2="-26.052141" transform="translate(-26.052141,-26.052346)" opacity="0" fill="none" stroke="#e35336" stroke-width="7" stroke-linecap="round"/></g></g><g id="e21sWEYgAPk10_to" transform="translate(255.765863,440.527302)"><g id="e21sWEYgAPk10_ts" transform="rotate(45) scale(0,0)"><line id="e21sWEYgAPk10" x1="26.052141" y1="26.052141" x2="-26.052141" y2="-26.052141" transform="translate(-26.052141,-26.052346)" opacity="0" fill="none" stroke="#e35336" stroke-width="7" stroke-linecap="round"/></g></g><g id="e21sWEYgAPk11_to" transform="translate(146.981989,363.098248)"><g id="e21sWEYgAPk11_ts" transform="scale(0,0)"><line id="e21sWEYgAPk11" x1="26.052141" y1="26.052141" x2="-26.052141" y2="-26.052141" transform="translate(-26.052141,-26.052346)" opacity="0" fill="none" stroke="#e35336" stroke-width="7" stroke-linecap="round"/></g></g></svg>

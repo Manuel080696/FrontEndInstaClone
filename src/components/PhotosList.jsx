@@ -1,7 +1,6 @@
 import { Photo } from "./Photo";
 
 export const PhotoList = ({ photos, removePhoto }) => {
-  console.log(photos);
   return photos.length ? (
     <ul>
       {photos?.map((photo, index) => (

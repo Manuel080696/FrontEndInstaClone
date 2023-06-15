@@ -7,4 +7,8 @@ export default defineConfig({
   server: {
     port: "4000",
   },
+  build: {
+    assetsInclude: ["**/*.css", "**/*.js", "**/*.svg"],
+  },
+  loader: { ".js": "jsx" },
 });

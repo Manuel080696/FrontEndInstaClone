@@ -1,14 +1,23 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
-import { deletePhotoService, getUserDataService } from "../services";
+import {
+  deletePhotoService,
+  getUserDataService,
+  likePhotoService,
+} from "../services";
+/* import { likeAnimated } from "./assets/likeAnimated.svg"; */
 import "./Photo.css";
+import "boxicons";
 
 export const Photo = ({ photo, removePhoto }) => {
   const navigate = useNavigate();
   const { user, token } = useContext(AuthContext);
   const [error, setError] = useState("");
   const [avatar, setAvatar] = useState("");
+  const [liked, setLiked] = useState(photo.dioLike);
+  const [totalikes, setTotalikes] = useState(photo.numLikes);
+
   const srcImage = `${import.meta.env.VITE_APP_BACKEND}/uploads/posts/${
     photo.photoName
   }`;
@@ -22,13 +31,14 @@ export const Photo = ({ photo, removePhoto }) => {
         const ruta = `${import.meta.env.VITE_APP_BACKEND}/uploads/avatar/${
           data.userData[0].avatar
         }`;
+
         setAvatar(ruta);
       } catch (error) {
         setError(error.message);
       }
     };
     getUserAvatar(photo.userID || photo.id);
-  }, [photo.userID, avatar, photo.id]);
+  }, [photo.userID, photo.id, avatar]);
 
   const deletephoto = async (id) => {
     try {
@@ -41,6 +51,20 @@ export const Photo = ({ photo, removePhoto }) => {
     } catch (error) {
       setError(error.message);
     }
+  };
+
+  const toggleLike = async () => {
+    try {
+      const data = await likePhotoService(token, photo.photoID);
+      setLiked(data.vote);
+      setTotalikes(data.likes);
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
+  const handleClick = async () => {
+    navigate(`/comments/${photo.photoID}`);
   };
 
   return (
@@ -56,27 +80,67 @@ export const Photo = ({ photo, removePhoto }) => {
         </Link>
       </span>
       {photo.photoName ? (
-        <img
-          className="post-image"
-          src={srcImage}
-          alt={photo.description}
-        ></img>
+        <section className="post-image">
+          <object
+            className="like-button-object"
+            type="image/svg+xml"
+            data={liked ? "/likeAnimated.svg" : null}
+            style={{
+              objectFit: "contain",
+              height: "auto",
+              pointerEvents: "none",
+            }}
+          />
+          <img
+            onDoubleClick={toggleLike}
+            src={srcImage}
+            alt={photo.description}
+          ></img>
+        </section>
       ) : null}
       <p>{photo.description}</p>
-      <p>
-        <Link to={`/photo/${photo.photoID}`}>
-          {new Date(photo.date).toLocaleString()}
-        </Link>
-      </p>
+      <ul className="reactionsBar">
+        <li className="reactionsBar-reaction">
+          <button className="reactionsBar-like-button" onClick={toggleLike}>
+            {liked ? (
+              <box-icon
+                className="iconLiked"
+                name="heart"
+                type="solid"
+                color="#FF0000"
+              ></box-icon>
+            ) : (
+              <box-icon name="heart" type="solid" color="#F5BDBD"></box-icon>
+            )}
+          </button>
+          <li>{totalikes}</li>
+        </li>
 
-      {user && user.userName === photo.userPosted ? (
+        <li className="reactionsBar-reaction">
+          <button className="reactionsBar-comment-button">
+            <box-icon name="message-rounded"></box-icon>
+          </button>
+          <p>{photo.numComments}</p>
+        </li>
+
+        <li>
+          <button
+            style={{ backgroundColor: "transparent", border: "none" }}
+            onClick={handleClick}
+          >
+            <box-icon name="message-rounded"></box-icon>
+          </button>
+        </li>
+      </ul>
+      {user && user.name === photo.userPosted ? (
         <section>
           <button
+            style={{ backgroundColor: "transparent", border: "none" }}
             onClick={() => {
               if (window.confirm("Are you sure?")) deletephoto(photo.photoID);
             }}
           >
-            Delete photo
+            <box-icon type="solid" name="trash"></box-icon>
           </button>
           {error ? <p>{error}</p> : null}
         </section>

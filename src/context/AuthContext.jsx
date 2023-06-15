@@ -1,39 +1,27 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { getMyDataUserService } from "../services";
 
 export const AuthContext = React.createContext();
 
 export const AuthProviderComponent = ({ children }) => {
-  const [token, setToken] = useState(localStorage.getItem("token"));
-  const [user, setUser] = useState(null);
+  const [token, setToken] = useState(localStorage.getItem("token") || "");
+  const [user, setUser] = useState(
+    JSON.parse(localStorage.getItem("user")) || ""
+  );
 
   useEffect(() => {
     localStorage.setItem("token", token);
-  }, [token]);
+    localStorage.setItem("user", JSON.stringify(user));
+  }, [token, user]);
 
-  useEffect(() => {
-    const getUserData = async () => {
-      try {
-        const data = await getMyDataUserService({ token });
-
-        setUser(data);
-      } catch (error) {
-        logOut();
-      }
-    };
-    if (token) {
-      getUserData();
-    }
-  }, [token]);
-
-  const logIn = (token) => {
-    setToken(token);
+  const logIn = (data) => {
+    setUser(data);
+    setToken(data.token);
   };
 
   const logOut = () => {
     setToken("");
-    setUser(null);
+    setUser("");
   };
 
   return (

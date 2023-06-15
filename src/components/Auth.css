@@ -1,0 +1,11 @@
+.header-auth-img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.header-auth {
+  display: flex;
+  justify-content: space-between;
+}

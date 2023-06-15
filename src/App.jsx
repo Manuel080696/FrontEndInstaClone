@@ -11,6 +11,7 @@ import { LoginPage } from "./pages/LoginPage";
 import { PhotosPage } from "./pages/PhotosPage";
 import { UserPage } from "./pages/UserPage";
 import { NotFoundPage } from "./pages/NotFoundPage";
+import { CommentsPage } from "./pages/CommentsPage";
 import Root from "./pages/Root";
 
 const router = createBrowserRouter(
@@ -21,6 +22,7 @@ const router = createBrowserRouter(
       <Route path="login" element={<LoginPage />} />
       <Route path="photos/:id" element={<PhotosPage />} />
       <Route path="user/:id" element={<UserPage />} />
+      <Route path="comments/:id" element={<CommentsPage />} />
       <Route path="*" element={<NotFoundPage />} />
     </Route>
   )
