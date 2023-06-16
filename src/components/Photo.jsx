@@ -1,12 +1,7 @@
-import { useContext, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
-import {
-  deletePhotoService,
-  getUserDataService,
-  likePhotoService,
-} from "../services";
-/* import { likeAnimated } from "./assets/likeAnimated.svg"; */
+import { deletePhotoService, likePhotoService } from "../services";
 import "./Photo.css";
 import "boxicons";
 
@@ -14,31 +9,12 @@ export const Photo = ({ photo, removePhoto }) => {
   const navigate = useNavigate();
   const { user, token } = useContext(AuthContext);
   const [error, setError] = useState("");
-  const [avatar, setAvatar] = useState("");
   const [liked, setLiked] = useState(photo.dioLike);
   const [totalikes, setTotalikes] = useState(photo.numLikes);
 
   const srcImage = `${import.meta.env.VITE_APP_BACKEND}/uploads/posts/${
     photo.photoName
   }`;
-  const nullRute = `${import.meta.env.VITE_APP_BACKEND}/uploads/avatar/null`;
-
-  useEffect(() => {
-    const getUserAvatar = async (id) => {
-      try {
-        const data = await getUserDataService(id);
-
-        const ruta = `${import.meta.env.VITE_APP_BACKEND}/uploads/avatar/${
-          data.userData[0].avatar
-        }`;
-
-        setAvatar(ruta);
-      } catch (error) {
-        setError(error.message);
-      }
-    };
-    getUserAvatar(photo.userID || photo.id);
-  }, [photo.userID, photo.id, avatar]);
 
   const deletephoto = async (id) => {
     try {
@@ -59,7 +35,7 @@ export const Photo = ({ photo, removePhoto }) => {
       setLiked(data.vote);
       setTotalikes(data.likes);
     } catch (error) {
-      alert(error.message);
+      navigate("/login");
     }
   };
 
@@ -69,16 +45,6 @@ export const Photo = ({ photo, removePhoto }) => {
 
   return (
     <article className="post">
-      <span id="post-user">
-        <img
-          className="post-user-userAvatar"
-          src={avatar !== nullRute ? avatar : "/avatarDefault.png"}
-        ></img>
-
-        <Link to={`/user/${photo.userID}`}>
-          <p>{photo.userPosted}</p>
-        </Link>
-      </span>
       {photo.photoName ? (
         <section className="post-image">
           <object
@@ -113,7 +79,7 @@ export const Photo = ({ photo, removePhoto }) => {
               <box-icon name="heart" type="solid" color="#F5BDBD"></box-icon>
             )}
           </button>
-          <li>{totalikes}</li>
+          <p>{totalikes}</p>
         </li>
 
         <li className="reactionsBar-reaction">
