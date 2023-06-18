@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Auth } from "./Auth";
+import { SearchInput } from "./SearchInput";
 
 export const Header = () => {
   return (
@@ -9,6 +10,7 @@ export const Header = () => {
       </h1>
       <nav>
         <Auth />
+        <SearchInput />
       </nav>
     </header>
   );

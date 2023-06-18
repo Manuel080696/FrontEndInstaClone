@@ -35,7 +35,7 @@ export const Photo = ({ photo, removePhoto }) => {
       setLiked(data.vote);
       setTotalikes(data.likes);
     } catch (error) {
-      navigate("/login");
+      alert(error.message);
     }
   };
 
@@ -58,6 +58,7 @@ export const Photo = ({ photo, removePhoto }) => {
             }}
           />
           <img
+            onClick={() => navigate(`/photos/${photo.photoID}`)}
             onDoubleClick={toggleLike}
             src={srcImage}
             alt={photo.description}

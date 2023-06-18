@@ -21,6 +21,9 @@ export const UserPage = () => {
           <li>
             <p>{userDataInfo.lastName}</p>
           </li>
+          <li>
+            <p>{userDataInfo.birthday}</p>
+          </li>
         </ul>
       </section>
       <section>
