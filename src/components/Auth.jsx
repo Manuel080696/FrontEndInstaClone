@@ -25,12 +25,14 @@ export const Auth = () => {
       {user ? (
         <ul>
           <li>
-            {user.avatar ? (
-              <Link to={`/user/${user.id}`}>
-                <img
-                  src={avatar !== nullRute ? avatar : "/avatarDefault.png"}
-                />
-              </Link>
+            <Link to={`/user/${user.id}`}>{user.userName} </Link>
+            {user.updateAvatar || user.avatar ? (
+              <img
+                alt={user.userName}
+                src={`${import.meta.env.VITE_APP_BACKEND}/uploads/avatar/${
+                  user.updateAvatar ? user.updateAvatar : user.avatar
+                }`}
+              />
             ) : (
               <img
                 src={`${

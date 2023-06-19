@@ -105,23 +105,23 @@ export const getUserDataService = async (id) => {
   return json.data;
 };
 
-export const editUserDataService = async (token, data) => {
-  const response = await fetch(`${import.meta.env.VITE_APP_BACKEND}/user`, {
-    method: "PATCH",
-    headers: {
-      Authorization: token,
-    },
-    body: data,
-  });
+// export const editUserDataService = async (token, data) => {
+//   const response = await fetch(`${import.meta.env.VITE_APP_BACKEND}/user`, {
+//     method: "PATCH",
+//     headers: {
+//       Authorization: token,
+//     },
+//     body: data,
+//   });
 
-  const json = await response.json();
+//   const json = await response.json();
 
-  if (!response.ok) {
-    throw new Error(json.message);
-  }
+//   if (!response.ok) {
+//     throw new Error(json.message);
+//   }
 
-  return json.data;
-};
+//   return json.data;
+// };
 
 export const deleteUserService = async (token, id) => {
   const response = await fetch(
@@ -235,4 +235,22 @@ export const deletePhotoService = async ({ id, token }) => {
   if (!response.ok) {
     throw new Error(json.message);
   }
+};
+
+export const editUserServices = async ({ token, data }) => {
+  const response = await fetch(`${import.meta.env.VITE_APP_BACKEND}/user`, {
+    method: "PATCH",
+    body: data,
+
+    headers: {
+      Authorization: token,
+    },
+  });
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+
+  return json.data[0];
 };

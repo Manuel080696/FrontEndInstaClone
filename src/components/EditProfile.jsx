@@ -1,69 +1,84 @@
 import { useContext, useState } from "react";
-import { editUserDataService } from "../services";
-import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
+import { editUserServices } from "../services";
 
-export const EditProfile = ({ token }) => {
-  const [avatar, setAvatar] = useState(null);
+import TextField from "@mui/material/TextField";
+
+export const EditProfile = () => {
+  const { user, token, setUser } = useContext(AuthContext);
+  const [name, setName] = useState(user.name);
+  const [lastName, setLastName] = useState(user.lastName);
+  const [userName, setUserName] = useState(user.userName);
+  const [birthDay, setBirthDay] = useState(user.birthDay);
   const [error, setError] = useState("");
   const navigate = useNavigate();
-  const { user } = useContext(AuthContext);
 
-  const handleSubmit = async (e) => {
+  const handleClick = async (e) => {
     e.preventDefault();
     const data = new FormData(e.target);
-    await editUserDataService(token, data);
+    try {
+      const newDataUser = await editUserServices({ token, id: user.id, data });
+      console.log(newDataUser.updateAvatar);
+      newDataUser.id = user.id;
+      newDataUser.token = token;
+      newDataUser.email = user.email;
+      newDataUser.updateAvatar = newDataUser.updateAvatar
+        ? newDataUser.updateAvatar
+        : user.updateAvatar;
 
-    navigate(`/user/${user.id}`);
-    setError("");
+      setUser(newDataUser);
+      console.log(user.updateAvatar);
+      navigate(`/user/${user.id}`);
+    } catch (error) {
+      setError(error.message);
+    }
   };
+
   return (
-    <form onSubmit={handleSubmit}>
-      <fieldset>
-        <label htmlFor="name">Name</label>
-        <input type="text" id="name" name="name" placeholder="Insert name..." />
-      </fieldset>
-      <fieldset>
-        <label htmlFor="lastName">LastName</label>
-        <input
-          type="text"
-          id="lastName"
+    <>
+      <h1>Edit Profile</h1>
+      <form onSubmit={handleClick}>
+        <TextField
+          id="outlined-controlled"
+          name="name"
+          label="Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <br />
+        <TextField
+          id="outlined-controlled"
           name="lastName"
-          placeholder="Insert last name..."
+          label="Last Name"
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
         />
-      </fieldset>
-      <fieldset>
-        <label htmlFor="username">Username</label>
-        <input
-          type="text"
-          id="username"
+        <br />
+        <TextField
+          id="outlined-controlled"
           name="userName"
-          placeholder="Insert a username..."
+          label="User Name"
+          value={userName}
+          onChange={(e) => setUserName(e.target.value)}
         />
-      </fieldset>
-      <fieldset>
-        <label htmlFor="birthday">Avatar</label>
-        <input type="date" id="birthday" name="birthDay" />
-      </fieldset>
-      <fieldset>
+        <br />
+        <TextField
+          type="date"
+          id="outlined-controlled"
+          name="birthDay"
+          label="Birthday"
+          value={birthDay}
+          onChange={(e) => setBirthDay(e.target.value)}
+        />
+        <br />
+
         <label htmlFor="avatar">Image(optional)</label>
-        <input
-          type="file"
-          id="avatar"
-          name="avatar"
-          accept="image/*"
-          onChange={(e) => setAvatar(e.target.files[0])}
-        />
-        {avatar ? (
-          <img
-            src={URL.createObjectURL(avatar)}
-            alt="Preview"
-            style={{ width: "100px" }}
-          ></img>
-        ) : null}
-      </fieldset>
-      <button>Edit</button>
-      {error ? <p>{error}</p> : null}
-    </form>
+        <input type="file" id="avatar" name="avatar" accept="image/*" />
+        <br />
+        <button>Guardar Cambios</button>
+        {error ? <p>{error}</p> : null}
+      </form>
+    </>
   );
 };
