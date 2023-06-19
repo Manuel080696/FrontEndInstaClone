@@ -14,7 +14,7 @@ import { NotFoundPage } from "./pages/NotFoundPage";
 import { CommentsPage } from "./pages/CommentsPage";
 import Root from "./pages/Root";
 import { EditProfilePage } from "./pages/EditProfilePage";
-import { SearchPage } from "./pages/Search";
+import { SearchPage } from "./pages/SearchPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(

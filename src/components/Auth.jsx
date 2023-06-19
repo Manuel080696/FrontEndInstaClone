@@ -41,6 +41,9 @@ export const Auth = () => {
             )}
           </li>
           <li>
+            <button onClick={() => navigate("/search")}>🔎</button>
+          </li>
+          <li>
             <nav className="auth-menu">
               <div
                 className={`hamburger ${isMenuOpen ? "active" : ""}`}

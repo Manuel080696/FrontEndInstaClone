@@ -46,6 +46,20 @@ export const getSinglePhotoService = async (id) => {
   return json.data;
 };
 
+export const searchPhotosService = async (searchTerm) => {
+  const response = await fetch(
+    `${import.meta.env.VITE_APP_BACKEND}/photos?search=${searchTerm}`
+  );
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+
+  return json.data;
+};
+
 export const registerUserService = async ({ data }) => {
   const response = await fetch(`${import.meta.env.VITE_APP_BACKEND}/user`, {
     method: "POST",

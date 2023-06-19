@@ -1,10 +1,32 @@
-import usePhotos from "../hooks/usePhotos";
+import { useState } from "react";
+import { searchPhotosService } from "../services";
 
 function Search() {
-  const { photos } = usePhotos();
+  const [photos, setPhotos] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const SearchInput = () => {
+    const handleSearch = async (e) => {
+      e.preventDefault();
+      const data = await searchPhotosService(searchTerm);
+      setPhotos(data);
+    };
+    return (
+      <form onSubmit={handleSearch}>
+        <input
+          type="search"
+          placeholder="Buscar..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+        <button>🔎</button>
+      </form>
+    );
+  };
 
   return (
     <div>
+      <SearchInput />
       <div>
         {photos.map((photo, index) => (
           <div key={index}>
@@ -21,5 +43,4 @@ function Search() {
     </div>
   );
 }
-
 export default Search;

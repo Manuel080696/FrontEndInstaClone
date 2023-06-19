@@ -1,20 +1,21 @@
 import { useContext, useEffect, useState } from "react";
 import { ErrorMessage } from "../components/ErrorMessage";
-import { getSinglePhotoService } from "../services";
+
 import { useParams } from "react-router-dom";
 
 import "boxicons";
 import { AuthContext } from "../context/AuthContext";
+import { getSinglePhotoService } from "../services";
 
 export const PhotosPage = () => {
   const { id } = useParams();
-  const [photo, setPhoto] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-  const { user } = useContext(AuthContext);
   const [comments, setComments] = useState([]);
   const [liked, setLiked] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [likeNumber, setLikeNumber] = useState();
+  const [photo, setPhoto] = useState([]);
+  const [error, setError] = useState("");
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     const loadPhoto = async () => {
