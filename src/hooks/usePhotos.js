@@ -36,6 +36,7 @@ const usePhotos = (id) => {
   };
 
   const removePhoto = (id) => {
+    setLoading(true);
     setPhotos(photos.filter((photo) => photo.id !== id));
   };
 

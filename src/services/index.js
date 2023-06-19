@@ -222,7 +222,7 @@ export const sendPhotoService = async ({ data, token }) => {
 
 export const deletePhotoService = async ({ id, token }) => {
   const response = await fetch(
-    `${import.meta.env.VITE_APP_BACKEND}/tweet/${id}`,
+    `${import.meta.env.VITE_APP_BACKEND}/photos/${id}`,
     {
       method: "DELETE",
       headers: {
