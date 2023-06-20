@@ -17,14 +17,12 @@ export const Footer = () => {
           </Link>
         </li>
         <li>
-          <Link to="/">
+          <Link to="/photos">
             <img src="./posts.png" />
           </Link>
         </li>
         <li>
-          <Link to="/">
-            <Avatar />
-          </Link>
+          <Avatar />
         </li>
       </ul>
     </footer>

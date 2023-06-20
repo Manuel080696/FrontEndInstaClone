@@ -1,0 +1,41 @@
+article.postTotal {
+  background-color: #e9eff2;
+  border: 1px solid #a8a8a8;
+}
+
+section.post {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+section.post img {
+  height: 500px;
+  width: 100vw;
+  object-fit: cover;
+}
+
+object {
+  position: absolute;
+}
+
+article.postTotal ul {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1rem;
+  margin-bottom: 0.8rem;
+}
+article.postTotal li {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+article.postTotal li button {
+  background-color: transparent;
+  border: none;
+}
+
+article.postTotal section.description {
+  margin: 0.8rem;
+}

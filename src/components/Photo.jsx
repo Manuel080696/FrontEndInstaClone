@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { deletePhotoService, likePhotoService } from "../services";
 import "boxicons";
+import "./Photo.css";
 
 export const Photo = ({ photo, removePhoto }) => {
   const navigate = useNavigate();
@@ -43,11 +44,10 @@ export const Photo = ({ photo, removePhoto }) => {
   };
 
   return (
-    <article className="post">
+    <article className="postTotal">
       {photo.photoName ? (
-        <section className="post-image">
+        <section className="post">
           <object
-            className="like-button-object"
             type="image/svg+xml"
             data={liked ? "/likeAnimated.svg" : null}
             style={{
@@ -64,47 +64,46 @@ export const Photo = ({ photo, removePhoto }) => {
           ></img>
         </section>
       ) : null}
-      <p>{photo.description}</p>
-      <ul className="reactionsBar">
-        <li className="reactionsBar-reaction">
-          <button className="reactionsBar-like-button" onClick={toggleLike}>
-            {liked ? (
-              <box-icon
-                className="iconLiked"
-                name="heart"
-                type="solid"
-                color="#FF0000"
-              ></box-icon>
-            ) : (
-              <box-icon name="heart" type="solid" color="#F5BDBD"></box-icon>
-            )}
-          </button>
-          <p>{totalikes}</p>
-        </li>
+      <section className="description">
+        <ul>
+          <li>
+            <button onClick={toggleLike}>
+              {liked ? (
+                <box-icon
+                  className="iconLiked"
+                  name="heart"
+                  type="solid"
+                  color="#FF0000"
+                ></box-icon>
+              ) : (
+                <box-icon name="heart" type="solid" color="#F5BDBD"></box-icon>
+              )}
+            </button>
+            <p>{totalikes}</p>
+          </li>
 
-        <li className="reactionsBar-reaction">
-          <button
-            style={{ backgroundColor: "transparent", border: "none" }}
-            onClick={handleClick}
-          >
-            <box-icon name="message-rounded"></box-icon>
-          </button>
-          <p>{photo.numComments}</p>
-        </li>
-      </ul>
-      {user.id === photo.userID ? (
-        <section>
-          <button
-            style={{ backgroundColor: "transparent", border: "none" }}
-            onClick={() => {
-              if (window.confirm("Are you sure?")) deletephoto(photo.photoID);
-            }}
-          >
-            <box-icon type="solid" name="trash"></box-icon>
-          </button>
-          {error ? <p>{error}</p> : null}
-        </section>
-      ) : null}
+          <li>
+            <button onClick={handleClick}>
+              <box-icon name="message-rounded"></box-icon>
+            </button>
+            <p>{photo.numComments}</p>
+          </li>
+        </ul>
+        <p>{photo.description}</p>
+        {user.id === photo.userID ? (
+          <section>
+            <button
+              style={{ backgroundColor: "transparent", border: "none" }}
+              onClick={() => {
+                if (window.confirm("Are you sure?")) deletephoto(photo.photoID);
+              }}
+            >
+              <box-icon type="solid" name="trash"></box-icon>
+            </button>
+            {error ? <p>{error}</p> : null}
+          </section>
+        ) : null}
+      </section>
     </article>
   );
 };
