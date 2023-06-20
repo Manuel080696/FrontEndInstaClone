@@ -9,7 +9,7 @@ export const EditProfile = () => {
   const { user, token, setUser } = useContext(AuthContext);
   const [name, setName] = useState(user.name);
   const [lastName, setLastName] = useState(user.lastName);
-  const [userName, setUserName] = useState(user.userName);
+  const [userName, setUserName] = useState(user.userName || user.UserName);
   const [birthDay, setBirthDay] = useState(user.birthDay);
   const [disabled, setDisabled] = useState(true);
   const [error, setError] = useState("");
@@ -30,7 +30,6 @@ export const EditProfile = () => {
         : user.updateAvatar;
 
       setUser(newDataUser);
-      console.log(user.updateAvatar);
       navigate(`/user/${user.id}`);
     } catch (error) {
       setError(error.message);

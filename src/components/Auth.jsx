@@ -43,7 +43,9 @@ export const Auth = () => {
             )}
           </li>
           <li>
-            <button onClick={() => navigate("/search")}>🔎</button>
+            <button onClick={() => navigate("/search")}>
+              <box-icon name="search"></box-icon>
+            </button>
           </li>
           <li>
             <nav className="auth-menu">

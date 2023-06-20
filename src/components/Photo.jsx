@@ -95,7 +95,7 @@ export const Photo = ({ photo, removePhoto }) => {
           <p>{photo.numComments}</p>
         </li>
       </ul>
-      {user.userName === photo.userPosted ? (
+      {user.UserName === photo.userPosted ? (
         <section>
           <button
             style={{ backgroundColor: "transparent", border: "none" }}
