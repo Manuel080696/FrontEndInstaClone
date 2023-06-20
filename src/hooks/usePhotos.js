@@ -4,10 +4,12 @@ import { AuthContext } from "../context/AuthContext";
 
 const usePhotos = (id) => {
   const [photos, setPhotos] = useState([]);
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const { token } = useContext(AuthContext);
 
+  //Photos general
   useEffect(() => {
     const loadPhotos = async () => {
       try {
@@ -26,6 +28,7 @@ const usePhotos = (id) => {
     };
     loadPhotos();
   }, [id, loading, token]);
+  console.log(photos);
 
   const addPhoto = (photo) => {
     setLoading(true);
@@ -33,6 +36,7 @@ const usePhotos = (id) => {
   };
 
   const removePhoto = (id) => {
+    setLoading(true);
     setPhotos(photos.filter((photo) => photo.id !== id));
   };
 

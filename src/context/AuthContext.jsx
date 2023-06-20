@@ -1,5 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import { Navigate } from "react-router-dom";
 
 export const AuthContext = React.createContext();
 
@@ -22,10 +23,13 @@ export const AuthProviderComponent = ({ children }) => {
   const logOut = () => {
     setToken("");
     setUser("");
+    {
+      <Navigate to="/" />;
+    }
   };
 
   return (
-    <AuthContext.Provider value={{ token, user, logIn, logOut }}>
+    <AuthContext.Provider value={{ token, user, logIn, logOut, setUser }}>
       {children}
     </AuthContext.Provider>
   );

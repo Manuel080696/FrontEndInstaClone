@@ -96,7 +96,7 @@ export const RegisterPage = () => {
           />
         </fieldset>
         <fieldset>
-          <label htmlFor="birthday">Name</label>
+          <label htmlFor="birthday">Birthday</label>
           <input type="date" id="birthday" name="birthDay" />
         </fieldset>
         <fieldset>

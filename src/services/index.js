@@ -46,6 +46,20 @@ export const getSinglePhotoService = async (id) => {
   return json.data;
 };
 
+export const searchPhotosService = async (searchTerm) => {
+  const response = await fetch(
+    `${import.meta.env.VITE_APP_BACKEND}/photos?search=${searchTerm}`
+  );
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+
+  return json.data;
+};
+
 export const registerUserService = async ({ data }) => {
   const response = await fetch(`${import.meta.env.VITE_APP_BACKEND}/user`, {
     method: "POST",
@@ -89,6 +103,42 @@ export const getUserDataService = async (id) => {
   }
 
   return json.data;
+};
+
+// export const editUserDataService = async (token, data) => {
+//   const response = await fetch(`${import.meta.env.VITE_APP_BACKEND}/user`, {
+//     method: "PATCH",
+//     headers: {
+//       Authorization: token,
+//     },
+//     body: data,
+//   });
+
+//   const json = await response.json();
+
+//   if (!response.ok) {
+//     throw new Error(json.message);
+//   }
+
+//   return json.data;
+// };
+
+export const deleteUserService = async (token, id) => {
+  const response = await fetch(
+    `${import.meta.env.VITE_APP_BACKEND}/user/${id}`,
+    {
+      method: "DELETE",
+      headers: {
+        Authorization: token,
+      },
+    }
+  );
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
 };
 
 export const likePhotoService = async (token, id) => {
@@ -172,7 +222,7 @@ export const sendPhotoService = async ({ data, token }) => {
 
 export const deletePhotoService = async ({ id, token }) => {
   const response = await fetch(
-    `${import.meta.env.VITE_APP_BACKEND}/tweet/${id}`,
+    `${import.meta.env.VITE_APP_BACKEND}/photos/${id}`,
     {
       method: "DELETE",
       headers: {
@@ -185,4 +235,22 @@ export const deletePhotoService = async ({ id, token }) => {
   if (!response.ok) {
     throw new Error(json.message);
   }
+};
+
+export const editUserServices = async ({ token, data }) => {
+  const response = await fetch(`${import.meta.env.VITE_APP_BACKEND}/user`, {
+    method: "PATCH",
+    body: data,
+
+    headers: {
+      Authorization: token,
+    },
+  });
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+
+  return json.data[0];
 };

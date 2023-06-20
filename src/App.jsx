@@ -13,6 +13,8 @@ import { UserPage } from "./pages/UserPage";
 import { NotFoundPage } from "./pages/NotFoundPage";
 import { CommentsPage } from "./pages/CommentsPage";
 import Root from "./pages/Root";
+import { EditProfilePage } from "./pages/EditProfilePage";
+import { SearchPage } from "./pages/SearchPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -23,6 +25,8 @@ const router = createBrowserRouter(
       <Route path="photos/:id" element={<PhotosPage />} />
       <Route path="user/:id" element={<UserPage />} />
       <Route path="comments/:id" element={<CommentsPage />} />
+      <Route path="user/profile" element={<EditProfilePage />} />
+      <Route path="search" element={<SearchPage />} />
       <Route path="*" element={<NotFoundPage />} />
     </Route>
   )
