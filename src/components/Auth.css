@@ -1,0 +1,88 @@
+.auth-menu {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+  z-index: 1;
+}
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+#icono-hamburgesa {
+  height: 3rem;
+}
+
+/* Empieza el menú de cambios */
+.menu-items {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #001324;
+  border: 1px solid #ccc;
+  color: #001324;
+  list-style: none;
+  padding: 10px 0;
+  display: none;
+  margin-right: 2%;
+}
+.menu-items.active {
+  display: block;
+}
+.menu-items li {
+  margin: 1rem 0;
+  padding: 0.5rem;
+  background-color: white;
+  width: 10rem;
+  text-align: center;
+}
+.menu-items a {
+  text-decoration: none;
+  color: #001324;
+}
+.menu-items li:hover {
+  text-decoration: underline;
+}
+.comment {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.header-comment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.comment-body {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  min-width: 200px;
+}
+
+.comment-content span {
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment-body-text {
+  margin: 0.5rem 0rem;
+}
+
+.comment-body-date {
+  display: flex;
+  flex-direction: column;
+  text-align: end;
+  color: gray;
+}
+
+.comment-body-delete {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
