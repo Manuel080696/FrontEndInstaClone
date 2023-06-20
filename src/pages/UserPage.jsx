@@ -1,4 +1,3 @@
-import "./UserPage.css";
 import { useUserData } from "../hooks/userData";
 
 export const UserPage = () => {
@@ -29,8 +28,8 @@ export const UserPage = () => {
       <section>
         <ul className="user-photos-list">
           {userPhotoData &&
-            userPhotoData?.map((photo) => (
-              <li key={photo.photoID}>
+            userPhotoData?.map((photo, index) => (
+              <li key={index}>
                 <img
                   src={`${import.meta.env.VITE_APP_BACKEND}/uploads/posts/${
                     photo.photoName

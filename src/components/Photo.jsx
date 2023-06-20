@@ -2,7 +2,6 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { deletePhotoService, likePhotoService } from "../services";
-import "./Photo.css";
 import "boxicons";
 
 export const Photo = ({ photo, removePhoto }) => {
@@ -17,7 +16,6 @@ export const Photo = ({ photo, removePhoto }) => {
   }`;
 
   const deletephoto = async (id) => {
-    console.log(id);
     try {
       await deletePhotoService({ id, token });
       if (removePhoto) {
@@ -94,7 +92,7 @@ export const Photo = ({ photo, removePhoto }) => {
           <p>{photo.numComments}</p>
         </li>
       </ul>
-      {user.UserName === photo.userPosted ? (
+      {user.id === photo.userID ? (
         <section>
           <button
             style={{ backgroundColor: "transparent", border: "none" }}

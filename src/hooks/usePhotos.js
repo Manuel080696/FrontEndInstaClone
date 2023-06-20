@@ -28,7 +28,6 @@ const usePhotos = (id) => {
     };
     loadPhotos();
   }, [id, loading, token]);
-  console.log(photos);
 
   const addPhoto = (photo) => {
     setLoading(true);

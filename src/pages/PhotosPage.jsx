@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { ErrorMessage } from "../components/ErrorMessage";
 
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 import "boxicons";
 import { AuthContext } from "../context/AuthContext";
@@ -11,6 +11,7 @@ import {
   likePhotoService,
 } from "../services";
 import usePhotos from "../hooks/usePhotos";
+import { useUserData } from "../hooks/userData";
 
 export const PhotosPage = () => {
   const { id } = useParams();
@@ -21,8 +22,10 @@ export const PhotosPage = () => {
   const [photo, setPhoto] = useState([]);
   const [error, setError] = useState("");
   const { user, token } = useContext(AuthContext);
+  const [idUser, setIdUser] = useState();
   const [photoUser, setPhotoUser] = useState();
   const navigate = useNavigate();
+  const { nullRute } = useUserData();
   const { removePhoto } = usePhotos();
 
   useEffect(() => {
@@ -30,8 +33,10 @@ export const PhotosPage = () => {
       try {
         setLoading(false);
         const data = await getSinglePhotoService(id);
-        console.log(data.userName);
-        setPhotoUser(data.userName);
+        console.log(data);
+
+        setIdUser(data.id);
+        setPhotoUser(data.avatar);
         setComments(data.comments);
         setLikeNumber(data.numeroLikes);
         setPhoto(
@@ -117,7 +122,7 @@ export const PhotosPage = () => {
           {comments.length}
         </li>
       </ul>
-      {user.UserName === photoUser ? (
+      {user.id === idUser ? (
         <section>
           <button
             style={{ backgroundColor: "transparent", border: "none" }}
@@ -133,12 +138,18 @@ export const PhotosPage = () => {
       ) : null}
 
       <aside>
-        <img
-          className="avatar"
-          src={`${import.meta.env.VITE_APP_BACKEND}/uploads/avatar/${
-            user.avatar
-          }`}
-        />
+        <Link to={`/user/${idUser}`}>
+          <img
+            className="avatar"
+            src={
+              photoUser !== nullRute
+                ? `${
+                    import.meta.env.VITE_APP_BACKEND
+                  }/uploads/avatar/${photoUser}`
+                : "/avatarDefault.png"
+            }
+          />
+        </Link>
         <span>{user.UserName} </span>
       </aside>
     </section>

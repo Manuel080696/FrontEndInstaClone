@@ -10,7 +10,12 @@ export const HomePage = () => {
   const { user } = useContext(AuthContext);
 
   if (loading) {
-    return <p>Cargando photos...</p>;
+    return (
+      <aside>
+        <img src="./loading.png" />
+        <p>Cargando...</p>
+      </aside>
+    );
   }
   if (error) {
     return <ErrorMessage message={error} />;
@@ -18,7 +23,7 @@ export const HomePage = () => {
 
   return (
     <section>
-      {user ? <NewPhoto addPhoto={addPhoto} /> : null}
+      {/* {user ? <NewPhoto addPhoto={addPhoto} /> : null} */}
 
       <h1>Latest Photos</h1>
 

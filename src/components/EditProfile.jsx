@@ -21,7 +21,6 @@ export const EditProfile = () => {
     const data = new FormData(e.target);
     try {
       const newDataUser = await editUserServices({ token, id: user.id, data });
-      console.log(newDataUser.updateAvatar);
       newDataUser.id = user.id;
       newDataUser.token = token;
       newDataUser.email = user.email;
