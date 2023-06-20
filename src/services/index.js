@@ -156,7 +156,7 @@ export const likePhotoService = async (token, id) => {
   if (!response.ok) {
     throw new Error(json.message);
   }
-
+  console.log(json.data[0]);
   return json.data[0];
 };
 

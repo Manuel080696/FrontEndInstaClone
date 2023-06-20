@@ -6,7 +6,6 @@ import "./Photo.css";
 import "boxicons";
 
 export const Photo = ({ photo, removePhoto }) => {
-  console.log(photo);
   const navigate = useNavigate();
   const { user, token } = useContext(AuthContext);
   const [error, setError] = useState("");

@@ -1,11 +1,16 @@
 import { useContext, useEffect, useState } from "react";
 import { ErrorMessage } from "../components/ErrorMessage";
 
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import "boxicons";
 import { AuthContext } from "../context/AuthContext";
-import { getSinglePhotoService } from "../services";
+import {
+  deletePhotoService,
+  getSinglePhotoService,
+  likePhotoService,
+} from "../services";
+import usePhotos from "../hooks/usePhotos";
 
 export const PhotosPage = () => {
   const { id } = useParams();
@@ -15,14 +20,18 @@ export const PhotosPage = () => {
   const [likeNumber, setLikeNumber] = useState();
   const [photo, setPhoto] = useState([]);
   const [error, setError] = useState("");
-  const { user } = useContext(AuthContext);
+  const { user, token } = useContext(AuthContext);
+  const [photoUser, setPhotoUser] = useState();
+  const navigate = useNavigate();
+  const { removePhoto } = usePhotos();
 
   useEffect(() => {
     const loadPhoto = async () => {
       try {
         setLoading(false);
         const data = await getSinglePhotoService(id);
-
+        console.log(data.userName);
+        setPhotoUser(data.userName);
         setComments(data.comments);
         setLikeNumber(data.numeroLikes);
         setPhoto(
@@ -37,12 +46,28 @@ export const PhotosPage = () => {
     loadPhoto();
   }, [id, loading, photo]);
 
-  const toggleLike = () => {
-    setLiked(!liked);
-    if (liked === true) {
-      setLikeNumber(likeNumber - 1);
-    } else {
-      setLikeNumber(likeNumber + 1);
+  const toggleLike = async () => {
+    try {
+      const data = await likePhotoService(token, id);
+      setLiked(data.vote);
+      setLikeNumber(data.likes);
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+  const handleClick = async () => {
+    navigate(`/comments/${id}`);
+  };
+  const deletephoto = async (id) => {
+    try {
+      await deletePhotoService({ id, token });
+      if (removePhoto) {
+        removePhoto(id);
+      } else {
+        navigate("/");
+      }
+    } catch (error) {
+      setError(error.message);
     }
   };
 
@@ -86,12 +111,26 @@ export const PhotosPage = () => {
         </li>
 
         <li className="reactionsBar-reaction">
-          <button className="reactionsBar-comment-button">
+          <button className="reactionsBar-comment-button" onClick={handleClick}>
             <box-icon name="message-rounded"></box-icon>
           </button>
           {comments.length}
         </li>
       </ul>
+      {user.UserName === photoUser ? (
+        <section>
+          <button
+            style={{ backgroundColor: "transparent", border: "none" }}
+            onClick={() => {
+              if (window.confirm("Are you sure?")) deletephoto(id);
+              navigate("/");
+            }}
+          >
+            <box-icon type="solid" name="trash"></box-icon>
+          </button>
+          {error ? <p>{error}</p> : null}
+        </section>
+      ) : null}
 
       <aside>
         <img
@@ -100,7 +139,7 @@ export const PhotosPage = () => {
             user.avatar
           }`}
         />
-        <span>{user.name} </span>
+        <span>{user.UserName} </span>
       </aside>
     </section>
   );
