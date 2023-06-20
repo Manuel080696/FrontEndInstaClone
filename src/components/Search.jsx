@@ -1,17 +1,16 @@
 import { useState } from "react";
 import { searchPhotosService } from "../services";
-
 function Search() {
   const [photos, setPhotos] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-
-  const SearchInput = () => {
-    const handleSearch = async (e) => {
-      e.preventDefault();
-      const data = await searchPhotosService(searchTerm);
-      setPhotos(data);
-    };
-    return (
+  const handleSearch = async (e) => {
+    e.preventDefault();
+    const data = await searchPhotosService(searchTerm);
+    setPhotos(data);
+    setSearchTerm("");
+  };
+  return (
+    <section>
       <form onSubmit={handleSearch}>
         <input
           type="search"
@@ -19,17 +18,13 @@ function Search() {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <button>🔎</button>
+        <button>
+          <box-icon name="search"></box-icon>
+        </button>
       </form>
-    );
-  };
-
-  return (
-    <div>
-      <SearchInput />
-      <div>
+      <ul>
         {photos.map((photo, index) => (
-          <div key={index}>
+          <li key={index}>
             <img
               src={`${import.meta.env.VITE_APP_BACKEND}/uploads/posts/${
                 photo.photoName
@@ -37,10 +32,10 @@ function Search() {
               alt="Foto"
             />
             <p>Description: {photo.description}</p>
-          </div>
+          </li>
         ))}
-      </div>
-    </div>
+      </ul>
+    </section>
   );
 }
 export default Search;
