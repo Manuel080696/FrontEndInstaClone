@@ -1,0 +1,41 @@
+/* Página principal */
+section.userPage {
+  min-height: 86vh;
+  width: 100vw;
+  background-color: #e9eff2;
+}
+
+/* Avatar y nombre usuario */
+section.userData ul {
+  padding: 2rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  border: 1px solid #e9eff2;
+  background-color: white;
+}
+
+section.userData ul li.avatar img {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+}
+
+/* Imagenes del usuario */
+
+section.user-photos-list ul {
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+section.user-photos-list ul li {
+  height: 200px;
+}
+
+section.user-photos-list ul li img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+}
