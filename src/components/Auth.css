@@ -11,6 +11,9 @@
   justify-content: space-between;
   cursor: pointer;
 }
+ul {
+  list-style: none;
+}
 
 #icono-hamburgesa {
   height: 3rem;
