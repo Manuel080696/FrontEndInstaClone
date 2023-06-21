@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { sendPhotoService } from "../services";
 import { AuthContext } from "../context/AuthContext";
+import "./NewPhoto.css";
 
 export const NewPhoto = ({ addPhoto }) => {
   const [error, setError] = useState("");
@@ -28,7 +29,7 @@ export const NewPhoto = ({ addPhoto }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="posts" onSubmit={handleSubmit}>
       <h1>Add new Photo</h1>
       <fieldset>
         <label htmlFor="place">Place</label>

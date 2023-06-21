@@ -4,6 +4,7 @@ import { AuthContext } from "../context/AuthContext";
 import usePhotos from "../hooks/usePhotos";
 import { NewPhoto } from "../components/NewPhoto";
 import { Link } from "react-router-dom";
+import "./Posts.css";
 
 export const Posts = () => {
   const { loading, error, addPhoto } = usePhotos();
@@ -22,7 +23,7 @@ export const Posts = () => {
   }
 
   return (
-    <section>
+    <section className="posts">
       {user ? (
         <NewPhoto addPhoto={addPhoto} />
       ) : (

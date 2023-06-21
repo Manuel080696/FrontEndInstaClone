@@ -11,7 +11,6 @@ import {
   likePhotoService,
 } from "../services";
 import usePhotos from "../hooks/usePhotos";
-import { useUserData } from "../hooks/userData";
 
 export const PhotosPage = () => {
   const { id } = useParams();
@@ -22,10 +21,10 @@ export const PhotosPage = () => {
   const [photo, setPhoto] = useState([]);
   const [error, setError] = useState("");
   const { user, token } = useContext(AuthContext);
-  const [idUser, setIdUser] = useState();
   const [photoUser, setPhotoUser] = useState();
+  const [idUser, setIdUser] = useState();
+  const [userName, setUserName] = useState();
   const navigate = useNavigate();
-  const { nullRute } = useUserData();
   const { removePhoto } = usePhotos();
 
   useEffect(() => {
@@ -33,12 +32,11 @@ export const PhotosPage = () => {
       try {
         setLoading(false);
         const data = await getSinglePhotoService(id);
-        console.log(data);
-
-        setIdUser(data.id);
         setPhotoUser(data.avatar);
+        setIdUser(data.id);
         setComments(data.comments);
         setLikeNumber(data.numeroLikes);
+        setUserName(data.userName);
         setPhoto(
           `${import.meta.env.VITE_APP_BACKEND}/uploads/posts/${data.photoName}`
         );
@@ -86,6 +84,23 @@ export const PhotosPage = () => {
   }
   return (
     <section className="imgPage">
+      <aside>
+        <Link to={`/user/${idUser}`}>
+          <img
+            className="avatar"
+            src={
+              photoUser
+                ? `${
+                    import.meta.env.VITE_APP_BACKEND
+                  }/uploads/avatar/${photoUser}`
+                : `${
+                    import.meta.env.VITE_APP_BACKEND
+                  }/uploads/avatar/avatarDefault.png`
+            }
+          />
+          {userName}
+        </Link>
+      </aside>
       <object
         className="like-button-object"
         type="image/svg+xml"
@@ -136,22 +151,6 @@ export const PhotosPage = () => {
           {error ? <p>{error}</p> : null}
         </section>
       ) : null}
-
-      <aside>
-        <Link to={`/user/${idUser}`}>
-          <img
-            className="avatar"
-            src={
-              photoUser !== nullRute
-                ? `${
-                    import.meta.env.VITE_APP_BACKEND
-                  }/uploads/avatar/${photoUser}`
-                : "/avatarDefault.png"
-            }
-          />
-        </Link>
-        <span>{user.UserName} </span>
-      </aside>
     </section>
   );
 };

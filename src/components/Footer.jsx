@@ -1,8 +1,12 @@
 import { Link } from "react-router-dom";
 import { Avatar } from "./Avatar";
+import { useState } from "react";
 import "./Footer.css";
 
 export const Footer = () => {
+  const [modal, setModal] = useState(false);
+  const Toggle = () => setModal(!modal);
+
   return (
     <footer>
       <ul>
@@ -17,9 +21,7 @@ export const Footer = () => {
           </Link>
         </li>
         <li>
-          <Link to="/photos">
-            <img src="./posts.png" />
-          </Link>
+          <img src="./posts.png" onClick={() => Toggle()} />
         </li>
         <li>
           <Avatar />

@@ -1,5 +1,5 @@
 footer {
-  position: fixed;
+  position: sticky;
   bottom: 0;
   width: 100%;
   background-color: white;
@@ -12,9 +12,9 @@ footer ul {
 }
 
 footer ul li {
-  padding: 0.5rem;
+  padding: 0.3rem;
 }
 
 footer ul li img {
-  height: 60px;
+  height: 30px;
 }
