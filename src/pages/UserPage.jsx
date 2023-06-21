@@ -20,7 +20,6 @@ export const UserPage = () => {
     };
     getUserData(id);
   }, [id]);
-  console.log(photoData);
 
   return (
     <section>

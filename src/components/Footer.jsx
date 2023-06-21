@@ -2,10 +2,10 @@ import { Link } from "react-router-dom";
 import { Avatar } from "./Avatar";
 import { useState } from "react";
 import "./Footer.css";
+import { ModalPhoto } from "./ModalPhoto";
 
 export const Footer = () => {
-  const [modal, setModal] = useState(false);
-  const Toggle = () => setModal(!modal);
+  const [show, setShow] = useState(false);
 
   return (
     <footer>
@@ -21,7 +21,9 @@ export const Footer = () => {
           </Link>
         </li>
         <li>
-          <img src="./posts.png" onClick={() => Toggle()} />
+          <ModalPhoto setShow={setShow} show={show} />
+
+          <img src="./posts.png" onClick={() => setShow(!show)} />
         </li>
         <li>
           <Avatar />

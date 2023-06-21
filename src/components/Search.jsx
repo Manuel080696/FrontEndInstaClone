@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { searchPhotosService } from "../services";
 import "./Search.css";
+import { useNavigate } from "react-router-dom";
 
 function Search() {
+  const navigate = useNavigate();
   const [photos, setPhotos] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const handleSearch = async (e) => {
@@ -28,12 +30,12 @@ function Search() {
         {photos.map((photo, index) => (
           <li key={index}>
             <img
+              onClick={() => navigate(`/photos/${photo.photoID}`)}
               src={`${import.meta.env.VITE_APP_BACKEND}/uploads/posts/${
                 photo.photoName
               }`}
               alt="Foto"
-            />
-            <p>Description: {photo.description}</p>
+            ></img>
           </li>
         ))}
       </ul>

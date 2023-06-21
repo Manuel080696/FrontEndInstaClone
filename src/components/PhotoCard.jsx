@@ -33,7 +33,6 @@ export default function PhotoCard({ photo, removePhoto, srcImage }) {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-  console.log(photo);
 
   return (
     <Card sx={{ maxWidth: 345 }}>
