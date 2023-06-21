@@ -1,6 +1,7 @@
 import { ErrorMessage } from "../components/ErrorMessage";
 import usePhotos from "../hooks/usePhotos";
 import Search from "../components/Search";
+import "./SearchPage.css";
 
 export const SearchPage = () => {
   const { loading, error } = usePhotos();
@@ -13,7 +14,7 @@ export const SearchPage = () => {
   }
 
   return (
-    <section>
+    <section className="search">
       <Search />
     </section>
   );

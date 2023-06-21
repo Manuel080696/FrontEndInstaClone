@@ -1,0 +1,48 @@
+form.search {
+  display: flex;
+  justify-content: center;
+}
+form.search input {
+  width: 100vw;
+  outline: none;
+}
+
+form.search input,
+form.search button {
+  border: 0;
+  padding: 0.5rem;
+}
+
+form.search input {
+  background-color: #e9eff2;
+  color: #001324;
+}
+
+form.search button {
+  background-color: #001324;
+}
+
+form.search button:hover {
+  background-color: #025197;
+}
+
+/* El form hasta ahora */
+/* Ahora las fotos de busqueda */
+
+ul.search {
+  margin: 1rem 0;
+  list-style: none;
+  width: 100vw;
+  background-color: #e9eff2;
+}
+
+ul.search li img {
+  height: 500px;
+  width: 100vw;
+  object-fit: cover;
+}
+
+ul.search li p {
+  padding: 1rem;
+  border-bottom: 1px solid #c8ced1;
+}

@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { searchPhotosService } from "../services";
+import "./Search.css";
+
 function Search() {
   const [photos, setPhotos] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -11,7 +13,7 @@ function Search() {
   };
   return (
     <section>
-      <form onSubmit={handleSearch}>
+      <form className="search" onSubmit={handleSearch}>
         <input
           type="search"
           placeholder="Buscar..."
@@ -19,10 +21,10 @@ function Search() {
           onChange={(e) => setSearchTerm(e.target.value)}
         />
         <button>
-          <box-icon name="search"></box-icon>
+          <box-icon name="search" color="#ffffff"></box-icon>
         </button>
       </form>
-      <ul>
+      <ul className="search">
         {photos.map((photo, index) => (
           <li key={index}>
             <img
