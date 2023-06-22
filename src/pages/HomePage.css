@@ -1,4 +1,6 @@
 section.home {
   display: flex;
   justify-content: center;
+  min-height: 86vh;
+  width: 100vw;
 }

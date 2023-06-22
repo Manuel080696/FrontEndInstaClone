@@ -20,6 +20,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { deletePhotoService, likePhotoService } from "../services";
 import { Link } from "react-router-dom";
+import "./PhotoCard.css";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -36,7 +37,7 @@ export function PhotoCard({ photo, removePhoto }) {
   const [expanded, setExpanded] = React.useState(false);
   const navigate = useNavigate();
   const { user, token } = useContext(AuthContext);
-  const [error, setError] = useState("");
+  const [, setError] = useState("");
   const [liked, setLiked] = useState(photo.dioLike);
   const [totalikes, setTotalikes] = useState(photo.numLikes);
   const srcImage = `${import.meta.env.VITE_APP_BACKEND}/uploads/posts/${
@@ -74,11 +75,18 @@ export function PhotoCard({ photo, removePhoto }) {
   };
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card id="postCard" sx={{ maxWidth: 345 }}>
+      {/* Encabezado ----------------------*/}
       <CardHeader
+        id="idPhoto"
+        // Imagen rendonda con avatar
         avatar={
           <Link to={`/user/${user.id}`}>
-            <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+            <Avatar
+              className="avatarCard"
+              sx={{ bgcolor: red[500] }}
+              aria-label="recipe"
+            >
               <img
                 src={`${import.meta.env.VITE_APP_BACKEND}/uploads/avatar/${
                   photo.avatar
@@ -93,9 +101,12 @@ export function PhotoCard({ photo, removePhoto }) {
             <MoreVertIcon />
           </IconButton>
         }
-        title={photo.userPosted}
+        title={<p id="headerP">{photo.userPosted}</p>}
         subheader={photo.place}
       />
+      {/* Final encabezado------------------------ */}
+
+      {/* Contenido foto-------------------------- */}
       <CardMedia
         component="img"
         height="194"
@@ -104,21 +115,14 @@ export function PhotoCard({ photo, removePhoto }) {
         onClick={() => navigate(`/photos/${photo.photoID}`)}
         onDoubleClick={toggleLike}
       />
+      {/* Final contenido foto-------------------------- */}
+
+      {/* Like, Basura, cometarios---------------------- */}
       <CardActions disableSpacing>
         <IconButton aria-label="like" onClick={toggleLike}>
           {liked ? <FavoriteIcon sx={{ color: red[500] }} /> : <FavoriteIcon />}
         </IconButton>
         <p>{`${totalikes} Me gusta`}</p>
-        {user.id === photo.userID ? (
-          <IconButton
-            aria-label="delete"
-            onClick={() => {
-              if (window.confirm("Are you sure?")) deletephoto(photo.photoID);
-            }}
-          >
-            <DeleteIcon />
-          </IconButton>
-        ) : null}
 
         <IconButton aria-label="comment" onClick={handleClick}>
           <CommentIcon />
@@ -132,6 +136,17 @@ export function PhotoCard({ photo, removePhoto }) {
         >
           <ExpandMoreIcon />
         </ExpandMore>
+
+        {user.id === photo.userID ? (
+          <IconButton
+            aria-label="delete"
+            onClick={() => {
+              if (window.confirm("Are you sure?")) deletephoto(photo.photoID);
+            }}
+          >
+            <DeleteIcon />
+          </IconButton>
+        ) : null}
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>

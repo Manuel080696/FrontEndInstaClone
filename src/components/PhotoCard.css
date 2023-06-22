@@ -1,0 +1,19 @@
+#postCard {
+  width: 100vw;
+  margin: 0.5rem;
+}
+
+/* Avatar---------------------- */
+.avatarCard img {
+  height: 40px;
+  height: 40px;
+  object-fit: contain;
+  background-color: white;
+}
+.avatarCard {
+  border: 1.5px solid #228cc4;
+}
+
+#headerP {
+  color: #228cc4;
+}

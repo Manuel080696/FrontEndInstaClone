@@ -1,4 +1,5 @@
 import { PhotoCard } from "./PhotoCard";
+
 export const PhotoList = ({ photos, removePhoto }) => {
   return photos.length ? (
     <ul>
