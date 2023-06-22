@@ -1,0 +1,15 @@
+aside#loading {
+  background-color: #001324;
+  min-height: 86vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+aside#loading p {
+  margin-top: 1rem;
+  font-size: 2rem;
+  color: white;
+}

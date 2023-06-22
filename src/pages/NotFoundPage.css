@@ -1,0 +1,34 @@
+section.notFound {
+  background-image: url("/fondo.jpeg");
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: cover;
+  min-height: 86vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+section.notFound header {
+  background-color: #e9eff2;
+  padding: 3rem;
+  text-align: center;
+  border-radius: 20px;
+}
+section.notFound header h1 {
+  font-size: 3rem;
+}
+section.notFound header h1,
+section.notFound header p {
+  margin-bottom: 1rem;
+}
+
+section.notFound header a {
+  color: #228cc4;
+}
+
+section.notFound img {
+  height: 20vh;
+}
