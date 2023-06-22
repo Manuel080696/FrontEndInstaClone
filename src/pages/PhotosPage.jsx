@@ -15,28 +15,26 @@ import usePhotos from "../hooks/usePhotos";
 export const PhotosPage = () => {
   const { id } = useParams();
   const [comments, setComments] = useState([]);
-  const [liked, setLiked] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [liked, setLiked] = useState();
+  const [loading, setLoading] = useState(true);
   const [likeNumber, setLikeNumber] = useState();
   const [photo, setPhoto] = useState([]);
   const [error, setError] = useState("");
   const { user, token } = useContext(AuthContext);
-  const [photoUser, setPhotoUser] = useState();
-  const [idUser, setIdUser] = useState();
-  const [userName, setUserName] = useState();
+
+  const [post, setPost] = useState([]);
   const navigate = useNavigate();
   const { removePhoto } = usePhotos();
 
   useEffect(() => {
     const loadPhoto = async () => {
       try {
-        setLoading(false);
-        const data = await getSinglePhotoService(id);
-        setPhotoUser(data.avatar);
-        setIdUser(data.id);
+        const data = await getSinglePhotoService(id, token);
+        console.log(data);
+        setLiked(data.isLike);
+        setPost(data);
         setComments(data.comments);
         setLikeNumber(data.numeroLikes);
-        setUserName(data.userName);
         setPhoto(
           `${import.meta.env.VITE_APP_BACKEND}/uploads/posts/${data.photoName}`
         );
@@ -47,7 +45,7 @@ export const PhotosPage = () => {
       }
     };
     loadPhoto();
-  }, [id, loading, photo]);
+  }, [id, token]);
 
   const toggleLike = async () => {
     try {
@@ -84,23 +82,6 @@ export const PhotosPage = () => {
   }
   return (
     <section className="imgPage">
-      <aside>
-        <Link to={`/user/${idUser}`}>
-          <img
-            className="avatar"
-            src={
-              photoUser
-                ? `${
-                    import.meta.env.VITE_APP_BACKEND
-                  }/uploads/avatar/${photoUser}`
-                : `${
-                    import.meta.env.VITE_APP_BACKEND
-                  }/uploads/avatar/avatarDefault.png`
-            }
-          />
-          {userName}
-        </Link>
-      </aside>
       <object
         className="like-button-object"
         type="image/svg+xml"
@@ -137,7 +118,7 @@ export const PhotosPage = () => {
           {comments.length}
         </li>
       </ul>
-      {user.id === idUser ? (
+      {user.id === post.id ? (
         <section>
           <button
             style={{ backgroundColor: "transparent", border: "none" }}
@@ -151,6 +132,22 @@ export const PhotosPage = () => {
           {error ? <p>{error}</p> : null}
         </section>
       ) : null}
+
+      <aside>
+        <img
+          className="avatar"
+          src={
+            post.avatar
+              ? `${import.meta.env.VITE_APP_BACKEND}/uploads/avatar/${
+                  post.avatar
+                }`
+              : `${
+                  import.meta.env.VITE_APP_BACKEND
+                }/uploads/avatar/avatarDefault.png`
+          }
+        />
+        <Link to={`/user/${post.id}`}>{post.userName} </Link>
+      </aside>
     </section>
   );
 };

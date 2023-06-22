@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 import { Avatar } from "./Avatar";
 import { useState } from "react";
+import home from "/home.png";
+import search from "/search.png";
+import posts from "/posts.png";
 import "./Footer.css";
 
 export const Footer = () => {
@@ -12,16 +15,16 @@ export const Footer = () => {
       <ul>
         <li>
           <Link to="/">
-            <img src="./home.png" />
+            <img src={home} />
           </Link>
         </li>
         <li>
           <Link to="/search">
-            <img src="./search.png" />
+            <img src={search} />
           </Link>
         </li>
         <li>
-          <img src="./posts.png" onClick={() => Toggle()} />
+          <img src={posts} onClick={() => Toggle()} />
         </li>
         <li>
           <Avatar />
