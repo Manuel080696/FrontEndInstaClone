@@ -2,9 +2,13 @@ import { ErrorMessage } from "../components/ErrorMessage";
 import usePhotos from "../hooks/usePhotos";
 import { PhotoList } from "../components/PhotosList";
 import "./HomePage.css";
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
+import { ModalPhoto } from "../components/ModalPhoto";
 
 export const HomePage = () => {
-  const { photos, loading, error, removePhoto } = usePhotos();
+  const { photos, loading, error, removePhoto, addPhoto } = usePhotos();
+  const { toggleShow, show } = useContext(AuthContext);
 
   if (loading) {
     return (
@@ -20,6 +24,13 @@ export const HomePage = () => {
 
   return (
     <section className="home">
+      <ModalPhoto
+        toggleShow={toggleShow}
+        show={show}
+        addPhoto={addPhoto}
+        loading={loading}
+        error={error}
+      />
       <PhotoList photos={photos} removePhoto={removePhoto} />
     </section>
   );

@@ -1,18 +1,18 @@
 import { Link } from "react-router-dom";
 import { Avatar } from "./Avatar";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "./Footer.css";
-import { ModalPhoto } from "./ModalPhoto";
+import { AuthContext } from "../context/AuthContext";
 
 export const Footer = () => {
-  const [show, setShow] = useState(false);
+  const { toggleShow, show } = useContext(AuthContext);
 
   return (
     <footer>
       <ul>
         <li>
           <Link to="/">
-            <img src="/home.png" />
+            <img src="/home.png" onClick={() => (show ? toggleShow() : show)} />
           </Link>
         </li>
         <li>
@@ -21,9 +21,7 @@ export const Footer = () => {
           </Link>
         </li>
         <li>
-          <ModalPhoto setShow={setShow} show={show} />
-
-          <img src="/posts.png" onClick={() => setShow(!show)} />
+          <img src="/posts.png" onClick={() => toggleShow()} />
         </li>
         <li>
           <Avatar />

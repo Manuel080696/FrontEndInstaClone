@@ -5,14 +5,14 @@ import { ErrorMessage } from "./ErrorMessage";
 import "./ModalPhoto.css";
 import { useNavigate } from "react-router-dom";
 import usePhotos from "../hooks/usePhotos";
-export const ModalPhoto = ({ show, setShow }) => {
-  const { loading, error, addPhoto, photos, removePhoto } = usePhotos();
+
+export const ModalPhoto = ({ show, toggleShow, addPhoto, loading, error }) => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const registroActivo = () => {
     navigate("/register");
-    setShow(!show);
+    toggleShow();
   };
 
   if (loading) {
@@ -32,14 +32,14 @@ export const ModalPhoto = ({ show, setShow }) => {
     (user ? (
       <section className="modal-bg">
         <section>
-          <NewPhoto addPhoto={addPhoto} setShow={setShow} show={show} />
+          <NewPhoto addPhoto={addPhoto} toggleShow={toggleShow} />
         </section>
       </section>
     ) : (
       <section className="modal-bg">
         <section className="modal-fg">
-          <box-icon name="x" color="#ffffff" onClick={() => setShow(!show)} />
-          <p onClick={() => setShow("show")}>
+          <box-icon name="x" color="#ffffff" onClick={() => toggleShow()} />
+          <p onClick={() => toggleShow()}>
             Debes registarte para poder subir fotos :)
           </p>
           <button onClick={() => registroActivo()}>Register</button>

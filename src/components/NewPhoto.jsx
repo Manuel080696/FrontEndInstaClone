@@ -3,7 +3,7 @@ import { sendPhotoService } from "../services";
 import { AuthContext } from "../context/AuthContext";
 import "./NewPhoto.css";
 
-export const NewPhoto = ({ addPhoto, setShow, show }) => {
+export const NewPhoto = ({ addPhoto, toggleShow }) => {
   const [error, setError] = useState("");
   const [sending, setSending] = useState(true);
   const [image, setImage] = useState();
@@ -19,7 +19,7 @@ export const NewPhoto = ({ addPhoto, setShow, show }) => {
       addPhoto(photo);
       e.target.reset();
       setImage(null);
-      setShow(!show);
+      toggleShow();
     } catch (error) {
       setError(error.message);
     } finally {
@@ -31,7 +31,7 @@ export const NewPhoto = ({ addPhoto, setShow, show }) => {
     <form className="posts" onSubmit={handleSubmit}>
       <span>
         <h1>Add new Photo</h1>
-        <box-icon name="x" color="#ffffff" onClick={() => setShow(!show)} />
+        <box-icon name="x" color="#ffffff" onClick={() => toggleShow()} />
       </span>
 
       <fieldset>

@@ -10,6 +10,12 @@ export const AuthProviderComponent = ({ children }) => {
     JSON.parse(localStorage.getItem("user")) || ""
   );
 
+  const [show, setShow] = useState(false);
+
+  const toggleShow = () => {
+    setShow(!show);
+  };
+
   useEffect(() => {
     localStorage.setItem("token", token);
     localStorage.setItem("user", JSON.stringify(user));
@@ -29,7 +35,9 @@ export const AuthProviderComponent = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ token, user, logIn, logOut, setUser }}>
+    <AuthContext.Provider
+      value={{ token, user, logIn, logOut, setUser, show, toggleShow }}
+    >
       {children}
     </AuthContext.Provider>
   );

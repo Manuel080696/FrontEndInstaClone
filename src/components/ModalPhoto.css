@@ -8,6 +8,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 98;
 }
 
 .modal-fg {
@@ -15,6 +16,7 @@
   padding: 3rem 1rem 1rem 1rem;
   background-color: #001324;
   color: white;
+  z-index: 99;
 }
 
 .modal-fg button {
