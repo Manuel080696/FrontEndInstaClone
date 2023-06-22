@@ -5,10 +5,10 @@ import home from "/home.png";
 import search from "/search.png";
 import posts from "/posts.png";
 import "./Footer.css";
+import { ModalPhoto } from "./ModalPhoto";
 
 export const Footer = () => {
-  const [modal, setModal] = useState(false);
-  const Toggle = () => setModal(!modal);
+  const [show, setShow] = useState(false);
 
   return (
     <footer>
@@ -24,7 +24,13 @@ export const Footer = () => {
           </Link>
         </li>
         <li>
+<<<<<<< HEAD
           <img src={posts} onClick={() => Toggle()} />
+=======
+          <ModalPhoto setShow={setShow} show={show} />
+
+          <img src="./posts.png" onClick={() => setShow(!show)} />
+>>>>>>> 9c34ce69386fafb09f693678cbbcf0a83719000c
         </li>
         <li>
           <Avatar />

@@ -25,7 +25,7 @@ const usePhotos = (id) => {
       }
     };
     loadPhotos();
-  }, [token, loading, id]);
+  }, [loading, id, token]);
 
   const addPhoto = (photo) => {
     setLoading(true);
@@ -37,7 +37,13 @@ const usePhotos = (id) => {
     setPhotos(photos.filter((photo) => photo.id !== id));
   };
 
-  return { photos, loading, error, addPhoto, removePhoto };
+  return {
+    photos,
+    loading,
+    error,
+    addPhoto,
+    removePhoto,
+  };
 };
 
 export default usePhotos;

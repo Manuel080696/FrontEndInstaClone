@@ -46,6 +46,7 @@ export function PhotoCard({ photo, removePhoto }) {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+<<<<<<< HEAD
   const deletephoto = async (id) => {
     try {
       await deletePhotoService({ id, token });
@@ -72,6 +73,8 @@ export function PhotoCard({ photo, removePhoto }) {
   const handleClick = async () => {
     navigate(`/comments/${photo.photoID}`);
   };
+=======
+>>>>>>> 9c34ce69386fafb09f693678cbbcf0a83719000c
 
   return (
     <Card sx={{ maxWidth: 345 }}>

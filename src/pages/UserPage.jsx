@@ -1,8 +1,10 @@
-import { Link, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getUserDataService } from "../services";
+import "./UserPage.css";
 
 export const UserPage = () => {
+  const navigate = useNavigate();
   const [photoData, setPhotoData] = useState();
   const [userData, setUserData] = useState([]);
   const [, setError] = useState("");
@@ -22,10 +24,10 @@ export const UserPage = () => {
   }, [id]);
 
   return (
-    <section>
-      <section className="user-userData">
-        <ul className="user-userData-dataList">
-          <li>
+    <section className="userPage">
+      <section className="userData">
+        <ul>
+          <li className="avatar">
             {userData.avatar ? (
               <img
                 alt=""
@@ -44,30 +46,28 @@ export const UserPage = () => {
           </li>
           <li>
             <p>{userData.userName}</p>
-          </li>
-          <li>
+
             <p>{userData.name}</p>
-          </li>
-          <li>
+
             <p>{userData.lastName}</p>
-          </li>
-          <li>
+
             <p>{userData.birthDay}</p>
           </li>
         </ul>
       </section>
-      <section>
-        <ul className="user-photos-list">
+      <section className="user-photos-list">
+        <ul>
           {photoData?.map((photo) => (
-            <li key={photo.PhotoID}>
-              <Link to={`/photos/${photo.PhotoID}`}>
-                <img
-                  src={`${import.meta.env.VITE_APP_BACKEND}/uploads/posts/${
-                    photo.photoName
-                  }`}
-                  alt={photo.description}
-                />
-              </Link>
+            <li
+              key={photo.PhotoID}
+              onClick={() => navigate(`/photos/${photo.photoID}`)}
+            >
+              <img
+                src={`${import.meta.env.VITE_APP_BACKEND}/uploads/posts/${
+                  photo.photoName
+                }`}
+                alt={photo.description}
+              />
             </li>
           ))}
         </ul>

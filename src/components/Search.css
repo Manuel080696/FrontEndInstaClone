@@ -30,19 +30,17 @@ form.search button:hover {
 /* Ahora las fotos de busqueda */
 
 ul.search {
-  margin: 1rem 0;
-  list-style: none;
-  width: 100vw;
-  background-color: #e9eff2;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+ul.search li {
+  height: 250px;
 }
 
 ul.search li img {
-  height: 500px;
-  width: 100vw;
+  width: 100%;
+  height: 250px;
   object-fit: cover;
-}
-
-ul.search li p {
-  padding: 1rem;
-  border-bottom: 1px solid #c8ced1;
 }

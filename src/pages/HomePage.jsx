@@ -1,6 +1,7 @@
 import { ErrorMessage } from "../components/ErrorMessage";
 import usePhotos from "../hooks/usePhotos";
 import { PhotoList } from "../components/PhotosList";
+import "./HomePage.css";
 
 export const HomePage = () => {
   const { photos, loading, error, removePhoto } = usePhotos();
@@ -18,8 +19,8 @@ export const HomePage = () => {
   }
 
   return (
-    <section>
-      <PhotoList photos={photos} removePhoto={removePhoto} />
+    <section className="home">
+      <PhotoList photos={photos} removePhoto={removePhoto} loading={loading} />
     </section>
   );
 };
