@@ -1,0 +1,15 @@
+header.home {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  background-color: #001324;
+}
+
+header.home img {
+  height: 30px;
+}
+
+header.home nav {
+  list-style: none;
+}

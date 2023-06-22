@@ -1,18 +1,21 @@
-import { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useContext, useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
-import "./Auth.css";
 import { deleteUserService } from "../services";
-import { useUserData } from "../hooks/userData";
+import "./Auth.css";
 
 export const Auth = () => {
   const { user, logOut } = useContext(AuthContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { nullRute, avatar } = useUserData();
-  const navigate = useNavigate();
+
+  const menuRef = useRef(null);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
   };
 
   const deleteUser = () => {
@@ -20,54 +23,45 @@ export const Auth = () => {
     logOut();
   };
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        closeMenu();
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
+
   return (
     <section>
       {user ? (
         <ul>
           <li>
-            <Link to={`/user/${user.id}`}>{user.userName} </Link>
-            {user.updateAvatar || user.avatar ? (
-              <img
-                alt={user.userName}
-                src={`${import.meta.env.VITE_APP_BACKEND}/uploads/avatar/${
-                  user.updateAvatar ? user.updateAvatar : user.avatar
-                }`}
-              />
-            ) : (
-              <img
-                src={`${
-                  import.meta.env.VITE_APP_BACKEND
-                }/uploads/avatar/avatarDefault.png`}
-                alt={user.userName}
-              />
-            )}
-          </li>
-          <li>
-            <button onClick={() => navigate("/search")}>🔎</button>
-          </li>
-          <li>
-            <nav className="auth-menu">
+            <nav className="auth-menu" ref={menuRef}>
               <div
                 className={`hamburger ${isMenuOpen ? "active" : ""}`}
                 onClick={toggleMenu}
               >
-                <div className="line" />
-                <div className="line" />
-                <div className="line" />
+                <box-icon
+                  id="icono-hamburgesa"
+                  name="menu"
+                  color="#ffffff"
+                ></box-icon>
               </div>
 
               <ul className={`menu-items ${isMenuOpen ? "active" : ""}`}>
                 <li>
-                  <button onClick={() => navigate("/user/profile")}>
-                    Edit profile
-                  </button>
+                  <Link to="/user/profile" onClick={closeMenu}>
+                    Editar perfil
+                  </Link>
                 </li>
-                <li>
-                  <button onClick={() => deleteUser()}>Delete profile</button>
-                </li>
-                <li>
-                  <button onClick={() => logOut()}>LogOut</button>
-                </li>
+                <li onClick={() => deleteUser()}>Borrar perfil</li>
+                <li onClick={() => logOut()}>Salir</li>
               </ul>
             </nav>
           </li>
@@ -78,7 +72,9 @@ export const Auth = () => {
             <Link to="/register">Register</Link>
           </li>
           <li>
-            <Link to="/login">Login</Link>
+            <Link to="/login" onClick={closeMenu}>
+              Login
+            </Link>
           </li>
         </ul>
       )}

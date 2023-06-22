@@ -1,28 +1,26 @@
-import { useContext } from "react";
 import { ErrorMessage } from "../components/ErrorMessage";
-import { AuthContext } from "../context/AuthContext";
 import usePhotos from "../hooks/usePhotos";
 import { PhotoList } from "../components/PhotosList";
-import { NewPhoto } from "../components/NewPhoto";
+import "./HomePage.css";
 
 export const HomePage = () => {
-  const { photos, loading, error, addPhoto, removePhoto } = usePhotos();
-  const { user } = useContext(AuthContext);
+  const { photos, loading, error, removePhoto } = usePhotos();
 
   if (loading) {
-    return <p>Cargando photos...</p>;
+    return (
+      <aside>
+        <img src="./loading.png" />
+        <p>Cargando...</p>
+      </aside>
+    );
   }
   if (error) {
     return <ErrorMessage message={error} />;
   }
 
   return (
-    <section>
-      {user ? <NewPhoto addPhoto={addPhoto} /> : null}
-
-      <h1>Latest Photos</h1>
-
-      <PhotoList photos={photos} removePhoto={removePhoto} />
+    <section className="home">
+      <PhotoList photos={photos} removePhoto={removePhoto} loading={loading} />
     </section>
   );
 };

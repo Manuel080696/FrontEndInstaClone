@@ -1,0 +1,7 @@
+section.search {
+  background-image: url("/fondo.jpeg");
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: cover;
+  min-height: 86vh;
+}

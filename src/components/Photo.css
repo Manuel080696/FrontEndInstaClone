@@ -1,90 +1,41 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+article.postTotal {
+  background-color: #e9eff2;
+  border: 1px solid #a8a8a8;
 }
 
-.post {
+section.post {
   display: flex;
   flex-direction: column;
-}
-
-.post-image {
-  width: 300px;
-  margin-bottom: 1rem;
-}
-
-ul {
-  list-style: none;
-}
-
-#post-user {
-  display: flex;
-  flex-direction: row;
   align-items: center;
-  gap: 1rem;
+  justify-content: center;
 }
-
-.post-user-userAvatar {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background-size: cover;
-}
-
-.photo-like {
-  width: 60px;
-}
-box-icon.iconLiked {
-  animation-iteration-count: 1;
-  animation-duration: 1s;
-}
-.burst {
-  animation-iteration-count: 1;
-  animation-duration: 1s;
-}
-.iconLiked {
-  animation-iteration-count: 1;
-  animation-duration: 1s;
-}
-
-.reactionsBar {
-  display: flex;
-  gap: 1rem;
-}
-
-.reactionsBar-reaction {
-  display: flex;
-  align-items: center;
-}
-
-.reactionsBar-like-button {
-  background: none;
-  border: none;
-}
-
-.post-image {
-  width: 200px;
-  height: 200px;
-}
-
-.post-image img {
-  position: relative;
-  width: 100%;
-  height: 100%;
+section.post img {
+  height: 500px;
+  width: 100vw;
   object-fit: cover;
 }
 
-.like-button-object {
-  width: 10%;
-  height: auto;
-  height: auto;
-  object-fit: cover;
+object {
   position: absolute;
-  z-index: 1;
 }
 
-.reactionsBar-comment-button {
-  background: none;
+article.postTotal ul {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1rem;
+  margin-bottom: 0.8rem;
+}
+article.postTotal li {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+article.postTotal li button {
+  background-color: transparent;
   border: none;
+}
+
+article.postTotal section.description {
+  margin: 0.8rem;
 }

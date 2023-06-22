@@ -9,7 +9,7 @@ export const EditProfile = () => {
   const { user, token, setUser } = useContext(AuthContext);
   const [name, setName] = useState(user.name);
   const [lastName, setLastName] = useState(user.lastName);
-  const [userName, setUserName] = useState(user.userName);
+  const [userName, setUserName] = useState(user.userName || user.UserName);
   const [birthDay, setBirthDay] = useState(user.birthDay);
   const [disabled, setDisabled] = useState(true);
   const [error, setError] = useState("");
@@ -21,7 +21,6 @@ export const EditProfile = () => {
     const data = new FormData(e.target);
     try {
       const newDataUser = await editUserServices({ token, id: user.id, data });
-      console.log(newDataUser.updateAvatar);
       newDataUser.id = user.id;
       newDataUser.token = token;
       newDataUser.email = user.email;
@@ -30,7 +29,6 @@ export const EditProfile = () => {
         : user.updateAvatar;
 
       setUser(newDataUser);
-      console.log(user.updateAvatar);
       navigate(`/user/${user.id}`);
     } catch (error) {
       setError(error.message);

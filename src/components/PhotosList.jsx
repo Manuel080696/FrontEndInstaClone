@@ -1,12 +1,10 @@
-import { Photo } from "./Photo";
-console.log(Photo);
-
+import { PhotoCard } from "./PhotoCard";
 export const PhotoList = ({ photos, removePhoto }) => {
   return photos.length ? (
     <ul>
-      {photos?.map((photo) => (
-        <li key={photo.photoID}>
-          <Photo photo={photo} removePhoto={removePhoto} />
+      {photos?.map((photo, index) => (
+        <li key={index}>
+          <PhotoCard photo={photo} removePhoto={removePhoto} />
         </li>
       ))}
     </ul>

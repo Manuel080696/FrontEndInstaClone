@@ -1,0 +1,7 @@
+ul li img.avatar {
+  height: 40px;
+  width: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid #228cc4;
+}

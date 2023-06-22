@@ -8,6 +8,9 @@ import {
 } from "../services";
 import { Comment } from "../components/Comment";
 import { LoginPage } from "./LoginPage";
+import Box from "@mui/joy/Box";
+import Button from "@mui/joy/Button";
+import Textarea from "@mui/joy/Textarea";
 
 export const CommentsPage = () => {
   const [comments, setComments] = useState();
@@ -20,7 +23,7 @@ export const CommentsPage = () => {
   useEffect(() => {
     const getComments = async () => {
       try {
-        const resultado = await getSinglePhotoService(id);
+        const resultado = await getSinglePhotoService(id, token);
 
         setComments(
           resultado.comments.sort((a, b) => {
@@ -33,7 +36,7 @@ export const CommentsPage = () => {
     };
 
     getComments();
-  }, [id]);
+  }, [id, token]);
 
   const handleForm = async (e) => {
     e.preventDefault();
@@ -69,7 +72,6 @@ export const CommentsPage = () => {
       setError(error.message);
     }
   };
-
   return (
     <>
       <h1>Comentarios</h1>
@@ -89,23 +91,30 @@ export const CommentsPage = () => {
               );
             })}
           </ul>
-          <form onSubmit={handleForm}>
-            <textarea
-              className="textarea-comment"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              placeholder={`Comentar como ${user.name}`}
-            />
-            <button style={{ backgroundColor: "transparent", border: "none" }}>
-              <box-icon
-                name="send"
-                type="solid"
-                size="md"
-                className="send-btn"
-              ></box-icon>
-            </button>
-            {error ? <p>{error}</p> : null}
-          </form>
+          <Box
+            sx={{
+              py: 2,
+              display: "flex",
+              flexDirection: "column",
+              gap: 2,
+              alignItems: "center",
+              flexWrap: "wrap",
+            }}
+          >
+            <form onSubmit={handleForm}>
+              <Textarea
+                placeholder={`Comentar como ${user.name}`}
+                required
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                sx={{ mb: 1 }}
+                color="warning"
+              />
+              <Button type="submit" color="warning">
+                Publicar
+              </Button>
+            </form>
+          </Box>
         </div>
       ) : (
         <LoginPage />

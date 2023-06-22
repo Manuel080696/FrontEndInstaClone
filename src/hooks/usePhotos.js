@@ -5,7 +5,7 @@ import { AuthContext } from "../context/AuthContext";
 const usePhotos = (id) => {
   const [photos, setPhotos] = useState([]);
 
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const { token } = useContext(AuthContext);
 
@@ -13,8 +13,6 @@ const usePhotos = (id) => {
   useEffect(() => {
     const loadPhotos = async () => {
       try {
-        setLoading(false);
-
         const data = id
           ? await getUserPhotosService(id, token)
           : await getAllPhotosService(token);
@@ -27,8 +25,7 @@ const usePhotos = (id) => {
       }
     };
     loadPhotos();
-  }, [id, loading, token]);
-  console.log(photos);
+  }, [loading, id, token]);
 
   const addPhoto = (photo) => {
     setLoading(true);
@@ -40,7 +37,13 @@ const usePhotos = (id) => {
     setPhotos(photos.filter((photo) => photo.id !== id));
   };
 
-  return { photos, loading, error, addPhoto, removePhoto };
+  return {
+    photos,
+    loading,
+    error,
+    addPhoto,
+    removePhoto,
+  };
 };
 
 export default usePhotos;

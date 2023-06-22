@@ -1,0 +1,42 @@
+form.posts {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+form.posts span {
+  position: relative;
+  background-color: #001324;
+}
+
+form.posts span box-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+form.posts h1 {
+  color: #e9eff2;
+  text-align: center;
+  padding: 1rem;
+  font-size: 2rem;
+}
+
+form.posts fieldset {
+  background-color: #e9eff2;
+  border: 0;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+form.posts fieldset input {
+  width: 100%;
+}
+
+form.posts button {
+  padding: 0.6rem;
+  border: 1px solid #e9eff2;
+  color: #e9eff2;
+  background-color: #001324;
+}

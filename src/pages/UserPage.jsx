@@ -1,44 +1,75 @@
+import { useNavigate, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { getUserDataService } from "../services";
 import "./UserPage.css";
-import { useUserData } from "../hooks/userData";
 
 export const UserPage = () => {
-  const { nullRute, avatar, userData } = useUserData();
+  const navigate = useNavigate();
+  const [photoData, setPhotoData] = useState();
+  const [userData, setUserData] = useState([]);
+  const [, setError] = useState("");
 
-  const userDataInfo = userData && userData.userData[0];
-  const userPhotoData = userData && userData.photoData;
+  const { id } = useParams();
+  useEffect(() => {
+    const getUserData = async (id) => {
+      try {
+        const data = await getUserDataService(id);
+        setPhotoData(data.photoData);
+        setUserData(data.userData[0]);
+      } catch (error) {
+        setError(error.message);
+      }
+    };
+    getUserData(id);
+  }, [id]);
 
   return (
-    <section>
-      <section className="user-userData">
-        <img src={avatar !== nullRute ? avatar : "/avatarDefault.png"} />
-        <ul className="user-userData-dataList">
-          <li>
-            <p>{userDataInfo.userName}</p>
+    <section className="userPage">
+      <section className="userData">
+        <ul>
+          <li className="avatar">
+            {userData.avatar ? (
+              <img
+                alt=""
+                src={`${import.meta.env.VITE_APP_BACKEND}/uploads/avatar/${
+                  userData.avatar
+                }`}
+              />
+            ) : (
+              <img
+                src={`${
+                  import.meta.env.VITE_APP_BACKEND
+                }/uploads/avatar/avatarDefault.png`}
+                alt=""
+              />
+            )}
           </li>
           <li>
-            <p>{userDataInfo.name}</p>
-          </li>
-          <li>
-            <p>{userDataInfo.lastName}</p>
-          </li>
-          <li>
-            <p>{userDataInfo.birthday}</p>
+            <p>{userData.userName}</p>
+
+            <p>{userData.name}</p>
+
+            <p>{userData.lastName}</p>
+
+            <p>{userData.birthDay}</p>
           </li>
         </ul>
       </section>
-      <section>
-        <ul className="user-photos-list">
-          {userPhotoData &&
-            userPhotoData?.map((photo) => (
-              <li key={photo.photoID}>
-                <img
-                  src={`${import.meta.env.VITE_APP_BACKEND}/uploads/posts/${
-                    photo.photoName
-                  }`}
-                  alt=""
-                ></img>
-              </li>
-            ))}
+      <section className="user-photos-list">
+        <ul>
+          {photoData?.map((photo) => (
+            <li
+              key={photo.PhotoID}
+              onClick={() => navigate(`/photos/${photo.photoID}`)}
+            >
+              <img
+                src={`${import.meta.env.VITE_APP_BACKEND}/uploads/posts/${
+                  photo.photoName
+                }`}
+                alt={photo.description}
+              />
+            </li>
+          ))}
         </ul>
       </section>
     </section>
