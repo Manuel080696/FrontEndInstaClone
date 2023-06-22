@@ -5,15 +5,13 @@ import "./NewPhoto.css";
 
 export const NewPhoto = ({ addPhoto, setShow, show }) => {
   const [error, setError] = useState("");
-  const [sending, setSending] = useState(false);
+  const [sending, setSending] = useState(true);
   const [image, setImage] = useState();
   const { token } = useContext(AuthContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      setSending(true);
-
       const data = new FormData(e.target);
 
       const photo = await sendPhotoService({ data, token });

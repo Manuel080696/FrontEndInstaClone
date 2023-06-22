@@ -28,8 +28,8 @@ const usePhotos = (id) => {
   }, [loading, id, token]);
 
   const addPhoto = (photo) => {
-    setLoading(true);
     setPhotos([photo, ...photos]);
+    setLoading(false);
   };
 
   const removePhoto = (id) => {

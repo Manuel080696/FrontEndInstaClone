@@ -15,6 +15,11 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import CommentIcon from "@mui/icons-material/Comment";
+import { useNavigate } from "react-router";
+import { useContext, useState } from "react";
+import { AuthContext } from "../context/AuthContext";
+import { deletePhotoService, likePhotoService } from "../services";
+import { Link } from "react-router-dom";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -27,25 +32,61 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export default function PhotoCard({ photo, removePhoto, srcImage }) {
+export function PhotoCard({ photo, removePhoto }) {
   const [expanded, setExpanded] = React.useState(false);
+  const navigate = useNavigate();
+  const { user, token } = useContext(AuthContext);
+  const [error, setError] = useState("");
+  const [liked, setLiked] = useState(photo.dioLike);
+  const [totalikes, setTotalikes] = useState(photo.numLikes);
+  const srcImage = `${import.meta.env.VITE_APP_BACKEND}/uploads/posts/${
+    photo.photoName
+  }`;
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
+  };
+  const deletephoto = async (id) => {
+    try {
+      await deletePhotoService({ id, token });
+      if (removePhoto) {
+        removePhoto(id);
+      } else {
+        navigate("/");
+      }
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
+  const toggleLike = async () => {
+    try {
+      const data = await likePhotoService(token, photo.photoID);
+      setLiked(data.vote);
+      setTotalikes(data.likes);
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
+  const handleClick = async () => {
+    navigate(`/comments/${photo.photoID}`);
   };
 
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardHeader
         avatar={
-          <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            <img
-              src={`${import.meta.env.VITE_APP_BACKEND}/uploads/avatar/${
-                photo.avatar
-              }`}
-              alt=""
-            />
-          </Avatar>
+          <Link to={`/user/${user.id}`}>
+            <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+              <img
+                src={`${import.meta.env.VITE_APP_BACKEND}/uploads/avatar/${
+                  photo.avatar
+                }`}
+                alt=""
+              />
+            </Avatar>
+          </Link>
         }
         action={
           <IconButton aria-label="settings">
@@ -59,18 +100,30 @@ export default function PhotoCard({ photo, removePhoto, srcImage }) {
         component="img"
         height="194"
         image={srcImage}
-        alt="Paella dish"
+        alt={photo.place}
+        onClick={() => navigate(`/photos/${photo.photoID}`)}
+        onDoubleClick={toggleLike}
       />
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
+        <IconButton aria-label="like" onClick={toggleLike}>
+          {liked ? <FavoriteIcon sx={{ color: red[500] }} /> : <FavoriteIcon />}
         </IconButton>
-        <IconButton aria-label="delete" disabled color="primary">
-          <DeleteIcon />
-        </IconButton>
-        <IconButton aria-label="comment">
+        <p>{`${totalikes} Me gusta`}</p>
+        {user.id === photo.userID ? (
+          <IconButton
+            aria-label="delete"
+            onClick={() => {
+              if (window.confirm("Are you sure?")) deletephoto(photo.photoID);
+            }}
+          >
+            <DeleteIcon />
+          </IconButton>
+        ) : null}
+
+        <IconButton aria-label="comment" onClick={handleClick}>
           <CommentIcon />
         </IconButton>
+        <p>{photo.numComments}</p>
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}

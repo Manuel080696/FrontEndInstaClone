@@ -33,9 +33,14 @@ export const getUserPhotosService = async (id, token) => {
   return json.data;
 };
 
-export const getSinglePhotoService = async (id) => {
+export const getSinglePhotoService = async (id, token) => {
   const response = await fetch(
-    `${import.meta.env.VITE_APP_BACKEND}/photos/${id}`
+    `${import.meta.env.VITE_APP_BACKEND}/photos/${id}`,
+    {
+      headers: {
+        Authorization: token,
+      },
+    }
   );
   const json = await response.json();
 
@@ -104,24 +109,6 @@ export const getUserDataService = async (id) => {
 
   return json.data;
 };
-
-// export const editUserDataService = async (token, data) => {
-//   const response = await fetch(`${import.meta.env.VITE_APP_BACKEND}/user`, {
-//     method: "PATCH",
-//     headers: {
-//       Authorization: token,
-//     },
-//     body: data,
-//   });
-
-//   const json = await response.json();
-
-//   if (!response.ok) {
-//     throw new Error(json.message);
-//   }
-
-//   return json.data;
-// };
 
 export const deleteUserService = async (token, id) => {
   const response = await fetch(

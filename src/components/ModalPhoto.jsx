@@ -5,9 +5,8 @@ import { ErrorMessage } from "./ErrorMessage";
 import "./ModalPhoto.css";
 import { useNavigate } from "react-router-dom";
 import usePhotos from "../hooks/usePhotos";
-
 export const ModalPhoto = ({ show, setShow }) => {
-  const { loading, error, addPhoto } = usePhotos();
+  const { loading, error, addPhoto, photos, removePhoto } = usePhotos();
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
