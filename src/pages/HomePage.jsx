@@ -20,7 +20,7 @@ export const HomePage = () => {
 
   return (
     <section className="home">
-      <PhotoList photos={photos} removePhoto={removePhoto} loading={loading} />
+      <PhotoList photos={photos} removePhoto={removePhoto} />
     </section>
   );
 };

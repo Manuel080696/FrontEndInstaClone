@@ -36,12 +36,7 @@ export const UserPage = () => {
                 }`}
               />
             ) : (
-              <img
-                src={`${
-                  import.meta.env.VITE_APP_BACKEND
-                }/uploads/avatar/avatarDefault.png`}
-                alt=""
-              />
+              <img src="/avatarDefault.png" alt="" />
             )}
           </li>
           <li>

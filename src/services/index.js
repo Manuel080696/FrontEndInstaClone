@@ -33,14 +33,9 @@ export const getUserPhotosService = async (id, token) => {
   return json.data;
 };
 
-export const getSinglePhotoService = async (id, token) => {
+export const getSinglePhotoService = async (id) => {
   const response = await fetch(
-    `${import.meta.env.VITE_APP_BACKEND}/photos/${id}`,
-    {
-      headers: {
-        Authorization: token,
-      },
-    }
+    `${import.meta.env.VITE_APP_BACKEND}/photos/${id}`
   );
   const json = await response.json();
 
