@@ -54,7 +54,7 @@ export const UserPage = () => {
         <ul>
           {photoData?.map((photo) => (
             <li
-              key={photo.PhotoID}
+              key={photo.photoID}
               onClick={() => navigate(`/photos/${photo.photoID}`)}
             >
               <img
