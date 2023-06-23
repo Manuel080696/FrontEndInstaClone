@@ -7,7 +7,7 @@ export const NewPhoto = ({ addPhoto, toggleShow }) => {
   const [error, setError] = useState("");
   const [sending, setSending] = useState(true);
   const [image, setImage] = useState();
-  const { token } = useContext(AuthContext);
+  const { token, user } = useContext(AuthContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -15,6 +15,8 @@ export const NewPhoto = ({ addPhoto, toggleShow }) => {
       const data = new FormData(e.target);
 
       const photo = await sendPhotoService({ data, token });
+
+      photo.avatar = user.avatar;
 
       addPhoto(photo);
       e.target.reset();
