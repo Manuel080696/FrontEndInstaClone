@@ -1,12 +1,10 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
-import { useUserData } from "../hooks/userData";
 import "./Avatar.css";
 
 export const Avatar = () => {
   const { user } = useContext(AuthContext);
-  const { nullRute, avatar } = useUserData();
 
   return (
     <ul>
@@ -16,7 +14,10 @@ export const Avatar = () => {
             <Link to={`/user/${user.id}`}>
               <img
                 className="avatar footer"
-                src={avatar !== nullRute ? avatar : "/avatarDefault.png"}
+                src={`${import.meta.env.VITE_APP_BACKEND}/uploads/avatar/${
+                  user.avatar || user.updateAvatar
+                }`}
+                alt={user.userName}
               />
             </Link>
           ) : (

@@ -4,7 +4,6 @@ import { NewPhoto } from "./NewPhoto";
 import { ErrorMessage } from "./ErrorMessage";
 import "./ModalPhoto.css";
 import { useNavigate } from "react-router-dom";
-import usePhotos from "../hooks/usePhotos";
 
 export const ModalPhoto = ({ show, toggleShow, addPhoto, loading, error }) => {
   const { user } = useContext(AuthContext);

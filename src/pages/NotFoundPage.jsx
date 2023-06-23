@@ -9,7 +9,7 @@ export const NotFoundPage = () => {
         <p>Nuestros sensores no detectan nada... </p>
         <Link to="/">Volver a inicio</Link>
       </header>
-      <img src="guerrrera.png" />
+      <img src="/guerrrera.png" />
     </section>
   );
 };

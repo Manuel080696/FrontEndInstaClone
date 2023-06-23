@@ -52,7 +52,6 @@ export function PhotoCard({ photo, removePhoto }) {
       await deletePhotoService({ id, token });
       if (removePhoto) {
         removePhoto(id);
-      } else {
         navigate("/");
       }
     } catch (error) {
@@ -122,7 +121,7 @@ export function PhotoCard({ photo, removePhoto }) {
         <IconButton aria-label="like" onClick={toggleLike}>
           {liked ? <FavoriteIcon sx={{ color: red[500] }} /> : <FavoriteIcon />}
         </IconButton>
-        <p>{`${totalikes} Me gusta`}</p>
+        <p>{`${totalikes} like`}</p>
 
         <IconButton aria-label="comment" onClick={handleClick}>
           <CommentIcon />

@@ -23,7 +23,7 @@ export const CommentsPage = () => {
   useEffect(() => {
     const getComments = async () => {
       try {
-        const resultado = await getSinglePhotoService(id);
+        const resultado = await getSinglePhotoService(id, token);
 
         setComments(
           resultado.comments.sort((a, b) => {
@@ -36,7 +36,7 @@ export const CommentsPage = () => {
     };
 
     getComments();
-  }, [id]);
+  }, [id, token]);
 
   const handleForm = async (e) => {
     e.preventDefault();
@@ -74,7 +74,7 @@ export const CommentsPage = () => {
   };
   return (
     <>
-      <h1>Comentarios</h1>
+      <h1>Comments</h1>
 
       {token ? (
         <div>
@@ -103,7 +103,7 @@ export const CommentsPage = () => {
           >
             <form onSubmit={handleForm}>
               <Textarea
-                placeholder={`Comentar como ${user.name}`}
+                placeholder={`Comment like ${user.name}`}
                 required
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
@@ -111,7 +111,7 @@ export const CommentsPage = () => {
                 color="warning"
               />
               <Button type="submit" color="warning">
-                Publicar
+                Post
               </Button>
             </form>
           </Box>

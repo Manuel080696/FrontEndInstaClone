@@ -18,7 +18,7 @@ function Search() {
       <form className="search" onSubmit={handleSearch}>
         <input
           type="search"
-          placeholder="Buscar..."
+          placeholder="Search..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />

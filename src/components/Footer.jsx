@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Avatar } from "./Avatar";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import "./Footer.css";
 import { AuthContext } from "../context/AuthContext";
 

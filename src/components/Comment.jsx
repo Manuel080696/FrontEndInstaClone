@@ -55,7 +55,7 @@ export const Comment = ({ comment, user, deleteComment }) => {
                 />
               }
             >
-              Borrar
+              Delete
             </Chip>
           ) : null}
         </ListItem>
