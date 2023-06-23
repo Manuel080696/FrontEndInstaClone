@@ -15,6 +15,9 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import CommentIcon from "@mui/icons-material/Comment";
+import Alert from "@mui/material/Alert";
+
+import Stack from "@mui/material/Stack";
 import { useNavigate } from "react-router";
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
@@ -37,7 +40,7 @@ export function PhotoCard({ photo, removePhoto }) {
   const [expanded, setExpanded] = React.useState(false);
   const navigate = useNavigate();
   const { user, token } = useContext(AuthContext);
-  const [, setError] = useState("");
+  const [error, setError] = useState("");
   const [liked, setLiked] = useState(photo.dioLike);
   const [totalikes, setTotalikes] = useState(photo.numLikes);
   const srcImage = `${import.meta.env.VITE_APP_BACKEND}/uploads/posts/${
@@ -65,7 +68,7 @@ export function PhotoCard({ photo, removePhoto }) {
       setLiked(data.vote);
       setTotalikes(data.likes);
     } catch (error) {
-      alert(error.message);
+      setError(error.message);
     }
   };
 
@@ -155,6 +158,13 @@ export function PhotoCard({ photo, removePhoto }) {
           <Typography paragraph>{photo.description}</Typography>
         </CardContent>
       </Collapse>
+      {error ? (
+        <Stack sx={{ width: "100%" }} spacing={2}>
+          <Alert severity="warning" onClose={() => setError("")}>
+            {error}
+          </Alert>
+        </Stack>
+      ) : null}
     </Card>
   );
 }
