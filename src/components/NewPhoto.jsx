@@ -16,8 +16,8 @@ export const NewPhoto = ({ addPhoto, toggleShow }) => {
 
       const photo = await sendPhotoService({ data, token });
 
-      photo.avatar = user.avatar;
-      photo.userPosted = user.UserName;
+      photo.avatar = user.avatar || user.updateAvatar;
+      photo.userPosted = user.userName;
 
       addPhoto(photo);
       e.target.reset();
