@@ -3,9 +3,12 @@ import { Avatar } from "./Avatar";
 import { useContext } from "react";
 import "./Footer.css";
 import { AuthContext } from "../context/AuthContext";
+import { ModalPhoto } from "./ModalPhoto";
+import usePhotos from "../hooks/usePhotos";
 
 export const Footer = () => {
   const { toggleShow, show } = useContext(AuthContext);
+  const { addPhoto, loading, error } = usePhotos();
 
   return (
     <footer>
@@ -21,6 +24,13 @@ export const Footer = () => {
           </Link>
         </li>
         <li>
+          <ModalPhoto
+            toggleShow={toggleShow}
+            show={show}
+            addPhoto={addPhoto}
+            loading={loading}
+            error={error}
+          />
           <img src="/posts.png" onClick={() => toggleShow()} />
         </li>
         <li>

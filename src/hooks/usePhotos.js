@@ -3,11 +3,9 @@ import { getAllPhotosService, getUserPhotosService } from "../services";
 import { AuthContext } from "../context/AuthContext";
 
 const usePhotos = (id) => {
-  const [photos, setPhotos] = useState([]);
-
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const { token } = useContext(AuthContext);
+  const { token, photos, setPhotos } = useContext(AuthContext);
 
   //Photos general
   useEffect(() => {

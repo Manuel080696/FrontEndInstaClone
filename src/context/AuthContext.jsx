@@ -11,6 +11,7 @@ export const AuthProviderComponent = ({ children }) => {
   );
 
   const [show, setShow] = useState(false);
+  const [photos, setPhotos] = useState([]);
 
   const toggleShow = () => {
     setShow(!show);
@@ -36,7 +37,17 @@ export const AuthProviderComponent = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ token, user, logIn, logOut, setUser, show, toggleShow }}
+      value={{
+        token,
+        user,
+        logIn,
+        logOut,
+        setUser,
+        show,
+        toggleShow,
+        photos,
+        setPhotos,
+      }}
     >
       {children}
     </AuthContext.Provider>
