@@ -77,7 +77,7 @@ export function PhotoCard({ photo, removePhoto }) {
   };
 
   return (
-    <Card id="postCard" sx={{ maxWidth: 345 }}>
+    <Card id="postCard">
       {/* Encabezado ----------------------*/}
       <CardHeader
         id="idPhoto"
@@ -111,7 +111,7 @@ export function PhotoCard({ photo, removePhoto }) {
       {/* Contenido foto-------------------------- */}
       <CardMedia
         component="img"
-        height="194"
+        height="300"
         image={srcImage}
         alt={photo.place}
         onClick={() => navigate(`/photos/${photo.photoID}`)}
