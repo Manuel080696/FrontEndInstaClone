@@ -46,7 +46,7 @@ export function PhotoCard({ photo, removePhoto }) {
   const srcImage = `${import.meta.env.VITE_APP_BACKEND}/uploads/posts/${
     photo.photoName
   }`;
-
+  photo.comments = photo.comments ? photo.comments : 0;
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
@@ -124,11 +124,13 @@ export function PhotoCard({ photo, removePhoto }) {
         <IconButton aria-label="like" onClick={toggleLike}>
           {liked ? <FavoriteIcon sx={{ color: red[500] }} /> : <FavoriteIcon />}
         </IconButton>
-        <p>{`${totalikes} like`}</p>
+        <p>{`${totalikes}`}</p>
 
         <IconButton aria-label="comment" onClick={handleClick}>
           <CommentIcon />
         </IconButton>
+        {console.log(photo.comments.length)}
+        <p>{photo.comments.length}</p>
         <p>{photo.numComments}</p>
         <ExpandMore
           expand={expanded}

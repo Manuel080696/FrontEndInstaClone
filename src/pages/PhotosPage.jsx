@@ -22,6 +22,7 @@ export const PhotosPage = () => {
       try {
         const data = await getSinglePhotoService(id, token);
         setPost(data);
+        console.log(data);
       } catch (error) {
         setError(error.message);
       } finally {
