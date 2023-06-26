@@ -1,0 +1,48 @@
+aside#profile-edit {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+aside#profile-edit h2 {
+  font-size: 2rem;
+  padding: 1rem;
+}
+
+aside#profile-edit form {
+  display: flex;
+  flex-direction: column;
+}
+aside#profile-edit form label.avatar {
+  padding-bottom: 1rem;
+}
+
+aside#profile-edit form div.custom-file-input button {
+  height: 60px;
+  width: 100%;
+  border: 1px solid gray;
+  border-radius: 8px;
+  background-color: white;
+  background-image: url("/drop-files-here-extra.jpg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+button.guardar {
+  padding: 0.5rem;
+  background-color: #001324;
+  color: #e9eff2;
+  border: none;
+  border-radius: 8px;
+}
+button#Edit {
+  padding: 0.5rem;
+  background-color: #e9eff2;
+  color: #001324;
+  border: 1px solid #001324;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+}

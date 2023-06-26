@@ -2,10 +2,10 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { editUserServices } from "../services";
+import TextField from "@mui/material/TextField";
 import Alert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
-
-import TextField from "@mui/material/TextField";
+import "./EditProfile.css";
 
 export const EditProfile = () => {
   const { user, token, setUser } = useContext(AuthContext);
@@ -42,8 +42,8 @@ export const EditProfile = () => {
   }
 
   return (
-    <>
-      <h1>Edit Profile</h1>
+    <aside id="profile-edit">
+      <h2>Edit Profile</h2>
       <form onSubmit={handleClick}>
         <TextField
           disabled={disabled}
@@ -87,13 +87,29 @@ export const EditProfile = () => {
 
         <br />
 
-        <label htmlFor="avatar">Image(optional)</label>
-        <input type="file" id="avatar" name="avatar" accept="image/*" />
+        <label className="avatar" htmlFor="avatar">
+          Image(optional)
+        </label>
+        {/* <input type="file" id="avatar" name="avatar" accept="image/*" /> */}
+        <div className="custom-file-input">
+          <input
+            type="file"
+            className="avatar"
+            name="avatar"
+            accept="image/*"
+            style={{ display: "none" }}
+          />
+          <button
+            id="avatar"
+            type="button"
+            onClick={() => document.getElementById("avatar").click()}
+          ></button>
+        </div>
         <br />
-        <button>Guardar Cambios</button>
-        <button type="submit" onClick={handleGameClick}>
+        <button id="Edit" type="submit" onClick={handleGameClick}>
           Editar Perfil
         </button>
+        <button className="guardar">Guardar Cambios</button>
       </form>
       {error ? (
         <Stack sx={{ width: "100%" }} spacing={2}>
@@ -106,6 +122,6 @@ export const EditProfile = () => {
           </Alert>
         </Stack>
       ) : null}
-    </>
+    </aside>
   );
 };
