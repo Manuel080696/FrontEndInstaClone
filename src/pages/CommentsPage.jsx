@@ -7,13 +7,13 @@ import {
   getSinglePhotoService,
 } from "../services";
 import { Comment } from "../components/Comment";
-
 import { ModalLogin } from "../components/ModalLogin";
 import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
 import Textarea from "@mui/joy/Textarea";
 import { Alert, Stack } from "@mui/joy";
-
+import "./AllPage.css";
+import "./CommentsPage.css";
 export const CommentsPage = () => {
   const [comments, setComments] = useState();
   const [input, setInput] = useState();
@@ -21,12 +21,10 @@ export const CommentsPage = () => {
   const [, setLoading] = useState(false);
   const { user, token } = useContext(AuthContext);
   const { id } = useParams();
-
   useEffect(() => {
     const getComments = async () => {
       try {
         const resultado = await getSinglePhotoService(id, token);
-
         setComments(
           resultado.comments.sort((a, b) => {
             return b.id - a.id;
@@ -36,10 +34,8 @@ export const CommentsPage = () => {
         setError(error.message);
       }
     };
-
     getComments();
   }, [id, token]);
-
   const handleForm = async (e) => {
     e.preventDefault();
     try {
@@ -57,7 +53,6 @@ export const CommentsPage = () => {
       setLoading(false);
     }
   };
-
   const deleteComment = async (idComment) => {
     try {
       const totalComment = await deleteCommentServices({
@@ -75,24 +70,10 @@ export const CommentsPage = () => {
     }
   };
   return (
-    <>
+    <aside className="page-Principal">
       <h1>Comments</h1>
-
       {token ? (
         <div>
-          <ul>
-            {comments?.map((comment) => {
-              return (
-                <li key={comment.id}>
-                  <Comment
-                    comment={comment}
-                    user={user}
-                    deleteComment={deleteComment}
-                  />
-                </li>
-              );
-            })}
-          </ul>
           <Box
             sx={{
               py: 2,
@@ -103,17 +84,16 @@ export const CommentsPage = () => {
               flexWrap: "wrap",
             }}
           >
-            <form onSubmit={handleForm}>
+            <form className="form-comments" onSubmit={handleForm}>
               <Textarea
-                placeholder={`Comment like ${user.name}`}
+                className="form-comments"
+                placeholder={`Comment by @${user.name}`}
                 required
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                sx={{ mb: 1 }}
-                color="warning"
               />
-              <Button type="submit" color="warning">
-                Post
+              <Button className="form-comments" type="submit">
+                ➤
               </Button>
               {error ? (
                 <Stack sx={{ width: "100%" }} spacing={2}>
@@ -128,10 +108,24 @@ export const CommentsPage = () => {
               ) : null}
             </form>
           </Box>
+          <ul>
+            {comments?.map((comment) => {
+              return (
+                <li key={comment.id}>
+                  <Comment
+                    id="id"
+                    comment={comment}
+                    user={user}
+                    deleteComment={deleteComment}
+                  />
+                </li>
+              );
+            })}
+          </ul>
         </div>
       ) : (
         <ModalLogin />
       )}
-    </>
+    </aside>
   );
 };
