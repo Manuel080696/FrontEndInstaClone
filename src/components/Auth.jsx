@@ -4,12 +4,14 @@ import { AuthContext } from "../context/AuthContext";
 import { deleteUserService } from "../services";
 import "./Auth.css";
 import AlertDialog from "./AlertDialog";
+import { ModalLogin } from "./ModalLogin";
 
 export const Auth = () => {
   const { user, logOut } = useContext(AuthContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [delUser, setDelUser] = useState(false);
   const [logoutUser, setLogoutUser] = useState(false);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
   const menuRef = useRef(null);
 
@@ -24,6 +26,13 @@ export const Auth = () => {
   const deleteUser = () => {
     deleteUserService(user.token, user.id);
     logOut();
+  };
+
+  const openLoginModal = () => {
+    setIsLoginModalOpen(false); // <- Aquí establecemos el estado en false antes de abrir el modal nuevamente
+    setTimeout(() => {
+      setIsLoginModalOpen(true);
+    }, 0);
   };
 
   useEffect(() => {
@@ -67,7 +76,7 @@ export const Auth = () => {
                 {delUser ? (
                   <AlertDialog
                     deleteService={deleteUser}
-                    text={"¿Are you sure you want to delete your profile?"}
+                    text={"Are you sure you want to delete your profile?"}
                     setState={setDelUser}
                   />
                 ) : null}
@@ -76,7 +85,7 @@ export const Auth = () => {
                 {logoutUser ? (
                   <AlertDialog
                     deleteService={logOut}
-                    text={"¿Are you sure you want to quit?"}
+                    text={"Are you sure you want to quit?"}
                     setState={setLogoutUser}
                   />
                 ) : null}
@@ -87,10 +96,11 @@ export const Auth = () => {
       ) : (
         <ul>
           <li>
-            <Link to="/modallogin">inciar secion</Link>
+            <button onClick={openLoginModal}>Login</button>
           </li>
         </ul>
       )}
+      {isLoginModalOpen && <ModalLogin />}
     </section>
   );
 };

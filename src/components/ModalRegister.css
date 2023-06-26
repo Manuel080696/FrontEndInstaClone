@@ -14,8 +14,65 @@
 .modal-fg {
   background-color: white;
   border: 1px solid black;
+  padding: 20px;
+  max-width: 500px;
+  width: 100%;
 }
 
-p {
+.modal-fg h1 {
+  margin-top: 0;
+}
+
+.modal-fg form {
+  margin-top: 20px;
+}
+
+.modal-fg fieldset {
+  margin-bottom: 10px;
+}
+
+.modal-fg label {
+  display: block;
+  font-weight: bold;
+}
+
+.modal-fg input[type="text"],
+.modal-fg input[type="email"],
+.modal-fg input[type="password"],
+.modal-fg input[type="date"],
+.modal-fg input[type="file"] {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.modal-fg input[type="file"] {
+  padding: 0;
+}
+
+.modal-fg button[type="submit"],
+.modal-fg button[type="button"] {
+  padding: 8px 16px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+.modal-fg button[type="submit"] {
+  background-color: #4caf50;
+  color: white;
+  margin-right: 10px;
+}
+
+.modal-fg button[type="button"] {
+  background-color: #f44336;
+  color: white;
+}
+
+.modal-fg p {
+  margin-top: 10px;
   color: black;
 }
