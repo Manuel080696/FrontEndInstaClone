@@ -5,11 +5,16 @@ import DialogActions from "@mui/material/DialogActions";
 
 import DialogTitle from "@mui/material/DialogTitle";
 
-export default function AlertDialog({ deleteService, id, text }) {
+export default function AlertDialog({ deleteService, id, text, setState }) {
   const [open, setOpen] = React.useState(true);
 
   const handleClose = () => {
+    setState(false);
     setOpen(false);
+  };
+  const buttonYes = (id) => {
+    id ? deleteService(id) : deleteService();
+    setState(false);
   };
 
   return (
@@ -26,7 +31,7 @@ export default function AlertDialog({ deleteService, id, text }) {
           <Button
             onClick={() => {
               {
-                id ? deleteService(id) : deleteService();
+                buttonYes(id);
               }
             }}
             autoFocus

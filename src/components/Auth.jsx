@@ -23,7 +23,6 @@ export const Auth = () => {
 
   const deleteUser = () => {
     deleteUserService(user.token, user.id);
-
     logOut();
   };
 
@@ -65,23 +64,25 @@ export const Auth = () => {
                   </Link>
                 </li>
                 <li onClick={() => setDelUser(!delUser)}>Delete profile</li>
+                {delUser ? (
+                  <AlertDialog
+                    deleteService={deleteUser}
+                    text={"¿Are you sure you want to delete your profile?"}
+                    setState={setDelUser}
+                  />
+                ) : null}
 
-                <li onClick={() => setLogoutUser(!logoutUser)}>Quit</li>
+                <li onClick={() => setLogoutUser(true)}>Quit</li>
+                {logoutUser ? (
+                  <AlertDialog
+                    deleteService={logOut}
+                    text={"¿Are you sure you want to quit?"}
+                    setState={setLogoutUser}
+                  />
+                ) : null}
               </ul>
             </nav>
           </li>
-          {delUser ? (
-            <AlertDialog
-              deleteService={deleteUser}
-              text={"¿Are you sure you want to delete your profile?"}
-            />
-          ) : null}
-          {logoutUser ? (
-            <AlertDialog
-              deleteService={logOut}
-              text={"¿Are you sure you want to quit?"}
-            />
-          ) : null}
         </ul>
       ) : (
         <ul>
