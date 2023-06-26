@@ -1,11 +1,10 @@
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { NewPhoto } from "./NewPhoto";
-import { ErrorMessage } from "./ErrorMessage";
 import "./ModalPhoto.css";
 import { useNavigate } from "react-router-dom";
 
-export const ModalPhoto = ({ show, toggleShow, addPhoto, loading, error }) => {
+export const ModalPhoto = ({ show, toggleShow, addPhoto }) => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -14,17 +13,17 @@ export const ModalPhoto = ({ show, toggleShow, addPhoto, loading, error }) => {
     toggleShow();
   };
 
-  if (loading) {
-    return (
-      <aside>
-        <img src="./loading.png" />
-        <p>Cargando...</p>
-      </aside>
-    );
-  }
-  if (error) {
-    return <ErrorMessage message={error} />;
-  }
+  // if (loading) {
+  //   return (
+  //     <aside>
+  //       <img src="./loading.png" />
+  //       <p>Cargando...</p>
+  //     </aside>
+  //   );
+  // }
+  // if (error) {
+  //   return <ErrorMessage message={error} />;
+  // }
 
   return (
     show &&

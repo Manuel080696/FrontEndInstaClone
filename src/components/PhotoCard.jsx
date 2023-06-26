@@ -70,6 +70,9 @@ export function PhotoCard({ photo, removePhoto }) {
       setLiked(data.vote);
       setTotalikes(data.likes);
     } catch (error) {
+      if (error.message == "Token incorrecto") {
+        return setError("Sesión expirada, vuelve a logearte por favor");
+      }
       setError(error.message);
     }
   };
