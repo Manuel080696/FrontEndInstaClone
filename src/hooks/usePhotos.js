@@ -23,7 +23,7 @@ const usePhotos = (id) => {
       }
     };
     loadPhotos();
-  }, [loading, id, token]);
+  }, [id, setPhotos, token]);
 
   const addPhoto = (photo) => {
     setPhotos([photo, ...photos]);

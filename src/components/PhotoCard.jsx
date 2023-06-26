@@ -88,7 +88,7 @@ export function PhotoCard({ photo, removePhoto }) {
         id="idPhoto"
         // Imagen rendonda con avatar
         avatar={
-          <Link to={`/user/${user.id}`}>
+          <Link to={`/user/${photo.userID}`}>
             <Avatar
               className="avatarCard"
               sx={{ bgcolor: red[500] }}
@@ -98,7 +98,7 @@ export function PhotoCard({ photo, removePhoto }) {
                 src={`${import.meta.env.VITE_APP_BACKEND}/uploads/avatar/${
                   photo.avatar
                 }`}
-                alt=""
+                alt={photo.description}
               />
             </Avatar>
           </Link>
@@ -135,7 +135,7 @@ export function PhotoCard({ photo, removePhoto }) {
           <CommentIcon />
         </IconButton>
 
-        <p>{photo.numComments}</p>
+        <p>{photo.numComments || photo.comments}</p>
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}
@@ -165,7 +165,9 @@ export function PhotoCard({ photo, removePhoto }) {
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography paragraph>
-            {new Date(photo.date).toLocaleDateString("es-ES")}
+            {photo.Date
+              ? photo.Date
+              : new Date(photo.date).toLocaleDateString("es-ES")}
           </Typography>
           <Typography paragraph>{photo.description}</Typography>
         </CardContent>

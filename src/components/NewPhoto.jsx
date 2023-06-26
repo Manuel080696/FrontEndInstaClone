@@ -17,9 +17,10 @@ export const NewPhoto = ({ addPhoto, toggleShow }) => {
 
       const photo = await sendPhotoService({ data, token });
 
+      photo.Date = new Date().toLocaleDateString("es-ES");
       photo.avatar = user.avatar || user.updateAvatar;
-      photo.userPosted = user.userName;
-
+      photo.userPosted = user.UserName;
+      console.log(photo.date);
       addPhoto(photo);
       e.target.reset();
       setImage(null);
