@@ -153,6 +153,7 @@ export function PhotoCard({ photo, removePhoto }) {
                 deleteService={deletephoto}
                 id={photo.photoID}
                 text={"¿Are you sure you want to delete the post?"}
+                setState={setDeletePhoto}
               />
             ) : null}
           </IconButton>
