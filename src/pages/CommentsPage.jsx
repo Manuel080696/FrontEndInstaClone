@@ -7,7 +7,8 @@ import {
   getSinglePhotoService,
 } from "../services";
 import { Comment } from "../components/Comment";
-import { LoginPage } from "./LoginPage";
+
+import { ModalLogin } from "../components/ModalLogin";
 import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
 import Textarea from "@mui/joy/Textarea";
@@ -17,7 +18,7 @@ export const CommentsPage = () => {
   const [comments, setComments] = useState();
   const [input, setInput] = useState();
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [, setLoading] = useState(false);
   const { user, token } = useContext(AuthContext);
   const { id } = useParams();
 
@@ -129,7 +130,7 @@ export const CommentsPage = () => {
           </Box>
         </div>
       ) : (
-        <LoginPage />
+        <ModalLogin />
       )}
     </>
   );

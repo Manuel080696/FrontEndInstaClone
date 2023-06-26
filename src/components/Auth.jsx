@@ -87,12 +87,7 @@ export const Auth = () => {
       ) : (
         <ul>
           <li>
-            <Link to="/register">Register</Link>
-          </li>
-          <li>
-            <Link to="/login" onClick={closeMenu}>
-              Login
-            </Link>
+            <Link to="/modallogin">inciar secion</Link>
           </li>
         </ul>
       )}
