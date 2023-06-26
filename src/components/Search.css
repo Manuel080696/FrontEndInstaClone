@@ -32,6 +32,7 @@ form.search button:hover {
 ul.search {
   padding: 0;
   display: grid;
+  justify-content: center;
   grid-template-columns: repeat(2, 1fr);
 }
 
@@ -44,4 +45,26 @@ ul.search li img {
   width: 100%;
   height: 250px;
   object-fit: cover;
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  ul.search {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  section.search {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    background-image: url("/fondo.jpeg");
+    background-size: contain;
+  }
+  ul.search {
+    max-width: 1200px;
+    grid-template-columns: repeat(4, 1fr);
+  }
 }

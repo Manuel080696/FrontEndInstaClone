@@ -17,3 +17,9 @@
 #headerP {
   color: #228cc4;
 }
+
+@media (min-width: 768px) {
+  #postCard {
+    width: 60vw;
+  }
+}

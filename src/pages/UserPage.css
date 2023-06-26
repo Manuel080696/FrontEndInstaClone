@@ -25,6 +25,8 @@ section.userData ul li.avatar img {
   height: 120px;
   width: 120px;
   border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
 }
 
 section.userData ul li p {
@@ -32,10 +34,16 @@ section.userData ul li p {
 }
 
 /* Imagenes del usuario */
+section.user-photos-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 section.user-photos-list ul {
   padding: 0;
   display: grid;
+  max-width: 478px;
   grid-template-columns: repeat(2, 1fr);
 }
 
@@ -48,4 +56,17 @@ section.user-photos-list ul li img {
   height: 200px;
   width: 100%;
   object-fit: cover;
+}
+@media (min-width: 768px) and (max-width: 1199px) {
+  section.user-photos-list ul {
+    max-width: 1100px;
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  section.user-photos-list ul {
+    max-width: 1100px;
+    grid-template-columns: repeat(4, 1fr);
+  }
 }

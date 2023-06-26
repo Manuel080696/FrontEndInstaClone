@@ -2,7 +2,6 @@ import { useState } from "react";
 import { searchPhotosService } from "../services";
 import "./Search.css";
 import { useNavigate } from "react-router-dom";
-import { Alert, Stack } from "@mui/joy";
 import CustomizedSnackbars from "./CustomizedSnackbars";
 
 function Search() {
@@ -39,20 +38,21 @@ function Search() {
       {error ? (
         <CustomizedSnackbars message={error} severity={"error"} />
       ) : null}
-
-      <ul className="search">
-        {photos.map((photo) => (
-          <li key={photo.photoID}>
-            <img
-              onClick={() => navigate(`/photos/${photo.photoID}`)}
-              src={`${import.meta.env.VITE_APP_BACKEND}/uploads/posts/${
-                photo.photoName
-              }`}
-              alt="Foto"
-            ></img>
-          </li>
-        ))}
-      </ul>
+      <section className="search">
+        <ul className="search">
+          {photos.map((photo) => (
+            <li key={photo.photoID}>
+              <img
+                onClick={() => navigate(`/photos/${photo.photoID}`)}
+                src={`${import.meta.env.VITE_APP_BACKEND}/uploads/posts/${
+                  photo.photoName
+                }`}
+                alt="Foto"
+              ></img>
+            </li>
+          ))}
+        </ul>
+      </section>
     </section>
   );
 }
