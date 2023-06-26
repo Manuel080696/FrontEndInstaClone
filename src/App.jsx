@@ -6,8 +6,6 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import { HomePage } from "./pages/HomePage";
-import { RegisterPage } from "./pages/RegisterPage";
-import { LoginPage } from "./pages/LoginPage";
 import { PhotosPage } from "./pages/PhotosPage";
 import { UserPage } from "./pages/UserPage";
 import { NotFoundPage } from "./pages/NotFoundPage";
@@ -15,15 +13,17 @@ import { CommentsPage } from "./pages/CommentsPage";
 import Root from "./pages/Root";
 import { EditProfilePage } from "./pages/EditProfilePage";
 import { SearchPage } from "./pages/SearchPage";
+import { ModalLogin } from "./components/ModalLogin";
+import { ModalRegister } from "./components/ModalRegister";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Root />}>
       <Route index element={<HomePage />} />
-      <Route path="register" element={<RegisterPage />} />
-      <Route path="login" element={<LoginPage />} />
       <Route path="photos/:id" element={<PhotosPage />} />
       <Route path="user/:id" element={<UserPage />} />
+      <Route path="modallogin" element={<ModalLogin />} />
+      <Route path="modalregister" element={<ModalRegister />} />
       <Route path="comments/:id" element={<CommentsPage />} />
       <Route path="user/profile" element={<EditProfilePage />} />
       <Route path="search" element={<SearchPage />} />
