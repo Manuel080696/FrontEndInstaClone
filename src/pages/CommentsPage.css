@@ -1,0 +1,22 @@
+aside.page-Principal {
+  color: #001324;
+}
+aside.page-Principal h1 {
+  font-size: 2rem;
+  text-align: center;
+  padding: 0.6rem;
+}
+
+form.form-comments {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+}
+
+button.form-comments {
+  background-color: #228cc4;
+}
+textarea.form-comments {
+  border-color: #228cc4;
+}
