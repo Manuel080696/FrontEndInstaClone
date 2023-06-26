@@ -24,6 +24,7 @@ import { AuthContext } from "../context/AuthContext";
 import { deletePhotoService, likePhotoService } from "../services";
 import { Link } from "react-router-dom";
 import "./PhotoCard.css";
+import AlertDialog from "./AlertDialog";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -43,6 +44,7 @@ export function PhotoCard({ photo, removePhoto }) {
   const [error, setError] = useState("");
   const [liked, setLiked] = useState(photo.dioLike);
   const [totalikes, setTotalikes] = useState(photo.numLikes);
+  const [deletePhoto, setDeletePhoto] = useState(false);
   const srcImage = `${import.meta.env.VITE_APP_BACKEND}/uploads/posts/${
     photo.photoName
   }`;
@@ -129,8 +131,7 @@ export function PhotoCard({ photo, removePhoto }) {
         <IconButton aria-label="comment" onClick={handleClick}>
           <CommentIcon />
         </IconButton>
-        {console.log(photo.comments.length)}
-        <p>{photo.comments.length}</p>
+
         <p>{photo.numComments}</p>
         <ExpandMore
           expand={expanded}
@@ -144,11 +145,16 @@ export function PhotoCard({ photo, removePhoto }) {
         {user.id === photo.userID ? (
           <IconButton
             aria-label="delete"
-            onClick={() => {
-              if (window.confirm("Are you sure?")) deletephoto(photo.photoID);
-            }}
+            onClick={() => setDeletePhoto(!deletePhoto)}
           >
             <DeleteIcon />
+            {deletePhoto ? (
+              <AlertDialog
+                deleteService={deletephoto}
+                id={photo.photoID}
+                text={"¿Are you sure you want to delete the post?"}
+              />
+            ) : null}
           </IconButton>
         ) : null}
       </CardActions>

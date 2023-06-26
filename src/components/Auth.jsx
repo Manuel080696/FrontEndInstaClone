@@ -3,10 +3,13 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { deleteUserService } from "../services";
 import "./Auth.css";
+import AlertDialog from "./AlertDialog";
 
 export const Auth = () => {
   const { user, logOut } = useContext(AuthContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [delUser, setDelUser] = useState(false);
+  const [logoutUser, setLogoutUser] = useState(false);
 
   const menuRef = useRef(null);
 
@@ -20,6 +23,7 @@ export const Auth = () => {
 
   const deleteUser = () => {
     deleteUserService(user.token, user.id);
+
     logOut();
   };
 
@@ -57,14 +61,27 @@ export const Auth = () => {
               <ul className={`menu-items ${isMenuOpen ? "active" : ""}`}>
                 <li>
                   <Link to="/user/profile" onClick={closeMenu}>
-                    Editar perfil
+                    Edit profile
                   </Link>
                 </li>
-                <li onClick={() => deleteUser()}>Borrar perfil</li>
-                <li onClick={() => logOut()}>Salir</li>
+                <li onClick={() => setDelUser(!delUser)}>Delete profile</li>
+
+                <li onClick={() => setLogoutUser(!logoutUser)}>Quit</li>
               </ul>
             </nav>
           </li>
+          {delUser ? (
+            <AlertDialog
+              deleteService={deleteUser}
+              text={"¿Are you sure you want to delete your profile?"}
+            />
+          ) : null}
+          {logoutUser ? (
+            <AlertDialog
+              deleteService={logOut}
+              text={"¿Are you sure you want to quit?"}
+            />
+          ) : null}
         </ul>
       ) : (
         <ul>

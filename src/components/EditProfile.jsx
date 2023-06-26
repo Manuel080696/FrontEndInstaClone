@@ -2,6 +2,8 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { editUserServices } from "../services";
+import Alert from "@mui/material/Alert";
+import Stack from "@mui/material/Stack";
 
 import TextField from "@mui/material/TextField";
 
@@ -92,8 +94,18 @@ export const EditProfile = () => {
         <button type="submit" onClick={handleGameClick}>
           Editar Perfil
         </button>
-        {error ? <p>{error}</p> : null}
       </form>
+      {error ? (
+        <Stack sx={{ width: "100%" }} spacing={2}>
+          <Alert
+            variant="outlined"
+            severity="info"
+            onClose={() => setError("")}
+          >
+            {error}
+          </Alert>
+        </Stack>
+      ) : null}
     </>
   );
 };

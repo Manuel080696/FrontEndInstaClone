@@ -11,6 +11,7 @@ import { LoginPage } from "./LoginPage";
 import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
 import Textarea from "@mui/joy/Textarea";
+import { Alert, Stack } from "@mui/joy";
 
 export const CommentsPage = () => {
   const [comments, setComments] = useState();
@@ -113,6 +114,17 @@ export const CommentsPage = () => {
               <Button type="submit" color="warning">
                 Post
               </Button>
+              {error ? (
+                <Stack sx={{ width: "100%" }} spacing={2}>
+                  <Alert
+                    variant="outlined"
+                    severity="warning"
+                    onClose={() => setError("")}
+                  >
+                    {error}
+                  </Alert>
+                </Stack>
+              ) : null}
             </form>
           </Box>
         </div>
