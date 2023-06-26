@@ -1,9 +1,14 @@
 import { useContext } from "react";
 import { EditProfile } from "../components/EditProfile";
 import { AuthContext } from "../context/AuthContext";
+import "./AllPage.css";
 
 export const EditProfilePage = () => {
   const { token } = useContext(AuthContext);
 
-  return <EditProfile token={token} />;
+  return (
+    <section className="page-Principal">
+      <EditProfile token={token} />
+    </section>
+  );
 };

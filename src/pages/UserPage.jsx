@@ -25,6 +25,7 @@ export const UserPage = () => {
 
   return (
     <section className="userPage">
+      <h2> {`@${userData.userName} `} </h2>
       <section className="userData">
         <ul>
           <li className="avatar">
@@ -40,13 +41,15 @@ export const UserPage = () => {
             )}
           </li>
           <li>
-            <p>{userData.userName}</p>
-
-            <p>{userData.name}</p>
-
-            <p>{userData.lastName}</p>
-
-            <p>{userData.birthDay}</p>
+            <p>
+              <em>Name:</em> {userData.name}
+            </p>
+            <p>
+              <em>LastName:</em> {userData.lastName}
+            </p>
+            <p>
+              <em>Birthday:</em> {userData.birthDay}
+            </p>
           </li>
         </ul>
       </section>

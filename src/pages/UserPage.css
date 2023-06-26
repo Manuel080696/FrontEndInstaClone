@@ -3,6 +3,11 @@ section.userPage {
   min-height: 86vh;
   width: 100vw;
   background-color: #e9eff2;
+  color: #001324;
+}
+section.userPage h2 {
+  background-color: white;
+  padding: 0.5rem;
 }
 
 /* Avatar y nombre usuario */
@@ -17,9 +22,13 @@ section.userData ul {
 }
 
 section.userData ul li.avatar img {
-  height: 60px;
-  width: 60px;
+  height: 120px;
+  width: 120px;
   border-radius: 50%;
+}
+
+section.userData ul li p {
+  padding: 0.3rem 0;
 }
 
 /* Imagenes del usuario */
@@ -32,6 +41,7 @@ section.user-photos-list ul {
 
 section.user-photos-list ul li {
   height: 200px;
+  border: 1.5px solid #001324;
 }
 
 section.user-photos-list ul li img {

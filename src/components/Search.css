@@ -37,6 +37,7 @@ ul.search {
 
 ul.search li {
   height: 250px;
+  border: 1.5px solid #001324;
 }
 
 ul.search li img {
