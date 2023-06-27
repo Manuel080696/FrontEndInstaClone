@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { ErrorMessage } from "../components/ErrorMessage";
 
 import { useParams } from "react-router-dom";
-
+import { Loading } from "../components/Loading";
 import "boxicons";
 import { AuthContext } from "../context/AuthContext";
 import { getSinglePhotoService } from "../services";
@@ -34,7 +34,7 @@ export const PhotosPage = () => {
 
   // Cuando se está cargando
   if (loading) {
-    return <p>Cargando photos...</p>;
+    return <Loading />;
   }
   // Porsi ocurre algún error
   if (error) {

@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "./ModalRegister.css";
 import { ModalLogin } from "./ModalLogin";
 import { registerUserService } from "../services";
+import { AuthContext } from "../context/AuthContext";
 
-export const ModalRegister = ({ toggleShow }) => {
+export const ModalRegister = () => {
+  const { toggleShowRegister } = useContext(AuthContext);
   const [pass1, setPass1] = useState("");
   const [pass2, setPass2] = useState("");
   const [avatar, setAvatar] = useState(null);
@@ -36,7 +38,7 @@ export const ModalRegister = ({ toggleShow }) => {
 
   const closeModal = () => {
     setShow(false);
-    toggleShow();
+    toggleShowRegister();
   };
 
   const handleLoginClick = () => {

@@ -14,13 +14,38 @@ export const EditProfile = () => {
   const [userName, setUserName] = useState(user.userName || user.UserName);
   const [birthDay, setBirthDay] = useState(user.birthDay);
   const [disabled, setDisabled] = useState(true);
+  const [image, setImage] = useState(null);
   const [error, setError] = useState("");
   const navigate = useNavigate();
+
+  const handleDragOver = (e) => {
+    e.preventDefault();
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    const file = e.dataTransfer.files[0];
+    setImage(file);
+  };
+
+  function handleGameClick(e) {
+    e.preventDefault();
+    setDisabled(!disabled);
+  }
 
   const handleClick = async (e) => {
     e.preventDefault();
 
-    const data = new FormData(e.target);
+    const data = new FormData();
+
+    data.append("name", name);
+    data.append("lastName", lastName);
+    data.append("userName", userName);
+    data.append("birthDay", birthDay);
+    if (image) {
+      data.append("avatar", image);
+    }
+
     try {
       const newDataUser = await editUserServices({ token, id: user.id, data });
       newDataUser.id = user.id;
@@ -36,10 +61,6 @@ export const EditProfile = () => {
       setError(error.message);
     }
   };
-  function handleGameClick(e) {
-    e.preventDefault();
-    setDisabled(!disabled);
-  }
 
   return (
     <aside id="profile-edit">
@@ -90,26 +111,40 @@ export const EditProfile = () => {
         <label className="avatar" htmlFor="avatar">
           Image(optional)
         </label>
-        {/* <input type="file" id="avatar" name="avatar" accept="image/*" /> */}
-        <div className="custom-file-input">
+
+        {/* Drop-------------- */}
+        <div
+          className="custom-file-input"
+          onDragOver={handleDragOver}
+          // onDrop={handleDrop}
+        >
           <input
+            id="avatarUploads"
             type="file"
-            className="avatar"
             name="avatar"
             accept="image/*"
             style={{ display: "none" }}
+            onChange={(e) => setImage(e.target.files[0])}
           />
+
           <button
+            onDragOver={handleDragOver}
+            onDrop={handleDrop}
             id="avatar"
             type="button"
-            onClick={() => document.getElementById("avatar").click()}
+            style={
+              image
+                ? { backgroundImage: `url(${URL.createObjectURL(image)})` }
+                : { backgroundImage: `url("/drop-files-here-extra.jpg")` }
+            }
+            onClick={() => document.getElementById("avatarUploads").click()}
           ></button>
         </div>
         <br />
         <button id="Edit" type="submit" onClick={handleGameClick}>
-          Edit Profile
+          Editar Perfil
         </button>
-        <button className="guardar">Save Changes</button>
+        <button className="guardar">Guardar Cambios</button>
       </form>
       {error ? (
         <Stack sx={{ width: "100%" }} spacing={2}>

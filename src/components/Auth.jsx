@@ -96,7 +96,9 @@ export const Auth = () => {
       ) : (
         <ul>
           <li>
-            <button onClick={openLoginModal}>Login</button>
+            <button className="openLoginModal" onClick={openLoginModal}>
+              <box-icon name="power-off" color="#FFFFFF"></box-icon>
+            </button>
           </li>
         </ul>
       )}
