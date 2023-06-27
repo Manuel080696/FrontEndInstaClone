@@ -7,6 +7,8 @@ form.posts {
 form.posts span {
   position: relative;
   background-color: #001324;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 form.posts span box-icon {
@@ -32,11 +34,18 @@ form.posts fieldset {
 
 form.posts fieldset input {
   width: 100%;
+  padding: 0.3rem;
+  border: 1px solid #da7b13;
+  border-radius: 5px;
 }
 
 form.posts button {
   padding: 0.6rem;
-  border: 1px solid #e9eff2;
+  border: none;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
   color: #e9eff2;
   background-color: #001324;
+  font-size: 1rem;
+  font-weight: bold;
 }

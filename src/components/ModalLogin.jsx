@@ -25,7 +25,7 @@ export const ModalLogin = () => {
       navigate("/");
       setShowMenu(false);
     } catch (error) {
-      setError("Usuario y contraseña no existen");
+      setError(error.message);
     }
   };
 

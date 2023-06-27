@@ -81,6 +81,8 @@ export function PhotoCard({ photo, removePhoto }) {
     navigate(`/comments/${photo.photoID}`);
   };
 
+  console.log(photo);
+
   return (
     <Card id="postCard">
       {/* Encabezado ----------------------*/}
@@ -135,7 +137,7 @@ export function PhotoCard({ photo, removePhoto }) {
           <CommentIcon />
         </IconButton>
 
-        <p>{photo.numComments || photo.comments}</p>
+        <p>{photo.numComments}</p>
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}

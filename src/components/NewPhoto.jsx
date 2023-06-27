@@ -20,7 +20,7 @@ export const NewPhoto = ({ addPhoto, toggleShow }) => {
       photo.Date = new Date().toLocaleDateString("es-ES");
       photo.avatar = user.avatar || user.updateAvatar;
       photo.userPosted = user.UserName;
-      console.log(photo.date);
+
       addPhoto(photo);
       e.target.reset();
       setImage(null);
@@ -30,28 +30,38 @@ export const NewPhoto = ({ addPhoto, toggleShow }) => {
     }
   };
   return (
-    <>
+    <section className="modal">
       <form className="posts" onSubmit={handleSubmit}>
         <span>
-          <h1>Add new Photo</h1>
+          <h1>New Post</h1>
           <box-icon name="x" color="#ffffff" onClick={() => toggleShow()} />
         </span>
 
         <fieldset>
-          <label htmlFor="place">Place</label>
-          <input type="text" id="place" name="place" required />
+          <input
+            type="text"
+            id="place"
+            name="place"
+            placeholder="Place"
+            required
+          />
         </fieldset>
         <fieldset>
-          <label htmlFor="description">Description</label>
-          <input type="text" id="description" name="description" required />
+          <input
+            type="text"
+            id="description"
+            name="description"
+            placeholder="Description"
+            required
+          />
         </fieldset>
         <fieldset>
-          <label htmlFor="image">Image(optional)</label>
           <input
             type="file"
             id="image"
             name="image"
             accept="image/*"
+            placeholder="Image(optional"
             required
             onChange={(e) => setImage(e.target.files[0])}
           />
@@ -64,7 +74,7 @@ export const NewPhoto = ({ addPhoto, toggleShow }) => {
           ) : null}
         </fieldset>
 
-        <button>Send Photo</button>
+        <button>Send</button>
         {error ? (
           <Stack sx={{ width: "100%" }} spacing={2}>
             <Alert
@@ -77,6 +87,6 @@ export const NewPhoto = ({ addPhoto, toggleShow }) => {
           </Stack>
         ) : null}
       </form>
-    </>
+    </section>
   );
 };

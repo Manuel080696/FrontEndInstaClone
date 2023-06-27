@@ -107,9 +107,9 @@ export const EditProfile = () => {
         </div>
         <br />
         <button id="Edit" type="submit" onClick={handleGameClick}>
-          Editar Perfil
+          Edit Profile
         </button>
-        <button className="guardar">Guardar Cambios</button>
+        <button className="guardar">Save Changes</button>
       </form>
       {error ? (
         <Stack sx={{ width: "100%" }} spacing={2}>
