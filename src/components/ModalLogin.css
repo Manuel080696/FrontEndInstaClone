@@ -15,3 +15,11 @@
   background-color: white;
   border: 1px solid black;
 }
+
+.modal-fg h1 {
+  font-size: 2rem;
+  text-align: center;
+}
+#btnTitle {
+  font-size: 1rem;
+}

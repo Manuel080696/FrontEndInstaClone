@@ -12,13 +12,11 @@
 }
 
 .modal-fg {
-  background-color: white;
   border: 1px solid black;
   padding: 20px;
   max-width: 500px;
   width: 100%;
 }
-
 .modal-fg h1 {
   margin-top: 0;
 }
@@ -29,11 +27,7 @@
 
 .modal-fg fieldset {
   margin-bottom: 10px;
-}
-
-.modal-fg label {
-  display: block;
-  font-weight: bold;
+  border: none;
 }
 
 .modal-fg input[type="text"],
@@ -48,8 +42,9 @@
   border: 1px solid #ccc;
 }
 
-.modal-fg input[type="file"] {
-  padding: 0;
+form#regis fieldset input {
+  padding: 1rem "";
+  /* border: 1px solid orange; */
 }
 
 .modal-fg button[type="submit"],
@@ -62,9 +57,10 @@
 }
 
 .modal-fg button[type="submit"] {
-  background-color: #4caf50;
-  color: white;
+  background-color: white;
+  color: #001324;
   margin-right: 10px;
+  border-radius: none;
 }
 
 .modal-fg button[type="button"] {
@@ -75,4 +71,13 @@
 .modal-fg p {
   margin-top: 10px;
   color: black;
+}
+
+button#btnSubmit {
+  border-radius: 0;
+}
+
+em {
+  cursor: pointer;
+  text-decoration: underline;
 }

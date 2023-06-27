@@ -52,37 +52,35 @@ export const ModalLogin = () => {
       {show && (
         <section className="modal-bg">
           <section className="modal-fg">
-            <button onClick={closeModal}>❌</button>
+            <box-icon name="x" color="#ffffff" onClick={closeModal} />
             <h1>Login</h1>
             <form onSubmit={handleSubmit}>
               <fieldset>
-                <label htmlFor="email">Email</label>
                 <input
                   type="email"
                   id="email"
                   name="email"
-                  placeholder="Enter your email..."
+                  placeholder="Email..."
                   onChange={(e) => setEmail(e.target.value)}
                   required
                 />
               </fieldset>
               <fieldset>
-                <label htmlFor="password">Password</label>
                 <input
                   type="password"
                   id="password"
                   name="password"
-                  placeholder="Enter your password..."
+                  placeholder="Password..."
                   onChange={(e) => setPassword(e.target.value)}
                   required
                 />
               </fieldset>
-              <button>LogIn</button>
+              <button id="btnTitle">LogIn</button>
               {error ? <p>{error}</p> : null}
             </form>
             <p>
-              Todavía no tienes cuenta?{" "}
-              <button onClick={handleRegisterClick}>Register</button>
+              {`Don't have an account yet?`}
+              <em onClick={handleRegisterClick}> Register </em>
             </p>
           </section>
         </section>

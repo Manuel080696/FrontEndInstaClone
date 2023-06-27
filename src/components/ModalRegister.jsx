@@ -50,80 +50,72 @@ export const ModalRegister = () => {
     <>
       {show && (
         <div className="modal-bg">
-          <div className="modal-fg">
-            <button className="close-button" onClick={closeModal}>
-              ❌
-            </button>
-            <h1>Registro</h1>
-            <form onSubmit={handleSubmit}>
+          <div id="white" className="modal-fg">
+            <box-icon name="x" color="#ffffff" onClick={closeModal} />
+            <h1>Register</h1>
+            <form id="regis" onSubmit={handleSubmit}>
               <fieldset>
-                <label htmlFor="name">Nombre</label>
                 <input
                   type="text"
                   id="name"
                   name="name"
                   required
-                  placeholder="Ingrese su nombre..."
+                  placeholder="Name"
                 />
               </fieldset>
               <fieldset>
-                <label htmlFor="lastName">Apellido</label>
                 <input
                   type="text"
                   id="lastName"
                   name="lastName"
                   required
-                  placeholder="Ingrese su apellido..."
+                  placeholder="Lastname"
                 />
               </fieldset>
               <fieldset>
-                <label htmlFor="email">Correo electrónico</label>
                 <input
                   type="email"
                   id="email"
                   name="email"
                   required
-                  placeholder="Ingrese un correo electrónico..."
+                  placeholder="Email"
                 />
               </fieldset>
               <fieldset>
-                <label htmlFor="username">Nombre de usuario</label>
                 <input
                   type="text"
                   id="username"
                   name="userName"
                   required
-                  placeholder="Ingrese un nombre de usuario..."
+                  placeholder="User name"
                 />
               </fieldset>
               <fieldset>
-                <label htmlFor="pass1">Contraseña</label>
                 <input
                   type="password"
                   id="pass1"
                   name="password"
                   required
-                  placeholder="Ingrese una contraseña..."
+                  placeholder="Password"
                   onChange={(e) => setPass1(e.target.value)}
                 />
               </fieldset>
               <fieldset>
-                <label htmlFor="pass2">Confirmar contraseña</label>
                 <input
                   type="password"
                   id="pass2"
                   name="password2"
                   required
-                  placeholder="Repita la contraseña..."
+                  placeholder="Password confirmed"
                   onChange={(e) => setPass2(e.target.value)}
                 />
               </fieldset>
               <fieldset>
-                <label htmlFor="birthday">Fecha de nacimiento</label>
+                <label htmlFor="birthday">Birthday</label>
                 <input type="date" id="birthday" name="birthDay" />
               </fieldset>
               <fieldset>
-                <label htmlFor="avatar">Imagen (opcional)</label>
+                <label htmlFor="avatar">Image (opcional)</label>
                 <input
                   type="file"
                   id="avatar"
@@ -139,12 +131,13 @@ export const ModalRegister = () => {
                   ></img>
                 ) : null}
               </fieldset>
-              <button type="submit">Registrarse</button>
+              <button id="btnSubmit" type="submit">
+                Register
+              </button>
               {error && <p>{error}</p>}
               <p>
-                <button type="button" onClick={handleLoginClick}>
-                  Login
-                </button>
+                Do you already have an account?
+                <em onClick={handleLoginClick}> Login </em>
               </p>
             </form>
           </div>

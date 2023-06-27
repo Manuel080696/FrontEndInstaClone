@@ -27,14 +27,14 @@ form.posts h1 {
 form.posts fieldset {
   background-color: #e9eff2;
   border: 0;
-  padding: 1rem;
+  padding: 0.8rem 1.2rem;
   display: flex;
   justify-content: center;
 }
 
 form.posts fieldset input {
   width: 100%;
-  padding: 0.3rem;
+  padding: 0.5rem;
   border: 1px solid #da7b13;
   border-radius: 5px;
 }
@@ -52,6 +52,7 @@ form.posts button {
 
 fieldset.avatar button#avatar {
   border: 1px solid #da7b13;
+  margin: 0.5rem 0;
   height: 60px;
   width: 100%;
   border-radius: 8px;

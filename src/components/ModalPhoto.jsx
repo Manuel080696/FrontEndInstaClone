@@ -32,7 +32,7 @@ export const ModalPhoto = ({ show, toggleShow, addPhoto }) => {
               <section className="modal-fg">
                 <box-icon name="x" color="#ffffff" onClick={toggleShow} />
                 <p onClick={toggleShow}>
-                  Debes registrarte para poder subir fotos :)
+                  You must register to upload photos :)
                 </p>
                 <button onClick={openModalRegister}>Register</button>
               </section>
