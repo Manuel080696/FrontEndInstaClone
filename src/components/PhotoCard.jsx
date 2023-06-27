@@ -145,8 +145,10 @@ export function PhotoCard({ photo, removePhoto, unique }) {
         <IconButton aria-label="comment" onClick={handleClick}>
           <CommentIcon />
         </IconButton>
-        {console.log(photo.numComments)}
-        <p>{photo.numComments}</p>
+
+        <p>
+          {photo.numComments === undefined ? photo.comments : photo.numComments}
+        </p>
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}
