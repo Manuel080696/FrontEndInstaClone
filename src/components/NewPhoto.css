@@ -30,7 +30,6 @@ form.posts fieldset {
   padding: 1rem;
   display: flex;
   justify-content: center;
-  width: 86vw;
 }
 
 form.posts fieldset input {

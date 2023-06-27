@@ -24,7 +24,7 @@ export const UserPage = () => {
   }, [id]);
 
   return (
-    <section className="userPage">
+    <section className="userPage page-Principal">
       <h2> {`@${userData.userName} `} </h2>
       <section className="userData">
         <ul>

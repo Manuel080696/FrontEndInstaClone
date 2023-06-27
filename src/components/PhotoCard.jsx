@@ -37,7 +37,7 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export function PhotoCard({ photo, removePhoto }) {
+export function PhotoCard({ photo, removePhoto, unique }) {
   const [expanded, setExpanded] = React.useState(false);
   const navigate = useNavigate();
   const { user, token } = useContext(AuthContext);
@@ -114,14 +114,25 @@ export function PhotoCard({ photo, removePhoto }) {
       {/* Final encabezado------------------------ */}
 
       {/* Contenido foto-------------------------- */}
-      <CardMedia
-        component="img"
-        height="300"
-        image={srcImage}
-        alt={photo.place}
-        onClick={() => navigate(`/photos/${photo.photoID}`)}
-        onDoubleClick={toggleLike}
-      />
+
+      {unique ? (
+        <CardMedia
+          id="photo"
+          component="img"
+          image={srcImage}
+          alt={photo.place}
+          onClick={() => navigate(`/photos/${photo.photoID}`)}
+          onDoubleClick={toggleLike}
+        ></CardMedia>
+      ) : (
+        <CardMedia
+          component="img"
+          image={srcImage}
+          alt={photo.place}
+          onClick={() => navigate(`/photos/${photo.photoID}`)}
+          onDoubleClick={toggleLike}
+        />
+      )}
       {/* Final contenido foto-------------------------- */}
 
       {/* Like, Basura, cometarios---------------------- */}

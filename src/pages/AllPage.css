@@ -1,6 +1,6 @@
 section.page-Principal {
   position: relative;
-  min-height: 85.8vh;
+  min-height: 84.3vh;
   flex: 1 0 auto;
 }
 
@@ -19,18 +19,22 @@ section.juistify {
 
 @media (min-width: 768px) and (max-width: 899px) {
   section.page-Principal {
-    min-height: 85.5vh;
+    min-height: 89.5vh;
   }
 }
 
 @media (min-width: 900px) and (max-width: 1199px) {
   section.page-Principal {
-    min-height: 88.8vh;
+    min-height: 90.8vh;
   }
 }
 
 @media (min-width: 1200px) {
   section.page-Principal {
-    min-height: 86.4vh;
+    min-height: 88.5vh;
   }
+}
+
+.uno img {
+  height: 300px;
 }

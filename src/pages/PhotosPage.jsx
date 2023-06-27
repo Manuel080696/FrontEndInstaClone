@@ -17,6 +17,7 @@ export const PhotosPage = () => {
   const { token } = useContext(AuthContext);
   const [post, setPost] = useState([]);
   const { removePhoto } = usePhotos();
+  const [unique, setUnique] = useState(true);
 
   useEffect(() => {
     const loadPhoto = async () => {
@@ -41,8 +42,9 @@ export const PhotosPage = () => {
     return <ErrorMessage message={error} />;
   }
   return (
-    <section className="page-Principal juistify ">
-      <PhotoCard photo={post} removePhoto={removePhoto} />
+    <section className="page-Principal juistify picture-back imge">
+      {console.log([post].length)}
+      <PhotoCard photo={post} removePhoto={removePhoto} unique={unique} />
     </section>
   );
 };

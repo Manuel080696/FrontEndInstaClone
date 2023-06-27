@@ -1,6 +1,5 @@
 /* Página principal */
 section.userPage {
-  min-height: 86vh;
   width: 100vw;
   background-color: #e9eff2;
   color: #001324;
@@ -8,6 +7,7 @@ section.userPage {
 section.userPage h2 {
   background-color: white;
   padding: 0.5rem;
+  width: 100%;
 }
 
 /* Avatar y nombre usuario */
@@ -19,6 +19,7 @@ section.userData ul {
   gap: 1rem;
   border: 1px solid #e9eff2;
   background-color: white;
+  width: 100vw;
 }
 
 section.userData ul li.avatar img {
@@ -57,6 +58,7 @@ section.user-photos-list ul li img {
   width: 100%;
   object-fit: cover;
 }
+
 @media (min-width: 768px) and (max-width: 1199px) {
   section.user-photos-list ul {
     max-width: 1100px;
