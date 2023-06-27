@@ -1,9 +1,10 @@
 footer {
   position: sticky;
-  bottom: -1px;
+  bottom: 0;
   width: 100%;
   background-color: white;
 }
+
 footer ul {
   display: flex;
   justify-content: space-around;
@@ -12,7 +13,7 @@ footer ul {
 }
 
 footer ul li {
-  padding: 0.3rem;
+  padding: 10px;
 }
 
 footer ul li img {

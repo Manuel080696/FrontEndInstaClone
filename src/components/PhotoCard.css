@@ -1,5 +1,12 @@
 #postCard {
   width: 100vw;
+  height: auto;
+  margin: 0.5rem 0;
+}
+
+#postCard img {
+  width: 100%;
+  height: auto;
   margin: 0.5rem 0;
 }
 
@@ -18,8 +25,14 @@
   color: #228cc4;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 1199px) {
   #postCard {
-    width: 60vw;
+    max-width: 1000px;
+  }
+}
+
+@media (min-width: 1200px) {
+  #postCard {
+    max-width: 1000px;
   }
 }

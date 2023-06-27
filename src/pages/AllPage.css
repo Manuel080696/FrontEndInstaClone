@@ -1,10 +1,36 @@
 section.page-Principal {
-  min-height: 86vh;
+  position: relative;
+  min-height: 85.8vh;
+  flex: 1 0 auto;
 }
 
 section.picture-back {
-  background-image: url("/fondo.jpeg");
-  background-repeat: no-repeat;
-  background-position: right;
-  background-size: cover;
+  background: url("/fondoSky.jpg");
+  background-size: contain;
+  background-repeat: repeat;
+  background-position: calc(50% + 10px) calc(50% + 10px);
+}
+
+section.juistify {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 768px) and (max-width: 899px) {
+  section.page-Principal {
+    min-height: 85.5vh;
+  }
+}
+
+@media (min-width: 900px) and (max-width: 1199px) {
+  section.page-Principal {
+    min-height: 88.8vh;
+  }
+}
+
+@media (min-width: 1200px) {
+  section.page-Principal {
+    min-height: 86.4vh;
+  }
 }

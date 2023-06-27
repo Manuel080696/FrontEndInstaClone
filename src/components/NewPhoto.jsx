@@ -13,13 +13,15 @@ export const NewPhoto = ({ addPhoto, toggleShow }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const data = new FormData(e.target);
+      const data = new FormData();
+      data.append("place", e.target.place.value);
+      data.append("description", e.target.description.value);
+      data.append("image", image);
 
       const photo = await sendPhotoService({ data, token });
 
-      photo.Date = new Date().toLocaleDateString("es-ES");
       photo.avatar = user.avatar || user.updateAvatar;
-      photo.userPosted = user.UserName;
+      photo.userPosted = user.userName;
 
       addPhoto(photo);
       e.target.reset();
@@ -29,6 +31,17 @@ export const NewPhoto = ({ addPhoto, toggleShow }) => {
       setError(error.message);
     }
   };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    const file = e.dataTransfer.files[0];
+    setImage(file);
+  };
+
+  const handleDragOver = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <section className="modal">
       <form className="posts" onSubmit={handleSubmit}>
@@ -55,26 +68,40 @@ export const NewPhoto = ({ addPhoto, toggleShow }) => {
             required
           />
         </fieldset>
-        <fieldset>
-          <input
-            type="file"
-            id="image"
-            name="image"
-            accept="image/*"
-            placeholder="Image(optional"
-            required
-            onChange={(e) => setImage(e.target.files[0])}
-          />
-          {image ? (
-            <img
-              src={URL.createObjectURL(image)}
-              alt="Preview"
-              style={{ width: "100px" }}
-            ></img>
-          ) : null}
+        <fieldset className="avatar">
+          <label htmlFor="image"></label>
+          <div
+            className="drop-area"
+            onDrop={handleDrop}
+            onDragOver={handleDragOver}
+          >
+            <p>Drag and drop an image here, or click to select a file</p>
+
+            <input
+              id="avatarUploads"
+              type="file"
+              name="avatar"
+              accept="image/*"
+              style={{ display: "none" }}
+              onChange={(e) => setImage(e.target.files[0])}
+            />
+
+            <button
+              onDragOver={handleDragOver}
+              onDrop={handleDrop}
+              id="avatar"
+              type="button"
+              style={
+                image
+                  ? { backgroundImage: `url(${URL.createObjectURL(image)})` }
+                  : { backgroundImage: `url("/drop-files-here-extra.jpg")` }
+              }
+              onClick={() => document.getElementById("avatarUploads").click()}
+            ></button>
+          </div>
         </fieldset>
 
-        <button>Send</button>
+        <button type="submit">Send</button>
         {error ? (
           <Stack sx={{ width: "100%" }} spacing={2}>
             <Alert

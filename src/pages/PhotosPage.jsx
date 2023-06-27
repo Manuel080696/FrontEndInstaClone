@@ -8,6 +8,7 @@ import { AuthContext } from "../context/AuthContext";
 import { getSinglePhotoService } from "../services";
 import usePhotos from "../hooks/usePhotos";
 import { PhotoCard } from "../components/PhotoCard";
+import "./AllPage.css";
 
 export const PhotosPage = () => {
   const { id } = useParams();
@@ -22,7 +23,6 @@ export const PhotosPage = () => {
       try {
         const data = await getSinglePhotoService(id, token);
         setPost(data);
-        console.log(data);
       } catch (error) {
         setError(error.message);
       } finally {
@@ -40,5 +40,9 @@ export const PhotosPage = () => {
   if (error) {
     return <ErrorMessage message={error} />;
   }
-  return <PhotoCard photo={post} removePhoto={removePhoto} />;
+  return (
+    <section className="page-Principal juistify ">
+      <PhotoCard photo={post} removePhoto={removePhoto} />
+    </section>
+  );
 };

@@ -1,7 +1,11 @@
-aside.page-Principal {
+section.page-Principal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   color: #001324;
 }
-aside.page-Principal h1 {
+
+section.page-Principal h1 {
   font-size: 2rem;
   text-align: center;
   padding: 0.6rem;

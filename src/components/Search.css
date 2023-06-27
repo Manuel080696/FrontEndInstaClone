@@ -1,6 +1,11 @@
+#searchAside {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+}
+
 form.search {
   display: flex;
-  justify-content: center;
 }
 form.search input {
   width: 100vw;
@@ -31,6 +36,7 @@ form.search button:hover {
 
 ul.search {
   padding: 0;
+  height: auto;
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(2, 1fr);
@@ -59,9 +65,6 @@ ul.search li img {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-
-    background-image: url("/fondo.jpeg");
-    background-size: contain;
   }
   ul.search {
     max-width: 1200px;

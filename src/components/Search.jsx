@@ -15,7 +15,6 @@ function Search() {
       const data = await searchPhotosService(searchTerm);
       setPhotos(data);
     } catch (error) {
-      console.log(error);
       setError(error.message);
     } finally {
       setSearchTerm("");
@@ -23,7 +22,7 @@ function Search() {
   };
 
   return (
-    <section>
+    <aside id="searchAside">
       <form className="search" onSubmit={handleSearch}>
         <input
           type="search"
@@ -53,7 +52,7 @@ function Search() {
           ))}
         </ul>
       </section>
-    </section>
+    </aside>
   );
 }
 export default Search;

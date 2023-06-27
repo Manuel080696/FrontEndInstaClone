@@ -7,7 +7,7 @@ export const EditProfilePage = () => {
   const { token } = useContext(AuthContext);
 
   return (
-    <section className="page-Principal">
+    <section className="page-Principal juistify">
       <EditProfile token={token} />
     </section>
   );

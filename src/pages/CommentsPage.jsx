@@ -71,7 +71,7 @@ export const CommentsPage = () => {
     }
   };
   return (
-    <aside className="page-Principal">
+    <section className="page-Principal">
       <h1>Comments</h1>
       {token ? (
         <div>
@@ -127,6 +127,6 @@ export const CommentsPage = () => {
       ) : (
         <ModalLogin />
       )}
-    </aside>
+    </section>
   );
 };
