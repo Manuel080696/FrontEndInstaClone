@@ -145,7 +145,7 @@ export function PhotoCard({ photo, removePhoto, unique }) {
         <IconButton aria-label="comment" onClick={handleClick}>
           <CommentIcon />
         </IconButton>
-
+        {console.log(photo.numComments)}
         <p>{photo.numComments}</p>
         <ExpandMore
           expand={expanded}

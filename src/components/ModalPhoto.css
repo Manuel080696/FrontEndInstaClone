@@ -12,6 +12,7 @@
 }
 
 .modal-fg {
+  width: 90vw;
   position: relative;
   padding: 3rem 1rem 1rem 1rem;
   background-color: #001324;
@@ -41,4 +42,9 @@
   position: absolute;
   top: 1rem;
   right: 1rem;
+}
+
+#modalRegister {
+  box-shadow: 4px 4px 1px #228cc4;
+  margin-bottom: 1.3rem;
 }

@@ -34,7 +34,9 @@ export const ModalPhoto = ({ show, toggleShow, addPhoto }) => {
                 <p onClick={toggleShow}>
                   You must register to upload photos :)
                 </p>
-                <button onClick={openModalRegister}>Register</button>
+                <button id="modalRegister" onClick={openModalRegister}>
+                  Register
+                </button>
               </section>
             </section>
           )}

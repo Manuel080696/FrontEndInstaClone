@@ -75,6 +75,7 @@ form#regis fieldset input {
 
 button#btnSubmit {
   border-radius: 0;
+  box-shadow: 4px 4px 1px #228cc4;
 }
 
 em {
