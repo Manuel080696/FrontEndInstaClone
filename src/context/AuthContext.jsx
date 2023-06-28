@@ -11,11 +11,16 @@ export const AuthProviderComponent = ({ children }) => {
   );
 
   const [show, setShow] = useState(false);
+  const [showRegister, setShowRegister] = useState();
   const [photos, setPhotos] = useState([]);
 
   const toggleShow = () => {
     setShow(!show);
   };
+
+  // const toggleShowRegister = () => {
+  //   setShowResgister(!showResgister);
+  // };
 
   useEffect(() => {
     localStorage.setItem("token", token);
@@ -45,6 +50,9 @@ export const AuthProviderComponent = ({ children }) => {
         setUser,
         show,
         toggleShow,
+        // toggleShowRegister,
+        setShowRegister,
+        showRegister,
         photos,
         setPhotos,
       }}

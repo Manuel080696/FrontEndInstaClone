@@ -5,7 +5,7 @@ import { registerUserService } from "../services";
 import { AuthContext } from "../context/AuthContext";
 
 export const ModalRegister = () => {
-  const { toggleShowRegister } = useContext(AuthContext);
+  const { setShowRegister } = useContext(AuthContext);
   const [pass1, setPass1] = useState("");
   const [pass2, setPass2] = useState("");
   const [avatar, setAvatar] = useState(null);
@@ -38,7 +38,7 @@ export const ModalRegister = () => {
 
   const closeModal = () => {
     setShow(false);
-    toggleShowRegister();
+    setShowRegister(false);
   };
 
   const handleLoginClick = () => {

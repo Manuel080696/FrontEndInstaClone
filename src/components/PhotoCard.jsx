@@ -111,24 +111,14 @@ export function PhotoCard({ photo, removePhoto, unique }) {
 
       {/* Contenido foto-------------------------- */}
 
-      {unique ? (
-        <CardMedia
-          id="photo"
-          component="img"
-          image={srcImage}
-          alt={photo.place}
-          onClick={() => navigate(`/photos/${photo.photoID}`)}
-          onDoubleClick={toggleLike}
-        ></CardMedia>
-      ) : (
-        <CardMedia
-          component="img"
-          image={srcImage}
-          alt={photo.place}
-          onClick={() => navigate(`/photos/${photo.photoID}`)}
-          onDoubleClick={toggleLike}
-        />
-      )}
+      <CardMedia
+        component="img"
+        image={srcImage}
+        alt={photo.place}
+        onClick={() => navigate(`/photos/${photo.photoID}`)}
+        onDoubleClick={toggleLike}
+      />
+
       {/* Final contenido foto-------------------------- */}
 
       {/* Like, Basura, cometarios---------------------- */}
@@ -146,11 +136,6 @@ export function PhotoCard({ photo, removePhoto, unique }) {
           {unique === false && photo.numComments === undefined
             ? photo.comments
             : photo.numComments}
-
-          {/* {unique === true && photo.numComments !== undefined
-            ? photo.numComments
-            : photo.comments.length}
-          {console.log(photo)} */}
         </p>
         <ExpandMore
           expand={expanded}

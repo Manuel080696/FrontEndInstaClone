@@ -1,20 +1,15 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { NewPhoto } from "./NewPhoto";
 import { ModalRegister } from "./ModalRegister";
 import "./ModalPhoto.css";
 
 export const ModalPhoto = ({ show, toggleShow, addPhoto }) => {
-  const { user } = useContext(AuthContext);
-  const [showModalRegister, setShowModalRegister] = useState(false);
+  const { user, showRegister, setShowRegister } = useContext(AuthContext);
 
   const openModalRegister = () => {
     toggleShow();
-    setShowModalRegister(true);
-  };
-
-  const closeModalRegister = () => {
-    setShowModalRegister(false);
+    setShowRegister(true);
   };
 
   return (
@@ -42,7 +37,7 @@ export const ModalPhoto = ({ show, toggleShow, addPhoto }) => {
           )}
         </>
       )}
-      {showModalRegister && <ModalRegister toggleShow={closeModalRegister} />}
+      {showRegister && <ModalRegister />}
     </>
   );
 };
