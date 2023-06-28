@@ -70,4 +70,12 @@ ul.search li img {
     max-width: 1200px;
     grid-template-columns: repeat(4, 1fr);
   }
+
+  #searchAside {
+    width: 98vw;
+  }
+
+  form.search input {
+    width: 97vw;
+  }
 }
