@@ -1,11 +1,11 @@
 section.page-Principal {
   position: relative;
-  min-height: 84.3vh;
+  min-height: 86vh;
   flex: 1 0 auto;
 }
 
 section.picture-back {
-  background: url("/fondoSky.jpg");
+  background: url("/fondoSky.webp");
   background-size: contain;
   background-repeat: repeat;
   background-position: calc(50% + 10px) calc(50% + 10px);

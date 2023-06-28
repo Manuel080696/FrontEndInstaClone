@@ -147,7 +147,14 @@ export function PhotoCard({ photo, removePhoto, unique }) {
         </IconButton>
 
         <p>
-          {photo.numComments === undefined ? photo.comments : photo.numComments}
+          {unique === false && photo.numComments === undefined
+            ? photo.comments
+            : photo.numComments}
+
+          {/* {unique === true && photo.numComments !== undefined
+            ? photo.numComments
+            : photo.comments.length}
+          {console.log(photo)} */}
         </p>
         <ExpandMore
           expand={expanded}
