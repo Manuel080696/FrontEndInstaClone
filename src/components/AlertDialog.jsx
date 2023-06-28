@@ -5,7 +5,13 @@ import DialogActions from "@mui/material/DialogActions";
 
 import DialogTitle from "@mui/material/DialogTitle";
 
-export default function AlertDialog({ deleteService, id, text, setState }) {
+export default function AlertDialog({
+  deleteService,
+  id,
+  text,
+  setState,
+  setIsMenuOpen,
+}) {
   const [open, setOpen] = React.useState(true);
 
   const handleClose = () => {
@@ -15,6 +21,7 @@ export default function AlertDialog({ deleteService, id, text, setState }) {
   const buttonYes = (id) => {
     id ? deleteService(id) : deleteService();
     setState(false);
+    setIsMenuOpen ? setIsMenuOpen(false) : null;
   };
 
   return (

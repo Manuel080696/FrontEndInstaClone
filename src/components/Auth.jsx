@@ -87,6 +87,7 @@ export const Auth = () => {
                     deleteService={logOut}
                     text={"Are you sure you want to quit?"}
                     setState={setLogoutUser}
+                    setIsMenuOpen={setIsMenuOpen}
                   />
                 ) : null}
               </ul>
