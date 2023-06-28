@@ -42,7 +42,7 @@ function Search() {
         />
       ) : null}
       <section className="search">
-        <ul className="search">
+        <ul className="search" id="cua">
           {photos.map((photo) => (
             <li key={photo.photoID}>
               <img

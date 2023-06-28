@@ -8,14 +8,16 @@
   width: 100%;
   height: auto;
   margin: 0.5rem 0;
+  align-self: center;
 }
 
 /* Avatar---------------------- */
 
-#tutu img {
+#avatarImg #photo {
   height: 40px;
   object-fit: cover;
   object-position: center;
+  background-color: gray;
 }
 .avatarCard {
   border: 1.5px solid #228cc4;
@@ -34,10 +36,22 @@
   #postCard {
     max-width: 1000px;
   }
+
+  #postCard #photo {
+    width: 100%;
+    object-fit: contain;
+    height: 30rem;
+  }
 }
 
 @media (min-width: 1200px) {
   #postCard {
     max-width: 1000px;
+  }
+
+  #postCard #photo {
+    width: 100%;
+    object-fit: contain;
+    height: 41rem;
   }
 }

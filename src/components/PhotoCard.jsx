@@ -91,7 +91,7 @@ export function PhotoCard({ photo, removePhoto }) {
         // Imagen rendonda con avatar
         avatar={
           <Link to={`/user/${photo.userID}`}>
-            <Avatar id="tutu" className="avatarCard" aria-label="recipe">
+            <Avatar id="avatarImage" className="avatarCard" aria-label="recipe">
               <img
                 src={`${import.meta.env.VITE_APP_BACKEND}/uploads/avatar/${
                   photo.avatar
