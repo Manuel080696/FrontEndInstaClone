@@ -1,3 +1,7 @@
+aside#profile-edit {
+  z-index: 0;
+}
+
 aside#profile-edit h2 {
   font-size: 2rem;
   padding: 1rem;
@@ -7,6 +11,7 @@ aside#profile-edit form {
   display: flex;
   flex-direction: column;
 }
+
 aside#profile-edit form label.avatar {
   padding-bottom: 1rem;
 }
