@@ -9,8 +9,11 @@ import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import Chip from "@mui/joy/Chip";
 import ChipDelete from "@mui/joy/ChipDelete";
+import { useState } from "react";
+import AlertDialog from "./AlertDialog";
 
 export const Comment = ({ comment, user, deleteComment }) => {
+  const [delComment, setDelComment] = useState(false);
   return (
     <>
       <List sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
@@ -49,8 +52,9 @@ export const Comment = ({ comment, user, deleteComment }) => {
               endDecorator={
                 <ChipDelete
                   onDelete={() => {
-                    if (window.confirm("Are you sure?"))
-                      deleteComment(comment.id);
+                    setDelComment(!delComment.comment);
+                    // if (window.confirm("Are you sure?"))
+                    //   deleteComment(comment.id);
                   }}
                 />
               }
@@ -61,6 +65,14 @@ export const Comment = ({ comment, user, deleteComment }) => {
         </ListItem>
         <Divider variant="inset" component="li" />
       </List>
+      {delComment ? (
+        <AlertDialog
+          deleteService={deleteComment}
+          id={comment.id}
+          text={"¿Are you sure you want to delete the comment?"}
+          setState={setDelComment}
+        />
+      ) : null}
     </>
   );
 };
