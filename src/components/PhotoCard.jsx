@@ -37,18 +37,20 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export function PhotoCard({ photo, removePhoto, unique }) {
+export function PhotoCard({ photo, removePhoto }) {
   const [expanded, setExpanded] = React.useState(false);
   const navigate = useNavigate();
   const { user, token } = useContext(AuthContext);
   const [error, setError] = useState("");
   const [liked, setLiked] = useState(photo.dioLike);
-  const [totalikes, setTotalikes] = useState(photo.numLikes);
+  const [totalikes, setTotalikes] = useState(
+    photo.numLikes ? photo.numLikes : 0
+  );
   const [deletePhoto, setDeletePhoto] = useState(false);
   const srcImage = `${import.meta.env.VITE_APP_BACKEND}/uploads/posts/${
     photo.photoName
   }`;
-  photo.comments = photo.comments ? photo.comments : 0;
+
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
@@ -81,6 +83,8 @@ export function PhotoCard({ photo, removePhoto, unique }) {
     navigate(`/comments/${photo.photoID}`);
   };
 
+  console.log(photo);
+
   return (
     <Card id="postCard">
       {/* Encabezado ----------------------*/}
@@ -112,13 +116,13 @@ export function PhotoCard({ photo, removePhoto, unique }) {
       {/* Contenido foto-------------------------- */}
 
       <CardMedia
+        id="photo"
         component="img"
         image={srcImage}
         alt={photo.place}
         onClick={() => navigate(`/photos/${photo.photoID}`)}
         onDoubleClick={toggleLike}
-      />
-
+      ></CardMedia>
       {/* Final contenido foto-------------------------- */}
 
       {/* Like, Basura, cometarios---------------------- */}
@@ -132,11 +136,7 @@ export function PhotoCard({ photo, removePhoto, unique }) {
           <CommentIcon />
         </IconButton>
 
-        <p>
-          {unique === false && photo.numComments === undefined
-            ? photo.comments
-            : photo.numComments}
-        </p>
+        <p>{photo.numComments}</p>
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}
@@ -166,8 +166,8 @@ export function PhotoCard({ photo, removePhoto, unique }) {
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography paragraph>
-            {photo.Date
-              ? photo.Date
+            {!photo.date
+              ? new Date().toLocaleDateString("es-ES")
               : new Date(photo.date).toLocaleDateString("es-ES")}
           </Typography>
           <Typography paragraph>{photo.description}</Typography>

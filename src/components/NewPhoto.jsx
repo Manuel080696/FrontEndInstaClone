@@ -22,6 +22,7 @@ export const NewPhoto = ({ addPhoto, toggleShow }) => {
 
       photo.avatar = user.avatar || user.updateAvatar;
       photo.userPosted = user.UserName;
+      photo.numComments = 0;
 
       addPhoto(photo);
       e.target.reset();

@@ -23,7 +23,7 @@ export const Avatar = () => {
           ) : (
             <img
               className="avatar footer"
-              src="./avatarDefault.png"
+              src="/avatarDefault.png"
               alt={user.userName}
             />
           )}
@@ -32,7 +32,7 @@ export const Avatar = () => {
         <li>
           <img
             className="avatar footer"
-            src="./avatarDefault.png"
+            src="/avatarDefault.png"
             alt={user.userName}
           />
         </li>

@@ -35,7 +35,11 @@ function Search() {
         </button>
       </form>
       {error ? (
-        <CustomizedSnackbars message={error} severity={"error"} />
+        <CustomizedSnackbars
+          message={error}
+          severity={"error"}
+          setError={setError}
+        />
       ) : null}
       <section className="search">
         <ul className="search">
