@@ -11,14 +11,15 @@
 }
 
 /* Avatar---------------------- */
-.avatarCard img {
+
+#tutu img {
   height: 40px;
-  height: 40px;
-  object-fit: contain;
-  background-color: white;
+  object-fit: cover;
+  object-position: center;
 }
 .avatarCard {
   border: 1.5px solid #228cc4;
+  background-color: white;
 }
 
 #headerP {
