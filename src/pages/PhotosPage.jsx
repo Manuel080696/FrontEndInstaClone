@@ -43,7 +43,6 @@ export const PhotosPage = () => {
   }
   return (
     <section className="page-Principal juistify picture-back imge">
-      {console.log([post].length)}
       <PhotoCard photo={post} removePhoto={removePhoto} unique={unique} />
     </section>
   );
