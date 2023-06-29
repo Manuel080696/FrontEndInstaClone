@@ -98,7 +98,7 @@ export const Auth = () => {
         <ul>
           <li>
             <button className="openLoginModal" onClick={openLoginModal}>
-              <box-icon name="power-off" color="#FFFFFF"></box-icon>
+              <box-icon name="log-in-circle" color="#ffffff"></box-icon>
             </button>
           </li>
         </ul>
