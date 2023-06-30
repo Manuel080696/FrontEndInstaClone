@@ -45,7 +45,7 @@
 }
 
 .editPostContainer {
-  position: absolute;
+  position: relative;
   background-color: white;
   right: 2rem;
   top: 1rem;

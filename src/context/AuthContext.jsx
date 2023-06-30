@@ -9,7 +9,7 @@ export const AuthProviderComponent = ({ children }) => {
   const [user, setUser] = useState(
     JSON.parse(localStorage.getItem("user")) || ""
   );
-
+  const [showEdit, setShowEdit] = useState(false);
   const [show, setShow] = useState(false);
   const [showRegister, setShowRegister] = useState();
   const [photos, setPhotos] = useState([]);
@@ -52,6 +52,8 @@ export const AuthProviderComponent = ({ children }) => {
         setPhotos,
         showResetModal,
         setShowResetModal,
+        setShowEdit,
+        showEdit,
       }}
     >
       {children}

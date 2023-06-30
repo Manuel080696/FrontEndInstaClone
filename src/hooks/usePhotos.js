@@ -22,10 +22,19 @@ const usePhotos = (id) => {
       }
     };
     loadPhotos();
-  }, [id, setPhotos, token, loading]);
+  }, [id, setPhotos, token, loading, photos]);
 
   const addPhoto = (photo) => {
     setPhotos([photo, ...photos]);
+    setLoading(false);
+  };
+  const editPhoto = (photo) => {
+    const obj = {
+      ...photo,
+    };
+    photo.description = obj.description;
+    photo.place = obj.place;
+    photo.updatePhoto = obj.updatePhoto;
     setLoading(false);
   };
 
@@ -40,6 +49,7 @@ const usePhotos = (id) => {
     error,
     addPhoto,
     removePhoto,
+    editPhoto,
   };
 };
 

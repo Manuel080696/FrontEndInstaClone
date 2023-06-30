@@ -280,3 +280,25 @@ export const resetUserServices = async ({ recoverCode, newPassword }) => {
   }
   return json.message;
 };
+
+export const editPostService = async ({ photoID, data, token }) => {
+  // console.log(photoID);
+  const response = await fetch(
+    `${import.meta.env.VITE_APP_BACKEND}/photos/${photoID}`,
+    {
+      method: "PATCH",
+      body: data,
+      headers: {
+        Authorization: token,
+      },
+    }
+  );
+  const json = await response.json();
+  // console.log(json);
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+
+  return json.data[0];
+};

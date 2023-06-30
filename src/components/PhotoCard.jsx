@@ -27,6 +27,7 @@ import "./PhotoCard.css";
 import AlertDialog from "./AlertDialog";
 import { useEffect } from "react";
 import { Loading } from "./Loading";
+import { ModalEditPost } from "./ModalEditPost";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -42,7 +43,7 @@ const ExpandMore = styled((props) => {
 export function PhotoCard({ photo, removePhoto }) {
   const [expanded, setExpanded] = React.useState(false);
   const navigate = useNavigate();
-  const { user, token } = useContext(AuthContext);
+  const { user, token, showEdit, setShowEdit } = useContext(AuthContext);
   const [error, setError] = useState("");
 
   const [totalikes, setTotaLikes] = useState(
@@ -110,18 +111,22 @@ export function PhotoCard({ photo, removePhoto }) {
             onClick={() => setShowEditPost(!showEditPost)}
           >
             <MoreVertIcon />
-            {user && showEditPost && (
-              <ul className="editPostContainer">
-                <li>
-                  <button>Edit post</button>
-                </li>
-              </ul>
-            )}
           </IconButton>
         }
         title={<p id="headerP">{photo.userPosted}</p>}
         subheader={photo.place}
       />
+      {/* Edit post -------------------- */}
+      {showEditPost && (
+        <section
+          className="editPostContainer"
+          onClick={() => setShowEdit(true)}
+        >
+          Edit post
+          {showEdit && <ModalEditPost photo={photo} />}
+        </section>
+      )}
+
       {/* Final encabezado------------------------ */}
 
       {/* Contenido foto-------------------------- */}
