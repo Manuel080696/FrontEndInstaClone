@@ -241,3 +241,42 @@ export const editUserServices = async ({ token, data }) => {
 
   return json.data[0];
 };
+
+export const recoverUserServices = async ({ email }) => {
+  const response = await fetch(
+    `${import.meta.env.VITE_APP_BACKEND}/user/recover-password`,
+    {
+      method: "POST",
+      body: JSON.stringify({ email }),
+
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+  return json;
+};
+
+export const resetUserServices = async ({ recoverCode, newPassword }) => {
+  const response = await fetch(
+    `${import.meta.env.VITE_APP_BACKEND}/user/reset-password`,
+    {
+      method: "POST",
+      body: JSON.stringify({ recoverCode, newPassword }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+  return json.message;
+};

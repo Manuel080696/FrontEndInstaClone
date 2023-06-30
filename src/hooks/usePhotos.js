@@ -16,10 +16,9 @@ const usePhotos = (id) => {
           : await getAllPhotosService(token);
 
         setPhotos(data);
+        setLoading(false);
       } catch (error) {
         setError(error.message);
-      } finally {
-        setLoading(false);
       }
     };
     loadPhotos();

@@ -7,10 +7,12 @@ import "./HomePage.css";
 export const HomePage = () => {
   const { photos, loading, error, removePhoto } = usePhotos();
 
+  console.log(error);
+
   if (loading) {
     return <Loading />;
   }
-  if (error) {
+  if (error === "You must login again") {
     return <ErrorMessage message={error} />;
   }
 

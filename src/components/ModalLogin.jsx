@@ -4,16 +4,18 @@ import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import "./ModalLogin.css";
 import { ModalRegister } from "./ModalRegister";
+import { ModalRecover } from "./ModalRecover";
+import { ModalReset } from "./ModalReset";
 
 export const ModalLogin = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const { logIn, isAuthenticated } = useContext(AuthContext);
-  const [showMenu, setShowMenu] = useState(!isAuthenticated);
+  const { logIn, showResetModal, setShowResetModal } = useContext(AuthContext);
   const [show, setShow] = useState(true);
   const [showRegisterModal, setShowRegisterModal] = useState(false);
+  const [showRecoverModal, setShowRecoverModal] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,7 +25,7 @@ export const ModalLogin = () => {
 
       logIn(data[0]);
       navigate("/");
-      setShowMenu(false);
+      setShow(false);
     } catch (error) {
       setError(error.message);
     }
@@ -38,14 +40,10 @@ export const ModalLogin = () => {
     setShow(false);
   };
 
-  const closeModals = () => {
-    setShowRegisterModal(false);
-    setShow(true);
+  const handleRecoverClick = () => {
+    setShow(false);
+    setShowRecoverModal(true);
   };
-
-  if (!showMenu) {
-    return null;
-  }
 
   return (
     <>
@@ -78,6 +76,9 @@ export const ModalLogin = () => {
               <button id="btnTitle">LogIn</button>
               {error ? <p>{error}</p> : null}
             </form>
+            <p
+              onClick={handleRecoverClick}
+            >{`Have you forgotten your password?`}</p>
             <p>
               {`Don't have an account yet?`}
               <em onClick={handleRegisterClick}> Register </em>
@@ -85,7 +86,15 @@ export const ModalLogin = () => {
           </section>
         </section>
       )}
-      {showRegisterModal && <ModalRegister closeModal={closeModals} />}
+      {showRegisterModal && <ModalRegister />}
+      {showRecoverModal && (
+        <ModalRecover
+          showRecoverModal={showRecoverModal}
+          setShowRecoverModal={setShowRecoverModal}
+          setShowResetModal={setShowResetModal}
+        />
+      )}
+      {showResetModal && <ModalReset setShowResetModal={setShowResetModal} />}
     </>
   );
 };

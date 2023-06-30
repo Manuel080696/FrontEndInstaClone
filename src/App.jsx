@@ -15,6 +15,8 @@ import { EditProfilePage } from "./pages/EditProfilePage";
 import { SearchPage } from "./pages/SearchPage";
 import { ModalLogin } from "./components/ModalLogin";
 import { ModalRegister } from "./components/ModalRegister";
+import { ModalRecover } from "./components/ModalRecover";
+import { ModalReset } from "./components/ModalReset";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -24,6 +26,8 @@ const router = createBrowserRouter(
       <Route path="user/:id" element={<UserPage />} />
       <Route path="modallogin" element={<ModalLogin />} />
       <Route path="modalregister" element={<ModalRegister />} />
+      <Route path="modalrecover" element={<ModalRecover />} />
+      <Route path="modalreset" element={<ModalReset />} />
       <Route path="comments/:id" element={<CommentsPage />} />
       <Route path="user/profile" element={<EditProfilePage />} />
       <Route path="search" element={<SearchPage />} />

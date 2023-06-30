@@ -1,0 +1,84 @@
+.modal-bg {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-fg {
+  border: 1px solid black;
+  padding: 20px;
+  max-width: 500px;
+  width: 100%;
+}
+.modal-fg h1 {
+  margin-top: 0;
+}
+
+.modal-fg form {
+  margin-top: 20px;
+}
+
+.modal-fg fieldset {
+  margin-bottom: 10px;
+  border: none;
+}
+
+.modal-fg input[type="text"],
+.modal-fg input[type="email"],
+.modal-fg input[type="password"],
+.modal-fg input[type="date"],
+.modal-fg input[type="file"] {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+form#regis fieldset input {
+  padding: 1rem "";
+  /* border: 1px solid orange; */
+}
+
+.modal-fg button[type="submit"],
+.modal-fg button[type="button"] {
+  padding: 8px 16px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+.modal-fg button[type="submit"] {
+  background-color: white;
+  color: #001324;
+  margin-right: 10px;
+  border-radius: none;
+}
+
+.modal-fg button[type="button"] {
+  background-color: #f44336;
+  color: white;
+}
+
+.modal-fg p {
+  margin-top: 10px;
+  color: black;
+}
+
+button#btnSubmit {
+  border-radius: 0;
+  box-shadow: 4px 4px 1px #228cc4;
+}
+
+em {
+  cursor: pointer;
+  text-decoration: underline;
+}

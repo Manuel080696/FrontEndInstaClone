@@ -1,0 +1,26 @@
+.modal-bg {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-fg {
+  background-color: white;
+  border: 1px solid black;
+}
+
+.modal-fg h1 {
+  font-size: 2rem;
+  text-align: center;
+}
+#btnTitle {
+  font-size: 1rem;
+  box-shadow: 4px 4px 1px #228cc4;
+}
