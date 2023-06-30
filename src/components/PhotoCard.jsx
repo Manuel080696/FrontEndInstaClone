@@ -42,7 +42,7 @@ export function PhotoCard({ photo, removePhoto }) {
   const navigate = useNavigate();
   const { user, token } = useContext(AuthContext);
   const [error, setError] = useState("");
-  const [liked, setLiked] = useState(photo.dioLike);
+  const [liked, setLiked] = useState();
   const [totalikes, setTotalikes] = useState(
     photo.numLikes ? photo.numLikes : 0
   );
@@ -72,9 +72,6 @@ export function PhotoCard({ photo, removePhoto }) {
       setLiked(data.vote);
       setTotalikes(data.likes);
     } catch (error) {
-      if (error.message == "Token incorrecto") {
-        return setError("Sesión expirada, vuelve a logearte por favor");
-      }
       setError(error.message);
     }
   };
@@ -126,7 +123,11 @@ export function PhotoCard({ photo, removePhoto }) {
       {/* Like, Basura, cometarios---------------------- */}
       <CardActions disableSpacing>
         <IconButton aria-label="like" onClick={toggleLike}>
-          {liked ? <FavoriteIcon sx={{ color: red[500] }} /> : <FavoriteIcon />}
+          {photo.dioLike || liked ? (
+            <FavoriteIcon sx={{ color: red[500] }} />
+          ) : (
+            <FavoriteIcon />
+          )}
         </IconButton>
         <p>{`${totalikes}`}</p>
 
