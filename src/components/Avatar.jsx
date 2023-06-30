@@ -21,11 +21,13 @@ export const Avatar = () => {
               />
             </Link>
           ) : (
-            <img
-              className="avatar footer"
-              src="/avatarDefault.png"
-              alt={user.userName}
-            />
+            <Link to={`/user/${user.id}`}>
+              <img
+                className="avatar footer"
+                src="/avatarDefault.png"
+                alt={user.userName}
+              />
+            </Link>
           )}
         </li>
       ) : (
