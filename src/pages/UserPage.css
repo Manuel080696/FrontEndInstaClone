@@ -11,6 +11,11 @@ section.userPage h2 {
 }
 
 /* Avatar y nombre usuario */
+
+section.userData {
+  width: 100%;
+}
+
 section.userData ul {
   padding: 2rem 0;
   display: flex;
@@ -19,7 +24,6 @@ section.userData ul {
   gap: 1rem;
   border: 1px solid #e9eff2;
   background-color: white;
-  width: 100vw;
 }
 
 section.userData ul li.avatar img {
@@ -46,6 +50,7 @@ section.user-photos-list ul {
   display: grid;
   max-width: 478px;
   grid-template-columns: repeat(2, 1fr);
+  margin-bottom: 4rem;
 }
 
 section.user-photos-list ul li {
