@@ -8,6 +8,7 @@ import { ModalRecover } from "./ModalRecover";
 import { ModalReset } from "./ModalReset";
 
 export const ModalLogin = () => {
+  const { setShowRegister } = useContext(AuthContext);
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -33,6 +34,7 @@ export const ModalLogin = () => {
 
   const closeModal = () => {
     setShow(false);
+    setShowRegister();
   };
 
   const handleRegisterClick = () => {
