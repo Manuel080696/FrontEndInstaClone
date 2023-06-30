@@ -11,14 +11,23 @@
   align-items: center;
 }
 
-.modal-fg {
-  background-color: white;
-  border: 1px solid black;
+section.modal-bg img.modal-img {
+  position: absolute;
+  top: -8vh;
+  left: -5vh;
+  height: 20vh;
+}
+
+section.modal-fg.login {
+  background-color: #385b8bdc;
+  border: none;
 }
 
 .modal-fg h1 {
   font-size: 2rem;
   text-align: center;
+  letter-spacing: 1rem;
+  text-transform: uppercase;
 }
 #btnTitle {
   font-size: 1rem;

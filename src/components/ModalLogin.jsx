@@ -49,16 +49,17 @@ export const ModalLogin = () => {
     <>
       {show && (
         <section className="modal-bg">
-          <section className="modal-fg">
+          <section className="modal-fg login">
             <box-icon name="x" color="#ffffff" onClick={closeModal} />
             <h1>Login</h1>
+            <img className="modal-img" src="/halcon (2).webp" />
             <form onSubmit={handleSubmit}>
               <fieldset>
                 <input
                   type="email"
                   id="email"
                   name="email"
-                  placeholder="Email..."
+                  placeholder="Email"
                   onChange={(e) => setEmail(e.target.value)}
                   required
                 />
@@ -68,7 +69,7 @@ export const ModalLogin = () => {
                   type="password"
                   id="password"
                   name="password"
-                  placeholder="Password..."
+                  placeholder="Password"
                   onChange={(e) => setPassword(e.target.value)}
                   required
                 />
