@@ -18,6 +18,7 @@ export const UserPage = () => {
         setUserData(data.userData[0]);
       } catch (error) {
         setError(error.message);
+        navigate("*");
       }
     };
     getUserData(id);
