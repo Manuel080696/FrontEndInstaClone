@@ -10,6 +10,6 @@ export const PhotoList = ({ photos, removePhoto }) => {
       ))}
     </ul>
   ) : (
-    <p>There are no photos yet...</p>
+    <p className="photosList-p">There are no photos yet...</p>
   );
 };

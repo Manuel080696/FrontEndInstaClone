@@ -9,7 +9,7 @@ import Collapse from "@mui/material/Collapse";
 import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import { red } from "@mui/material/colors";
+import { grey, red } from "@mui/material/colors";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
@@ -25,6 +25,8 @@ import { deletePhotoService, likePhotoService } from "../services";
 import { Link } from "react-router-dom";
 import "./PhotoCard.css";
 import AlertDialog from "./AlertDialog";
+import { useEffect } from "react";
+import { Loading } from "./Loading";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -42,10 +44,12 @@ export function PhotoCard({ photo, removePhoto }) {
   const navigate = useNavigate();
   const { user, token } = useContext(AuthContext);
   const [error, setError] = useState("");
-  const [liked, setLiked] = useState();
-  const [totalikes, setTotalikes] = useState(
+
+  const [totalikes, setTotaLikes] = useState(
     photo.numLikes ? photo.numLikes : 0
   );
+  const [like, setLike] = useState(photo.dioLike);
+  const [showEditPost, setShowEditPost] = useState(false);
   const [deletePhoto, setDeletePhoto] = useState(false);
   const srcImage = `${import.meta.env.VITE_APP_BACKEND}/uploads/posts/${
     photo.photoName
@@ -66,15 +70,16 @@ export function PhotoCard({ photo, removePhoto }) {
     }
   };
 
-  const toggleLike = async () => {
+  async function toggleLike() {
     try {
       const data = await likePhotoService(token, photo.photoID);
-      setLiked(data.vote);
-      setTotalikes(data.likes);
+
+      setLike(data.vote);
+      setTotaLikes(data.likes);
     } catch (error) {
       setError(error.message);
     }
-  };
+  }
 
   const handleClick = async () => {
     navigate(`/comments/${photo.photoID}`);
@@ -99,8 +104,19 @@ export function PhotoCard({ photo, removePhoto }) {
           </Link>
         }
         action={
-          <IconButton aria-label="settings">
+          <IconButton
+            aria-label="settings"
+            className="iconButtonEdit"
+            onClick={() => setShowEditPost(!showEditPost)}
+          >
             <MoreVertIcon />
+            {user && showEditPost && (
+              <ul className="editPostContainer">
+                <li>
+                  <button>Edit post</button>
+                </li>
+              </ul>
+            )}
           </IconButton>
         }
         title={<p id="headerP">{photo.userPosted}</p>}
@@ -123,11 +139,9 @@ export function PhotoCard({ photo, removePhoto }) {
       {/* Like, Basura, cometarios---------------------- */}
       <CardActions disableSpacing>
         <IconButton aria-label="like" onClick={toggleLike}>
-          {photo.dioLike || liked ? (
-            <FavoriteIcon sx={{ color: red[500] }} />
-          ) : (
-            <FavoriteIcon />
-          )}
+          <FavoriteIcon
+            sx={like ? { color: red[500] } : { color: grey[600] }}
+          />
         </IconButton>
         <p>{`${totalikes}`}</p>
 

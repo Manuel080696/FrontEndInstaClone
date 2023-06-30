@@ -34,6 +34,31 @@
   height: 80vh;
 }
 
+/* Post---------------------- */
+
+.photosList-p {
+  margin-top: 1rem;
+}
+
+.iconButtonEdit {
+  position: relative;
+}
+
+.editPostContainer {
+  position: absolute;
+  background-color: white;
+  right: 2rem;
+  top: 1rem;
+  width: 5rem;
+  height: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #228cc4;
+  border-radius: 2px;
+}
+
 @media (max-width: 375px) {
   #postCard #photo {
     width: 100%;
