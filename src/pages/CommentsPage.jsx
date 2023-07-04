@@ -1,13 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import {
   commentPhotoServices,
   deleteCommentServices,
   getSinglePhotoService,
 } from "../services";
 import { Comment } from "../components/Comment";
-import { ModalLogin } from "../components/ModalLogin";
 import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
 import Textarea from "@mui/joy/Textarea";
@@ -20,8 +19,9 @@ export const CommentsPage = () => {
   const [input, setInput] = useState();
   const [error, setError] = useState("");
   const [, setLoading] = useState(false);
-  const { user, token } = useContext(AuthContext);
+  const { user, token, setShowLogin } = useContext(AuthContext);
   const { id } = useParams();
+
   useEffect(() => {
     const getComments = async () => {
       try {
@@ -125,7 +125,12 @@ export const CommentsPage = () => {
           </ul>
         </div>
       ) : (
-        <ModalLogin />
+        <section className="noUserCommentsPage">
+          <p>To view comments, you need to log in or register</p>
+          <Link to="/" onClick={() => setShowLogin(true)}>
+            LogIn
+          </Link>
+        </section>
       )}
     </section>
   );

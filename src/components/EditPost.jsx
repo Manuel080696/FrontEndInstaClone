@@ -5,11 +5,11 @@ import "./NewPhoto.css";
 import { Alert, Stack } from "@mui/joy";
 import usePhotos from "../hooks/usePhotos";
 
-export const EditPost = ({ photo, toggleShowEditPost }) => {
+export const EditPost = ({ photo, setShowEditPost }) => {
   const { editPhoto } = usePhotos();
   const [error, setError] = useState("");
   const [image, setImage] = useState();
-  const { token } = useContext(AuthContext);
+  const { token, setShowEdit } = useContext(AuthContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,13 +27,19 @@ export const EditPost = ({ photo, toggleShowEditPost }) => {
         token,
       });
 
-      editPhoto(photoData);
+      editPhoto(photoData, photo.photoID);
       e.target.reset();
       setImage(null);
-      toggleShowEditPost();
+      setShowEditPost(false);
+      setShowEdit(false);
     } catch (error) {
       setError(error.message);
     }
+  };
+
+  const closeMenu = () => {
+    setShowEditPost(false);
+    setShowEdit(false);
   };
 
   const handleDrop = (e) => {
@@ -45,16 +51,13 @@ export const EditPost = ({ photo, toggleShowEditPost }) => {
   const handleDragOver = (e) => {
     e.preventDefault();
   };
+
   return (
     <section className="modal">
       <form className="posts" onSubmit={handleSubmit}>
         <span>
           <h1>Edit Post</h1>
-          <box-icon
-            name="x"
-            color="#ffffff"
-            onClick={() => toggleShowEditPost()}
-          />
+          <box-icon name="x" color="#ffffff" onClick={closeMenu} />
         </span>
 
         <fieldset>

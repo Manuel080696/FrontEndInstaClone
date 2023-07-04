@@ -2,45 +2,44 @@ import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 // import { NewPhoto } from "./NewPhoto";
 // import { ModalRegister } from "./ModalRegister";
-import "./ModalPhoto.css";
+import "./ModalEditPost.css";
 import { EditPost } from "./EditPost";
 
-export const ModalEditPost = ({ photo }) => {
-  const { user, showEdit, setShowEdit } = useContext(AuthContext);
+export const ModalEditPost = ({ photo, setShowEditPost }) => {
+  const { user, setShowEdit, setShowLogin } = useContext(AuthContext);
 
-  const toggleShowEditPost = () => {
-    setShowEdit(!showEdit);
+  const handleEditLogin = () => {
+    setShowEdit(false);
+    setShowEditPost(false);
+    setShowLogin(true);
   };
 
-  return (
-    <>
-      {showEdit && (
-        <>
-          {user ? (
-            <section className="modal-bg">
-              <EditPost toggleShowEditPost={toggleShowEditPost} photo={photo} />
-            </section>
-          ) : (
-            ""
-            //     <section className="modal-bg">
-            //       <section className="modal-fg">
-            //         <box-icon
-            //           name="x"
-            //           color="#ffffff"
-            //           onClick={toggleShowEditPost()}
-            //         />
-            //         <p onClick={toggleShowEditPost()}>
-            //           You must register to edit photos :)
-            //         </p>
-            //         <button id="modalRegister" onClick={openModalRegister}>
-            //           Register
-            //         </button>
-            //       </section>
-            //     </section>
-          )}
-        </>
-      )}
-      {/* {showRegister && <ModalRegister />} */}
-    </>
+  const toggle = () => {
+    setShowEdit(false);
+    setShowEditPost(false);
+  };
+
+  return user ? (
+    <section className="modal-bg-EditPhoto">
+      <EditPost
+        photo={photo}
+        setShowEditPost={setShowEditPost}
+        className="modal-fg-EditPhoto"
+      />
+    </section>
+  ) : (
+    <section className="modal-bg-EditPhoto">
+      <section className="modal-fg-EditPhoto">
+        <box-icon
+          name="x"
+          /*  color="#ffffff" */
+          onClick={toggle}
+        />
+        <p>You must login to edit photos :</p>
+        <button id="modalRegister" onClick={handleEditLogin}>
+          Login
+        </button>
+      </section>
+    </section>
   );
 };

@@ -25,8 +25,6 @@ import { deletePhotoService, likePhotoService } from "../services";
 import { Link } from "react-router-dom";
 import "./PhotoCard.css";
 import AlertDialog from "./AlertDialog";
-import { useEffect } from "react";
-import { Loading } from "./Loading";
 import { ModalEditPost } from "./ModalEditPost";
 
 const ExpandMore = styled((props) => {
@@ -105,27 +103,35 @@ export function PhotoCard({ photo, removePhoto }) {
           </Link>
         }
         action={
-          <IconButton
-            aria-label="settings"
-            className="iconButtonEdit"
-            onClick={() => setShowEditPost(!showEditPost)}
-          >
-            <MoreVertIcon />
-          </IconButton>
+          !showEditPost ? (
+            <IconButton
+              aria-label="settings"
+              className="iconButtonEdit"
+              onClick={() => setShowEditPost(true)}
+            >
+              <MoreVertIcon />
+            </IconButton>
+          ) : (
+            <IconButton>
+              <MoreVertIcon />
+              {showEditPost && (
+                <section className="editPostContainer">
+                  <p onClick={() => setShowEdit(true)}>Edit Post</p>
+                  {showEdit && (
+                    <ModalEditPost
+                      photo={photo}
+                      setShowEditPost={setShowEditPost}
+                    />
+                  )}
+                </section>
+              )}
+            </IconButton>
+          )
         }
         title={<p id="headerP">{photo.userPosted}</p>}
         subheader={photo.place}
       />
       {/* Edit post -------------------- */}
-      {showEditPost && (
-        <section
-          className="editPostContainer"
-          onClick={() => setShowEdit(true)}
-        >
-          Edit post
-          {showEdit && <ModalEditPost photo={photo} />}
-        </section>
-      )}
 
       {/* Final encabezado------------------------ */}
 

@@ -9,6 +9,7 @@ function Search() {
   const [photos, setPhotos] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [error, setError] = useState("");
+
   const handleSearch = async (e) => {
     e.preventDefault();
     try {
@@ -34,26 +35,27 @@ function Search() {
           <box-icon name="search" color="#ffffff"></box-icon>
         </button>
       </form>
-      {error ? (
+      {error && (
         <CustomizedSnackbars
           message={error}
           severity={"error"}
           setError={setError}
         />
-      ) : null}
+      )}
       <section className="search">
         <ul className="search" id="cua">
-          {photos.map((photo) => (
-            <li key={photo.photoID}>
-              <img
-                onClick={() => navigate(`/photos/${photo.photoID}`)}
-                src={`${import.meta.env.VITE_APP_BACKEND}/uploads/posts/${
-                  photo.photoName
-                }`}
-                alt="Foto"
-              ></img>
-            </li>
-          ))}
+          {photos &&
+            photos?.map((photo) => (
+              <li key={photo.photoID}>
+                <img
+                  onClick={() => navigate(`/photos/${photo.photoID}`)}
+                  src={`${import.meta.env.VITE_APP_BACKEND}/uploads/posts/${
+                    photo.photoName
+                  }`}
+                  alt="Foto"
+                ></img>
+              </li>
+            ))}
         </ul>
       </section>
     </aside>

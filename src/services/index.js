@@ -14,25 +14,6 @@ export const getAllPhotosService = async (token) => {
   return json.data;
 };
 
-export const getUserPhotosService = async (id, token) => {
-  const response = await fetch(
-    `${import.meta.env.VITE_APP_BACKEND}/user/${id}/photos`,
-    {
-      headers: {
-        Authorization: token,
-      },
-    }
-  );
-
-  const json = await response.json();
-
-  if (!response.ok) {
-    throw new Error(json.message);
-  }
-
-  return json.data;
-};
-
 export const getSinglePhotoService = async (id, token) => {
   const response = await fetch(
     `${import.meta.env.VITE_APP_BACKEND}/photos/${id}`,
@@ -282,7 +263,6 @@ export const resetUserServices = async ({ recoverCode, newPassword }) => {
 };
 
 export const editPostService = async ({ photoID, data, token }) => {
-  // console.log(photoID);
   const response = await fetch(
     `${import.meta.env.VITE_APP_BACKEND}/photos/${photoID}`,
     {
@@ -294,7 +274,6 @@ export const editPostService = async ({ photoID, data, token }) => {
     }
   );
   const json = await response.json();
-  // console.log(json);
 
   if (!response.ok) {
     throw new Error(json.message);

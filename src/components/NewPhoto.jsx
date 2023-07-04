@@ -19,7 +19,6 @@ export const NewPhoto = ({ addPhoto, toggleShow }) => {
       data.append("image", image);
 
       const photo = await sendPhotoService({ data, token });
-      // console.log(user.avatar);
       photo.avatar = user.avatar || user.updateAvatar;
       photo.userPosted = user.UserName;
       photo.numComments = 0;

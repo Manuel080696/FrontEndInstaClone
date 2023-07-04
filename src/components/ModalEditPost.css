@@ -1,0 +1,41 @@
+.modal-bg-EditPhoto {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 98;
+}
+
+.modal-fg-EditPhoto {
+  width: 90vw;
+  position: relative;
+  padding: 3rem 1rem 1rem 1rem;
+  background-color: #001324;
+  color: white;
+  z-index: 99;
+  border-radius: 15px;
+}
+
+.modal-bg-EditPhoto img.modal-img {
+  position: absolute;
+  top: -8vh;
+  left: -5vh;
+  height: 20vh;
+}
+
+section.modal-fg-EditPhoto.login {
+  background-color: #385b8bdc;
+  border: none;
+}
+
+.modal-fg-EditPhoto h1 {
+  font-size: 2rem;
+  text-align: center;
+  letter-spacing: 1rem;
+  text-transform: uppercase;
+}

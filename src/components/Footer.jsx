@@ -8,7 +8,7 @@ import usePhotos from "../hooks/usePhotos";
 
 export const Footer = () => {
   const { toggleShow, show } = useContext(AuthContext);
-  const { addPhoto, loading, error } = usePhotos();
+  const { addPhoto } = usePhotos();
 
   return (
     <footer>
@@ -24,13 +24,7 @@ export const Footer = () => {
           </Link>
         </li>
         <li>
-          <ModalPhoto
-            toggleShow={toggleShow}
-            show={show}
-            addPhoto={addPhoto}
-            loading={loading}
-            error={error}
-          />
+          <ModalPhoto show={show} toggleShow={toggleShow} addPhoto={addPhoto} />
           <img src="/posts.png" onClick={() => toggleShow()} />
         </li>
         <li>

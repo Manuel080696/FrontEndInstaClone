@@ -7,11 +7,10 @@ import AlertDialog from "./AlertDialog";
 import { ModalLogin } from "./ModalLogin";
 
 export const Auth = () => {
-  const { user, logOut } = useContext(AuthContext);
+  const { user, logOut, showLogin, setShowLogin } = useContext(AuthContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [delUser, setDelUser] = useState(false);
   const [logoutUser, setLogoutUser] = useState(false);
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
   const menuRef = useRef(null);
 
@@ -26,13 +25,6 @@ export const Auth = () => {
   const deleteUser = () => {
     deleteUserService(user.token, user.id);
     logOut();
-  };
-
-  const openLoginModal = () => {
-    setIsLoginModalOpen(false); // <- Aquí establecemos el estado en false antes de abrir el modal nuevamente
-    setTimeout(() => {
-      setIsLoginModalOpen(true);
-    }, 0);
   };
 
   useEffect(() => {
@@ -97,13 +89,16 @@ export const Auth = () => {
       ) : (
         <ul>
           <li>
-            <button className="openLoginModal" onClick={openLoginModal}>
+            <button
+              className="openLoginModal"
+              onClick={() => setShowLogin(true)}
+            >
               <box-icon name="log-in-circle" color="#ffffff"></box-icon>
             </button>
           </li>
         </ul>
       )}
-      {isLoginModalOpen && <ModalLogin />}
+      {showLogin && <ModalLogin />}
     </section>
   );
 };

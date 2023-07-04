@@ -5,13 +5,12 @@ import { registerUserService } from "../services";
 import { AuthContext } from "../context/AuthContext";
 
 export const ModalRegister = () => {
-  const { setShowRegister } = useContext(AuthContext);
+  const { setShowLogin, showLogin, showRegister, setShowRegister } =
+    useContext(AuthContext);
   const [pass1, setPass1] = useState("");
   const [pass2, setPass2] = useState("");
   const [avatar, setAvatar] = useState(null);
   const [error, setError] = useState("");
-  const [showLoginModal, setShowLoginModal] = useState(false);
-  const [show, setShow] = useState(true);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,7 +27,7 @@ export const ModalRegister = () => {
       await registerUserService({
         data,
       });
-      setShowLoginModal(true);
+      setShowLogin(true);
     } catch (error) {
       setError(
         "Ya existe un usuario con este nombre y correo electrónico, por favor, ve a iniciar sesión"
@@ -37,18 +36,17 @@ export const ModalRegister = () => {
   };
 
   const closeModal = () => {
-    setShow(false);
     setShowRegister(false);
   };
 
   const handleLoginClick = () => {
-    setShow(false);
-    setShowLoginModal(true);
+    setShowRegister(false);
+    setShowLogin(true);
   };
 
   return (
     <>
-      {show && (
+      {showRegister && (
         <div className="modal-bg">
           <div id="white" className="modal-fg">
             <box-icon name="x" color="#ffffff" onClick={closeModal} />
@@ -143,9 +141,7 @@ export const ModalRegister = () => {
           </div>
         </div>
       )}
-      {showLoginModal && (
-        <ModalLogin closeModal={() => setShowLoginModal(false)} />
-      )}
+      {showLogin && <ModalLogin closeModal={() => setShowLogin(true)} />}
     </>
   );
 };

@@ -8,14 +8,20 @@ import { ModalRecover } from "./ModalRecover";
 import { ModalReset } from "./ModalReset";
 
 export const ModalLogin = () => {
-  const { setShowRegister } = useContext(AuthContext);
+  const {
+    setShowRegister,
+    showLogin,
+    setShowLogin,
+    showRegister,
+    logIn,
+    showResetModal,
+    setShowResetModal,
+  } = useContext(AuthContext);
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const { logIn, showResetModal, setShowResetModal } = useContext(AuthContext);
-  const [show, setShow] = useState(true);
-  const [showRegisterModal, setShowRegisterModal] = useState(false);
+
   const [showRecoverModal, setShowRecoverModal] = useState(false);
 
   const handleSubmit = async (e) => {
@@ -26,30 +32,30 @@ export const ModalLogin = () => {
 
       logIn(data[0]);
       navigate("/");
-      setShow(false);
+      setShowLogin(false);
     } catch (error) {
       setError(error.message);
     }
   };
 
   const closeModal = () => {
-    setShow(false);
-    setShowRegister();
+    setShowLogin(false);
+    setShowRegister(false);
   };
 
   const handleRegisterClick = () => {
-    setShowRegisterModal(true);
-    setShow(false);
+    setShowRegister(true);
+    setShowLogin(false);
   };
 
   const handleRecoverClick = () => {
-    setShow(false);
+    setShowLogin(false);
     setShowRecoverModal(true);
   };
 
   return (
     <>
-      {show && (
+      {showLogin && (
         <section className="modal-bg">
           <section className="modal-fg login">
             <box-icon name="x" color="#ffffff" onClick={closeModal} />
@@ -89,7 +95,7 @@ export const ModalLogin = () => {
           </section>
         </section>
       )}
-      {showRegisterModal && <ModalRegister />}
+      {showRegister && <ModalRegister />}
       {showRecoverModal && (
         <ModalRecover
           showRecoverModal={showRecoverModal}

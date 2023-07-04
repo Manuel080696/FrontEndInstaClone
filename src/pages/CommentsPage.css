@@ -24,3 +24,8 @@ button.form-comments {
 textarea.form-comments {
   border-color: #228cc4;
 }
+
+.noUserCommentsPage {
+  margin-top: 1rem;
+  text-align: center;
+}

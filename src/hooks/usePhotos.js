@@ -1,46 +1,47 @@
 import { useContext, useEffect, useState } from "react";
-import { getAllPhotosService, getUserPhotosService } from "../services";
+import { getAllPhotosService } from "../services";
 import { AuthContext } from "../context/AuthContext";
 
-const usePhotos = (id) => {
-  const [loading, setLoading] = useState(true);
+const usePhotos = () => {
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+
   const { token, photos, setPhotos } = useContext(AuthContext);
 
   //Photos general
   useEffect(() => {
     const loadPhotos = async () => {
       try {
-        const data = id
-          ? await getUserPhotosService(id, token)
-          : await getAllPhotosService(token);
+        const data = await getAllPhotosService(token);
 
         setPhotos(data);
-        setLoading(false);
       } catch (error) {
         setError(error.message);
+      } finally {
+        setLoading(false);
       }
     };
     loadPhotos();
-  }, [id, setPhotos, token, loading, photos]);
+  }, [loading]);
 
   const addPhoto = (photo) => {
     setPhotos([photo, ...photos]);
-    setLoading(false);
-  };
-  const editPhoto = (photo) => {
-    const obj = {
-      ...photo,
-    };
-    photo.description = obj.description;
-    photo.place = obj.place;
-    photo.updatePhoto = obj.updatePhoto;
-    setLoading(false);
   };
 
-  const removePhoto = (id) => {
+  function editPhoto(photo, id) {
+    const photoEdit = photos.find((photo) => photo.photoID === id);
+
+    photoEdit.description = photo.description;
+    photoEdit.place = photo.place;
+    photoEdit.updatePhoto = photo.updatePhoto;
+    photoEdit.photoName = photo.updatePhoto;
+
     setLoading(true);
+  }
+
+  const removePhoto = (id) => {
     setPhotos(photos.filter((photo) => photo.id !== id));
+    setLoading(true);
   };
 
   return {
