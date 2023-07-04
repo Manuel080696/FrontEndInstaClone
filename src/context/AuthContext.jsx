@@ -15,6 +15,12 @@ export const AuthProviderComponent = ({ children }) => {
   const [photos, setPhotos] = useState([]);
   const [showResetModal, setShowResetModal] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
+  const storedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
+  const [favorites, setFavorites] = useState(storedFavorites);
+
+  useEffect(() => {
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+  }, [favorites]);
 
   const toggleShow = () => {
     setShow(!show);
@@ -33,6 +39,7 @@ export const AuthProviderComponent = ({ children }) => {
   const logOut = () => {
     setToken("");
     setUser("");
+    setFavorites([]);
     {
       <Navigate to="/" />;
     }
@@ -58,6 +65,8 @@ export const AuthProviderComponent = ({ children }) => {
         showEdit,
         showLogin,
         setShowLogin,
+        favorites,
+        setFavorites,
       }}
     >
       {children}

@@ -5,8 +5,8 @@ import { AuthContext } from "../context/AuthContext";
 const usePhotos = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-
-  const { token, photos, setPhotos } = useContext(AuthContext);
+  const { token, photos, setPhotos, favorites, setFavorites } =
+    useContext(AuthContext);
 
   //Photos general
   useEffect(() => {
@@ -44,6 +44,21 @@ const usePhotos = () => {
     setLoading(true);
   };
 
+  const addToFavorites = (photoToAdd) => {
+    const photoExists = favorites.find(
+      (photo) => photo.photoID === photoToAdd.photoID
+    );
+    if (!photoExists) {
+      setFavorites([...favorites, photoToAdd]);
+    }
+  };
+  const removeFromFavorites = (photoToRemove) => {
+    const favoritesFiltered = favorites.filter(
+      (photo) => photo.photoID !== photoToRemove.photoID
+    );
+    setFavorites(favoritesFiltered);
+  };
+
   return {
     photos,
     loading,
@@ -51,6 +66,8 @@ const usePhotos = () => {
     addPhoto,
     removePhoto,
     editPhoto,
+    addToFavorites,
+    removeFromFavorites,
   };
 };
 

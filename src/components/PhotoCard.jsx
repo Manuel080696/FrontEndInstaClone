@@ -16,7 +16,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import CommentIcon from "@mui/icons-material/Comment";
 import Alert from "@mui/material/Alert";
-
+import BookmarkIcon from "@mui/icons-material/Bookmark";
 import Stack from "@mui/material/Stack";
 import { useNavigate } from "react-router";
 import { useContext, useState } from "react";
@@ -26,6 +26,8 @@ import { Link } from "react-router-dom";
 import "./PhotoCard.css";
 import AlertDialog from "./AlertDialog";
 import { ModalEditPost } from "./ModalEditPost";
+import usePhotos from "../hooks/usePhotos";
+import CustomizedSnackbars from "./CustomizedSnackbars";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -43,13 +45,14 @@ export function PhotoCard({ photo, removePhoto }) {
   const navigate = useNavigate();
   const { user, token, showEdit, setShowEdit } = useContext(AuthContext);
   const [error, setError] = useState("");
-
+  const [showFavorite, setShowFavorite] = useState(true);
   const [totalikes, setTotaLikes] = useState(
     photo.numLikes ? photo.numLikes : 0
   );
   const [like, setLike] = useState(photo.dioLike);
   const [showEditPost, setShowEditPost] = useState(false);
   const [deletePhoto, setDeletePhoto] = useState(false);
+  const { addToFavorites, removeFromFavorites } = usePhotos();
   const srcImage = `${import.meta.env.VITE_APP_BACKEND}/uploads/posts/${
     photo.photoName
   }`;
@@ -82,6 +85,16 @@ export function PhotoCard({ photo, removePhoto }) {
 
   const handleClick = async () => {
     navigate(`/comments/${photo.photoID}`);
+  };
+
+  const handleFavorite = () => {
+    setShowFavorite(!showFavorite);
+
+    if (showFavorite) {
+      addToFavorites(photo);
+    } else {
+      removeFromFavorites(photo);
+    }
   };
 
   return (
@@ -186,6 +199,22 @@ export function PhotoCard({ photo, removePhoto }) {
             ) : null}
           </IconButton>
         ) : null}
+        <IconButton aria-label="bookmark" onClick={handleFavorite}>
+          <BookmarkIcon />
+          {/* {photo.favorite ? (
+            <CustomizedSnackbars
+              message={"Post added to favorites"}
+              severity={"success"}
+              setError={""}
+            />
+          ) : (
+            <CustomizedSnackbars
+              message={"Post delete to favorites"}
+              severity={"error"}
+              setError={""}
+            />
+          )} */}
+        </IconButton>
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>

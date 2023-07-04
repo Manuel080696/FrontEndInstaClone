@@ -2,6 +2,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getUserDataService } from "../services";
 import "./UserPage.css";
+import BasicTabs from "../components/BasicTabs";
 
 export const UserPage = () => {
   const navigate = useNavigate();
@@ -22,7 +23,7 @@ export const UserPage = () => {
       }
     };
     getUserData(id);
-  }, [id]);
+  }, [id, navigate]);
 
   return (
     <section className="userPage page-Principal">
@@ -54,23 +55,7 @@ export const UserPage = () => {
           </li>
         </ul>
       </section>
-      <section className="user-photos-list">
-        <ul>
-          {photoData?.map((photo) => (
-            <li
-              key={photo.photoID}
-              onClick={() => navigate(`/photos/${photo.photoID}`)}
-            >
-              <img
-                src={`${import.meta.env.VITE_APP_BACKEND}/uploads/posts/${
-                  photo.photoName
-                }`}
-                alt={photo.description}
-              />
-            </li>
-          ))}
-        </ul>
-      </section>
+      <BasicTabs photoData={photoData} />
     </section>
   );
 };

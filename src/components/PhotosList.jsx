@@ -3,8 +3,8 @@ import { PhotoCard } from "./PhotoCard";
 export const PhotoList = ({ photos, removePhoto }) => {
   return photos.length ? (
     <ul>
-      {photos?.map((photo, index) => (
-        <li key={index}>
+      {photos?.map((photo) => (
+        <li key={photo.photoID}>
           <PhotoCard photo={photo} removePhoto={removePhoto} />
         </li>
       ))}
