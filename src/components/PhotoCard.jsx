@@ -13,7 +13,6 @@ import { grey, red } from "@mui/material/colors";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
 import CommentIcon from "@mui/icons-material/Comment";
 import Alert from "@mui/material/Alert";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
@@ -25,7 +24,7 @@ import { deletePhotoService, likePhotoService } from "../services";
 import { Link } from "react-router-dom";
 import "./PhotoCard.css";
 import AlertDialog from "./AlertDialog";
-import { ModalEditPost } from "./ModalEditPost";
+import MenuAppBar from "./MenuAppBar";
 import usePhotos from "../hooks/usePhotos";
 import CustomizedSnackbars from "./CustomizedSnackbars";
 
@@ -51,7 +50,6 @@ export function PhotoCard({ photo, removePhoto }) {
     photo.numLikes ? photo.numLikes : 0
   );
   const [like, setLike] = useState(photo.dioLike);
-  const [showEditPost, setShowEditPost] = useState(false);
   const [deletePhoto, setDeletePhoto] = useState(false);
   const [addFavorite, setAddFavorite] = useState(false);
   const { addToFavorites, removeFromFavorites } = usePhotos();
@@ -124,30 +122,11 @@ export function PhotoCard({ photo, removePhoto }) {
           </Link>
         }
         action={
-          !showEditPost ? (
-            <IconButton
-              aria-label="settings"
-              className="iconButtonEdit"
-              onClick={() => setShowEditPost(true)}
-            >
-              <MoreVertIcon />
-            </IconButton>
-          ) : (
-            <IconButton>
-              <MoreVertIcon />
-              {showEditPost && (
-                <section className="editPostContainer">
-                  <p onClick={() => setShowEdit(true)}>Edit Post</p>
-                  {showEdit && (
-                    <ModalEditPost
-                      photo={photo}
-                      setShowEditPost={setShowEditPost}
-                    />
-                  )}
-                </section>
-              )}
-            </IconButton>
-          )
+          <MenuAppBar
+            showEdit={showEdit}
+            setShowEdit={setShowEdit}
+            photo={photo}
+          />
         }
         title={<p id="headerP">{photo.userPosted}</p>}
         subheader={photo.place}
