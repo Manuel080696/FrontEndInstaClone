@@ -158,14 +158,23 @@ export function PhotoCard({ photo, removePhoto }) {
 
       {/* Contenido foto-------------------------- */}
 
-      <CardMedia
-        id="photo"
-        component="img"
-        image={srcImage}
-        alt={photo.place}
-        onClick={() => navigate(`/photos/${photo.photoID}`)}
-        onDoubleClick={toggleLike}
-      ></CardMedia>
+      <section id="carMedia">
+        <CardMedia
+          component="img"
+          image={srcImage}
+          alt={photo.place}
+          onClick={() => navigate(`/photos/${photo.photoID}`)}
+          onDoubleClick={toggleLike}
+        ></CardMedia>
+
+        {like ? (
+          <object
+            id="animated-object"
+            type="image/svg+xml"
+            data="/likeAnimated.svg"
+          />
+        ) : null}
+      </section>
       {/* Final contenido foto-------------------------- */}
 
       {/* Like, Basura, cometarios---------------------- */}

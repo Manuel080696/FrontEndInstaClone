@@ -1,5 +1,5 @@
 import { useContext, useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { deleteUserService } from "../services";
 import "./Auth.css";
@@ -7,6 +7,7 @@ import AlertDialog from "./AlertDialog";
 import { ModalLogin } from "./ModalLogin";
 
 export const Auth = () => {
+  const navigate = useNavigate();
   const { user, logOut, showLogin, setShowLogin } = useContext(AuthContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [delUser, setDelUser] = useState(false);
@@ -59,10 +60,13 @@ export const Auth = () => {
               </div>
 
               <ul className={`menu-items ${isMenuOpen ? "active" : ""}`}>
-                <li>
-                  <Link to="/user/profile" onClick={closeMenu}>
-                    Edit profile
-                  </Link>
+                <li
+                  onClick={() => {
+                    navigate("/user/profile");
+                    closeMenu();
+                  }}
+                >
+                  Edit profile
                 </li>
                 <li onClick={() => setDelUser(!delUser)}>Delete profile</li>
                 {delUser ? (

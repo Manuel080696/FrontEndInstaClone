@@ -28,7 +28,7 @@ ul {
   position: absolute;
   top: 100%;
   right: 0;
-  background-color: #001324;
+  background-color: #385b8bdc;
   border: 1px solid #ccc;
   color: #001324;
   list-style: none;
@@ -40,18 +40,18 @@ ul {
   display: block;
 }
 .menu-items li {
-  margin: 1rem 0;
-  padding: 0.5rem;
-  background-color: white;
+  padding: 0.8rem;
   width: 10rem;
   text-align: center;
+  color: white;
+  text-decoration: underline;
+  z-index: 50;
 }
-.menu-items a {
-  text-decoration: none;
-  color: #001324;
-}
+
 .menu-items li:hover {
   text-decoration: underline;
+  color: #385b8bdc;
+  background-color: white;
 }
 .comment {
   display: flex;

@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import "./ModalRegister.css";
+import "./ModalLogin.css";
 import { ModalLogin } from "./ModalLogin";
 import { registerUserService } from "../services";
 import { AuthContext } from "../context/AuthContext";
@@ -48,7 +48,7 @@ export const ModalRegister = () => {
     <>
       {showRegister && (
         <div className="modal-bg">
-          <div id="white" className="modal-fg">
+          <div id="white" className="modal-fg login">
             <box-icon name="x" color="#ffffff" onClick={closeModal} />
             <h1>Register</h1>
             <form id="regis" onSubmit={handleSubmit}>
