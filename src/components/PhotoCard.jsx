@@ -46,13 +46,16 @@ export function PhotoCard({ photo, removePhoto }) {
   const { user, token, showEdit, setShowEdit } = useContext(AuthContext);
   const [error, setError] = useState("");
   const [showFavorite, setShowFavorite] = useState(true);
+  const [removeFavorite, setRemoveFavorite] = useState(false);
   const [totalikes, setTotaLikes] = useState(
     photo.numLikes ? photo.numLikes : 0
   );
   const [like, setLike] = useState(photo.dioLike);
   const [showEditPost, setShowEditPost] = useState(false);
   const [deletePhoto, setDeletePhoto] = useState(false);
+  const [addFavorite, setAddFavorite] = useState(false);
   const { addToFavorites, removeFromFavorites } = usePhotos();
+
   const srcImage = `${import.meta.env.VITE_APP_BACKEND}/uploads/posts/${
     photo.photoName
   }`;
@@ -92,8 +95,10 @@ export function PhotoCard({ photo, removePhoto }) {
 
     if (showFavorite) {
       addToFavorites(photo);
+      setAddFavorite(!addFavorite);
     } else {
       removeFromFavorites(photo);
+      setRemoveFavorite(!removeFavorite);
     }
   };
 
@@ -201,19 +206,18 @@ export function PhotoCard({ photo, removePhoto }) {
         ) : null}
         <IconButton aria-label="bookmark" onClick={handleFavorite}>
           <BookmarkIcon />
-          {/* {photo.favorite ? (
+          {addFavorite && (
             <CustomizedSnackbars
               message={"Post added to favorites"}
               severity={"success"}
-              setError={""}
             />
-          ) : (
+          )}
+          {removeFavorite && (
             <CustomizedSnackbars
-              message={"Post delete to favorites"}
+              message={"Post delete from favorites"}
               severity={"error"}
-              setError={""}
             />
-          )} */}
+          )}
         </IconButton>
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>

@@ -16,12 +16,14 @@ export default function CustomizedSnackbars({ message, severity, setError }) {
     }
 
     setOpen(false);
-    setError("");
+    if (setError) {
+      setError("");
+    }
   };
 
   return (
     <Stack spacing={2} sx={{ width: "100%" }}>
-      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+      <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
         <Alert onClose={handleClose} severity={severity} sx={{ width: "100%" }}>
           {message}
         </Alert>
