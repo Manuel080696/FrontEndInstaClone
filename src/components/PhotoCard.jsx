@@ -91,14 +91,17 @@ export function PhotoCard({ photo, removePhoto }) {
   };
 
   const handleFavorite = () => {
-    setShowFavorite(!showFavorite);
-
-    if (showFavorite) {
-      addToFavorites(photo);
-      setAddFavorite(!addFavorite);
+    if (token) {
+      setShowFavorite(!showFavorite);
+      if (showFavorite) {
+        addToFavorites(photo);
+        setAddFavorite(!addFavorite);
+      } else {
+        removeFromFavorites(photo);
+        setRemoveFavorite(!removeFavorite);
+      }
     } else {
-      removeFromFavorites(photo);
-      setRemoveFavorite(!removeFavorite);
+      setError("You must login or register for favorites");
     }
   };
 
