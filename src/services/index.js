@@ -128,6 +128,25 @@ export const likePhotoService = async (token, id) => {
   return json.data[0];
 };
 
+export const commentPhotoService = async (token, id) => {
+  const response = await fetch(
+    `${import.meta.env.VITE_APP_BACKEND}/photos/${id}/comment`,
+    {
+      method: "POST",
+      headers: {
+        Authorization: token,
+      },
+    }
+  );
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+
+  return json.data[0];
+};
+
 export const commentPhotoServices = async (token, id, comment) => {
   const response = await fetch(
     `${import.meta.env.VITE_APP_BACKEND}/photos/${id}/comment`,

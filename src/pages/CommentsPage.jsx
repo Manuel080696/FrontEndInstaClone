@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import {
   commentPhotoServices,
   deleteCommentServices,
@@ -13,7 +13,6 @@ import Textarea from "@mui/joy/Textarea";
 import { Alert, Stack } from "@mui/joy";
 import "./AllPage.css";
 import "./CommentsPage.css";
-import { ModalContext } from "../context/ModalContext";
 
 export const CommentsPage = () => {
   const [comments, setComments] = useState();
@@ -21,7 +20,7 @@ export const CommentsPage = () => {
   const [error, setError] = useState("");
   const [, setLoading] = useState(false);
   const { user, token } = useContext(AuthContext);
-  const { setShowLogin } = useContext(ModalContext);
+
   const { id } = useParams();
 
   useEffect(() => {
@@ -127,12 +126,11 @@ export const CommentsPage = () => {
           </ul>
         </div>
       ) : (
-        <section className="noUserCommentsPage">
-          <p>To view comments, you need to log in or register</p>
-          <Link to="/" onClick={() => setShowLogin(true)}>
-            LogIn
-          </Link>
-        </section>
+        <Stack sx={{ width: "100%" }} spacing={2}>
+          <Alert severity="warning" onClose={() => setError("")}>
+            {error}
+          </Alert>
+        </Stack>
       )}
     </section>
   );
