@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
-import "./ModalLogin.css";
 import { ModalLogin } from "./ModalLogin";
 import { registerUserService } from "../services";
 import { AuthContext } from "../context/AuthContext";
+import "./ModalLogin.css";
 
 export const ModalRegister = () => {
   const { setShowLogin, showLogin, showRegister, setShowRegister } =
@@ -10,24 +10,44 @@ export const ModalRegister = () => {
   const [pass1, setPass1] = useState("");
   const [pass2, setPass2] = useState("");
   const [avatar, setAvatar] = useState(null);
+  const [image, setImage] = useState();
   const [error, setError] = useState("");
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    const file = e.dataTransfer.files[0];
+    setImage(file);
+  };
+
+  const handleDragOver = (e) => {
+    e.preventDefault();
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = new FormData(e.target);
-    setError("");
-    handleLoginClick();
-
     if (pass1 !== pass2) {
       setError("Las contraseñas no coinciden");
       return;
     }
 
     try {
-      await registerUserService({
-        data,
-      });
+      const data = new FormData();
+      data.append("name", e.target.name.value);
+
+      data.append("lastName", e.target.lastName.value);
+      data.append("userName", e.target.username.value);
+      data.append("email", e.target.email.value);
+      data.append("password", e.target.pass1.value);
+      data.append("password2", e.target.pass2.value);
+      data.append("birthDay", e.target.birthday.value);
+      data.append("avatar", image);
+
+      const photo = await registerUserService({ data });
+      console.log(photo);
+
+      setImage(null);
       setShowLogin(true);
+      handleLoginClick();
     } catch (error) {
       setError(
         "Ya existe un usuario con este nombre y correo electrónico, por favor, ve a iniciar sesión"
@@ -48,7 +68,7 @@ export const ModalRegister = () => {
     <>
       {showRegister && (
         <div className="modal-bg">
-          <div id="white" className="modal-fg login">
+          <div id="white" className="modal-fg login register">
             <box-icon name="x" color="#ffffff" onClick={closeModal} />
             <h1>Register</h1>
             <form id="regis" onSubmit={handleSubmit}>
@@ -112,23 +132,48 @@ export const ModalRegister = () => {
                 <label htmlFor="birthday">Birthday</label>
                 <input type="date" id="birthday" name="birthDay" />
               </fieldset>
-              <fieldset>
-                <label htmlFor="avatar">Image (opcional)</label>
-                <input
-                  type="file"
-                  id="avatar"
-                  name="avatar"
-                  accept="image/*"
-                  onChange={(e) => setAvatar(e.target.files[0])}
-                />
-                {avatar ? (
-                  <img
-                    src={URL.createObjectURL(avatar)}
-                    alt="Vista previa"
-                    style={{ width: "100px" }}
-                  ></img>
-                ) : null}
+
+              <fieldset className="avatar">
+                <label htmlFor="image"></label>
+                <div
+                  className="drop-area"
+                  onDrop={handleDrop}
+                  onDragOver={handleDragOver}
+                >
+                  <p>Drag and drop here, or click to select a file</p>
+
+                  <input
+                    id="avatarUploads"
+                    type="file"
+                    name="avatar"
+                    accept="image/*"
+                    style={{ display: "none" }}
+                    onChange={(e) => setImage(e.target.files[0])}
+                  />
+
+                  <button
+                    onDragOver={handleDragOver}
+                    onDrop={handleDrop}
+                    id="avatar"
+                    type="button"
+                    style={
+                      image
+                        ? {
+                            backgroundImage: `url(${URL.createObjectURL(
+                              image
+                            )})`,
+                          }
+                        : {
+                            backgroundImage: `url("/drop-files-here-extra.jpg")`,
+                          }
+                    }
+                    onClick={() =>
+                      document.getElementById("avatarUploads").click()
+                    }
+                  ></button>
+                </div>
               </fieldset>
+              {/* aqui acaba */}
               <button id="btnSubmit" type="submit">
                 Register
               </button>

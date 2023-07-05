@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { recoverUserServices } from "../services";
 import { Alert, Stack } from "@mui/joy";
-
-import "./ModalRecover.css";
+import "./ModalLogin.css";
 
 export const ModalRecover = ({
   showRecoverModal,
@@ -11,6 +10,7 @@ export const ModalRecover = ({
 }) => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
@@ -31,9 +31,9 @@ export const ModalRecover = ({
     <>
       {showRecoverModal && (
         <section className="modal-bg">
-          <section className="modal-fg">
+          <section className="modal-fg login">
             <box-icon name="x" color="#ffffff" onClick={closeModal} />
-            <h1>Recover Password</h1>
+            <h2>Recover Password</h2>
             <p>Enter your email to be able to send you a recovery code</p>
             <form onSubmit={handleSubmit}>
               <fieldset>
@@ -58,6 +58,7 @@ export const ModalRecover = ({
               ) : null}
             </p>
           </section>
+          <img id="robotDuda" src="/c.webp" alt="Robot con duda" />
         </section>
       )}
     </>

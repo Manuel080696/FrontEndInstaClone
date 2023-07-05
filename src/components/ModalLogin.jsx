@@ -49,8 +49,8 @@ export const ModalLogin = () => {
   };
 
   const handleRecoverClick = () => {
-    setShowLogin(false);
     setShowRecoverModal(true);
+    setShowLogin(showLogin);
   };
 
   return (
@@ -85,9 +85,9 @@ export const ModalLogin = () => {
               <button id="btnTitle">LogIn</button>
               {error ? <p>{error}</p> : null}
             </form>
-            <p
-              onClick={handleRecoverClick}
-            >{`Have you forgotten your password?`}</p>
+            <p onClick={handleRecoverClick}>
+              <em>{`Have you forgotten your password?`}</em>
+            </p>
             <p>
               {`Don't have an account yet?`}
               <em onClick={handleRegisterClick}> Register </em>
