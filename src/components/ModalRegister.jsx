@@ -1,12 +1,12 @@
 import { useContext, useState } from "react";
 import { ModalLogin } from "./ModalLogin";
 import { registerUserService } from "../services";
-import { AuthContext } from "../context/AuthContext";
 import "./ModalLogin.css";
+import { ModalContext } from "../context/ModalContext";
 
 export const ModalRegister = () => {
   const { setShowLogin, showLogin, showRegister, setShowRegister } =
-    useContext(AuthContext);
+    useContext(ModalContext);
   const [pass1, setPass1] = useState("");
   const [pass2, setPass2] = useState("");
   const [image, setImage] = useState();

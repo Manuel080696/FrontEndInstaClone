@@ -27,6 +27,7 @@ import AlertDialog from "./AlertDialog";
 import MenuAppBar from "./MenuAppBar";
 import CustomizedSnackbars from "./CustomizedSnackbars";
 import usePhotosServices from "../hooks/usePhotosServices";
+import { ModalContext } from "../context/ModalContext";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -42,7 +43,8 @@ const ExpandMore = styled((props) => {
 export function PhotoCard({ photo, removePhoto }) {
   const [expanded, setExpanded] = React.useState(false);
   const navigate = useNavigate();
-  const { user, token, showEdit, setShowEdit } = useContext(AuthContext);
+  const { user, token } = useContext(AuthContext);
+  const { showEdit, setShowEdit } = useContext(ModalContext);
   const [error, setError] = useState("");
   const [showFavorite, setShowFavorite] = useState(true);
   const [removeFavorite, setRemoveFavorite] = useState(false);

@@ -5,12 +5,14 @@ import "./NewPhoto.css";
 import "./ModalLogin.css";
 import { Alert, Stack } from "@mui/joy";
 import usePhotosServices from "../hooks/usePhotosServices";
+import { ModalContext } from "../context/ModalContext";
 
 export const EditPost = ({ photo, setShowEditPost }) => {
   const { editPhoto } = usePhotosServices();
   const [error, setError] = useState("");
   const [image, setImage] = useState();
-  const { token, setShowEdit } = useContext(AuthContext);
+  const { token } = useContext(AuthContext);
+  const { setShowEdit } = useContext(ModalContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

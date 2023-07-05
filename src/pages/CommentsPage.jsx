@@ -13,13 +13,15 @@ import Textarea from "@mui/joy/Textarea";
 import { Alert, Stack } from "@mui/joy";
 import "./AllPage.css";
 import "./CommentsPage.css";
+import { ModalContext } from "../context/ModalContext";
 
 export const CommentsPage = () => {
   const [comments, setComments] = useState();
   const [input, setInput] = useState();
   const [error, setError] = useState("");
   const [, setLoading] = useState(false);
-  const { user, token, setShowLogin } = useContext(AuthContext);
+  const { user, token } = useContext(AuthContext);
+  const { setShowLogin } = useContext(ModalContext);
   const { id } = useParams();
 
   useEffect(() => {

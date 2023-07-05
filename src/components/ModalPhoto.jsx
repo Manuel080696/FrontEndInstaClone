@@ -3,9 +3,11 @@ import { AuthContext } from "../context/AuthContext";
 import { NewPhoto } from "./NewPhoto";
 import { ModalRegister } from "./ModalRegister";
 import "./ModalPhoto.css";
+import { ModalContext } from "../context/ModalContext";
 
 export const ModalPhoto = ({ show, toggleShow, addPhoto }) => {
-  const { user, showRegister, setShowRegister } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
+  const { showRegister, setShowRegister } = useContext(ModalContext);
 
   const openModalRegister = () => {
     toggleShow();

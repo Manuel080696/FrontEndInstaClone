@@ -6,8 +6,9 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { UserData } from "./UserData";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../context/AuthContext";
 import { useContext } from "react";
+
+import { AuthContext } from "../context/AuthContext";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;

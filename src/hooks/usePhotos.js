@@ -1,11 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import { getAllPhotosService } from "../services";
 import { AuthContext } from "../context/AuthContext";
+import { PhotoContext } from "../context/PhotosContext";
 
 const usePhotos = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const { token, photos, setPhotos } = useContext(AuthContext);
+  const { token } = useContext(AuthContext);
+  const { photos, setPhotos } = useContext(PhotoContext);
 
   console.log("usePhotos");
   //Photos general

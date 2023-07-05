@@ -6,17 +6,18 @@ import "./ModalLogin.css";
 import { ModalRegister } from "./ModalRegister";
 import { ModalRecover } from "./ModalRecover";
 import { ModalReset } from "./ModalReset";
+import { ModalContext } from "../context/ModalContext";
 
 export const ModalLogin = () => {
+  const { logIn } = useContext(AuthContext);
   const {
+    showResetModal,
+    setShowResetModal,
     setShowRegister,
     showLogin,
     setShowLogin,
     showRegister,
-    logIn,
-    showResetModal,
-    setShowResetModal,
-  } = useContext(AuthContext);
+  } = useContext(ModalContext);
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

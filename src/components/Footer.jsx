@@ -2,14 +2,17 @@ import { Link } from "react-router-dom";
 import { Avatar } from "./Avatar";
 import { useContext } from "react";
 import "./Footer.css";
-import { AuthContext } from "../context/AuthContext";
 import { ModalPhoto } from "./ModalPhoto";
 import usePhotosServices from "../hooks/usePhotosServices";
+import { ModalContext } from "../context/ModalContext";
 
 export const Footer = () => {
-  const { toggleShow, show } = useContext(AuthContext);
+  const { show, setShow } = useContext(ModalContext);
   const { addPhoto } = usePhotosServices();
 
+  const toggleShow = () => {
+    setShow(!show);
+  };
   return (
     <footer>
       <ul>

@@ -4,9 +4,11 @@ import { AuthContext } from "../context/AuthContext";
 // import { ModalRegister } from "./ModalRegister";
 import "./ModalEditPost.css";
 import { EditPost } from "./EditPost";
+import { ModalContext } from "../context/ModalContext";
 
 export const ModalEditPost = ({ photo, setShowEditPost }) => {
-  const { user, setShowEdit, setShowLogin } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
+  const { setShowEdit, setShowLogin } = useContext(ModalContext);
 
   const handleEditLogin = () => {
     setShowEdit(false);

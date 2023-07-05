@@ -1,4 +1,5 @@
 import React from "react";
+
 import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 
@@ -9,22 +10,13 @@ export const AuthProviderComponent = ({ children }) => {
   const [user, setUser] = useState(
     JSON.parse(localStorage.getItem("user")) || ""
   );
-  const [showEdit, setShowEdit] = useState(false);
-  const [show, setShow] = useState(false);
-  const [showRegister, setShowRegister] = useState();
-  const [photos, setPhotos] = useState([]);
-  const [showResetModal, setShowResetModal] = useState(false);
-  const [showLogin, setShowLogin] = useState(false);
+
   const storedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
   const [favorites, setFavorites] = useState(storedFavorites);
 
   useEffect(() => {
     localStorage.setItem("favorites", JSON.stringify(favorites));
   }, [favorites]);
-
-  const toggleShow = () => {
-    setShow(!show);
-  };
 
   useEffect(() => {
     localStorage.setItem("token", token);
@@ -53,20 +45,9 @@ export const AuthProviderComponent = ({ children }) => {
         logIn,
         logOut,
         setUser,
-        show,
-        toggleShow,
-        setShowRegister,
-        showRegister,
-        photos,
-        setPhotos,
-        showResetModal,
-        setShowResetModal,
-        setShowEdit,
-        showEdit,
-        showLogin,
-        setShowLogin,
         favorites,
         setFavorites,
+        storedFavorites,
       }}
     >
       {children}

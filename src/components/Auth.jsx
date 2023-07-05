@@ -5,10 +5,12 @@ import { deleteUserService } from "../services";
 import "./Auth.css";
 import AlertDialog from "./AlertDialog";
 import { ModalLogin } from "./ModalLogin";
+import { ModalContext } from "../context/ModalContext";
 
 export const Auth = () => {
   const navigate = useNavigate();
-  const { user, logOut, showLogin, setShowLogin } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
+  const { showLogin, setShowLogin } = useContext(ModalContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [delUser, setDelUser] = useState(false);
   const [logoutUser, setLogoutUser] = useState(false);
