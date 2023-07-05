@@ -207,8 +207,9 @@ export function PhotoCard({ photo, removePhoto }) {
             ) : null}
           </IconButton>
         ) : null}
-        <IconButton aria-label="bookmark" onClick={handleFavorite}>
-          <BookmarkIcon />
+        <section aria-label="bookmark">
+          <BookmarkIcon sx={{ color: grey[600] }} onClick={handleFavorite} />
+
           {addFavorite && (
             <CustomizedSnackbars
               message={"Post added to favorites"}
@@ -221,7 +222,7 @@ export function PhotoCard({ photo, removePhoto }) {
               severity={"error"}
             />
           )}
-        </IconButton>
+        </section>
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>

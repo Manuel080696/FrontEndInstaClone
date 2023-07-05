@@ -8,12 +8,10 @@ const usePhotos = () => {
   const { token } = useContext(AuthContext);
   const { photos, setPhotos, setLoading, loading } = useContext(PhotoContext);
 
-  console.log("usePhotos");
   //Photos general
   useEffect(() => {
     const loadPhotos = async () => {
       try {
-        console.log("getAllPhotosService");
         const data = await getAllPhotosService(token);
 
         setPhotos(data);

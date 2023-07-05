@@ -6,7 +6,6 @@ const usePhotosServices = () => {
   const { favorites, setFavorites } = useContext(AuthContext);
   const { photos, setPhotos, setLoading, loading } = useContext(PhotoContext);
 
-  console.log(loading);
   const addPhoto = (photo) => {
     setPhotos([photo, ...photos]);
   };

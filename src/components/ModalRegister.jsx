@@ -42,7 +42,6 @@ export const ModalRegister = () => {
       data.append("avatar", image);
 
       const photo = await registerUserService({ data });
-      console.log(photo);
 
       setImage(null);
       setShowLogin(true);

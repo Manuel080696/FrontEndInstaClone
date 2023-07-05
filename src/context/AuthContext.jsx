@@ -47,7 +47,6 @@ export const AuthProviderComponent = ({ children }) => {
         setUser,
         favorites,
         setFavorites,
-        storedFavorites,
       }}
     >
       {children}
