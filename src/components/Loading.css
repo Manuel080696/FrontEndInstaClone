@@ -1,6 +1,6 @@
 aside#loading {
   background-color: #001324;
-  min-height: 86vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;

@@ -4,10 +4,9 @@ import { AuthContext } from "../context/AuthContext";
 import { PhotoContext } from "../context/PhotosContext";
 
 const usePhotos = () => {
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const { token } = useContext(AuthContext);
-  const { photos, setPhotos } = useContext(PhotoContext);
+  const { photos, setPhotos, setLoading, loading } = useContext(PhotoContext);
 
   console.log("usePhotos");
   //Photos general
@@ -26,11 +25,10 @@ const usePhotos = () => {
     };
 
     loadPhotos();
-  }, [setLoading, setPhotos, token]);
+  }, [setLoading, loading, setPhotos, token]);
 
   return {
     photos,
-    loading,
     error,
   };
 };

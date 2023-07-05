@@ -1,11 +1,10 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { PhotoContext } from "../context/PhotosContext";
 
 const usePhotosServices = () => {
   const { favorites, setFavorites } = useContext(AuthContext);
-  const { photos, setPhotos } = useContext(PhotoContext);
-  const [loading, setLoading] = useState(false);
+  const { photos, setPhotos, setLoading, loading } = useContext(PhotoContext);
 
   console.log(loading);
   const addPhoto = (photo) => {
@@ -13,8 +12,8 @@ const usePhotosServices = () => {
   };
 
   const removePhoto = (id) => {
+    setLoading(true);
     setPhotos(photos.filter((photo) => photo.id !== id));
-    setLoading(!loading);
   };
 
   function editPhoto(photo, id) {
@@ -25,7 +24,7 @@ const usePhotosServices = () => {
     photoEdit.updatePhoto = photo.updatePhoto;
     photoEdit.photoName = photo.updatePhoto;
 
-    setLoading(!loading);
+    setLoading(true);
   }
 
   const addToFavorites = (photoToAdd) => {

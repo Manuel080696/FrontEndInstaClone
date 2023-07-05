@@ -3,9 +3,12 @@ import usePhotos from "../hooks/usePhotos";
 import Search from "../components/Search";
 import { Loading } from "../components/Loading";
 import "./AllPage.css";
+import { useContext } from "react";
+import { PhotoContext } from "../context/PhotosContext";
 
 export const SearchPage = () => {
-  const { loading, error } = usePhotos();
+  const { error } = usePhotos();
+  const { loading } = useContext(PhotoContext);
 
   if (loading) {
     return <Loading />;
