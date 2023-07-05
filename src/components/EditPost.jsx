@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { editPostService } from "../services";
 import { AuthContext } from "../context/AuthContext";
 import "./NewPhoto.css";
+import "./ModalLogin.css";
 import { Alert, Stack } from "@mui/joy";
 import usePhotos from "../hooks/usePhotos";
 

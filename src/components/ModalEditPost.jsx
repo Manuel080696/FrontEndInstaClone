@@ -29,12 +29,8 @@ export const ModalEditPost = ({ photo, setShowEditPost }) => {
     </section>
   ) : (
     <section className="modal-bg-EditPhoto">
-      <section className="modal-fg-EditPhoto">
-        <box-icon
-          name="x"
-          /*  color="#ffffff" */
-          onClick={toggle}
-        />
+      <section className="modal-fg login">
+        <box-icon name="x" onClick={toggle} />
         <p>You must login to edit photos :</p>
         <button id="modalRegister" onClick={handleEditLogin}>
           Login

@@ -9,7 +9,6 @@ export const ModalRegister = () => {
     useContext(AuthContext);
   const [pass1, setPass1] = useState("");
   const [pass2, setPass2] = useState("");
-  const [avatar, setAvatar] = useState(null);
   const [image, setImage] = useState();
   const [error, setError] = useState("");
 
