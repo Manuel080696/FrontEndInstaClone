@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import {
   commentPhotoServices,
   deleteCommentServices,
@@ -19,7 +19,7 @@ export const CommentsPage = () => {
   const [input, setInput] = useState();
   const [error, setError] = useState("");
   const [, setLoading] = useState(false);
-  const { user, token, setShowLogin } = useContext(AuthContext);
+  const { user, token } = useContext(AuthContext);
   const { id } = useParams();
 
   useEffect(() => {
@@ -125,12 +125,11 @@ export const CommentsPage = () => {
           </ul>
         </div>
       ) : (
-        <section className="noUserCommentsPage">
-          <p>To view comments, you need to log in or register</p>
-          <Link to="/" onClick={() => setShowLogin(true)}>
-            LogIn
-          </Link>
-        </section>
+        <Stack sx={{ width: "100%" }} spacing={2}>
+          <Alert severity="warning" onClose={() => setError("")}>
+            {error}
+          </Alert>
+        </Stack>
       )}
     </section>
   );

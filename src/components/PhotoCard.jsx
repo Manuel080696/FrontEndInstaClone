@@ -20,7 +20,11 @@ import Stack from "@mui/material/Stack";
 import { useNavigate } from "react-router";
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
-import { deletePhotoService, likePhotoService } from "../services";
+import {
+  commentPhotoService,
+  deletePhotoService,
+  likePhotoService,
+} from "../services";
 import { Link } from "react-router-dom";
 import "./PhotoCard.css";
 import AlertDialog from "./AlertDialog";
@@ -85,7 +89,13 @@ export function PhotoCard({ photo, removePhoto }) {
   }
 
   const handleClick = async () => {
-    navigate(`/comments/${photo.photoID}`);
+    try {
+      await commentPhotoService(token, photo.photoID);
+
+      navigate(`/comments/${photo.photoID}`);
+    } catch (error) {
+      setError(error.message);
+    }
   };
 
   const handleFavorite = () => {
