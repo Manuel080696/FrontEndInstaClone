@@ -6,9 +6,9 @@ import { Loading } from "../components/Loading";
 import "boxicons";
 import { AuthContext } from "../context/AuthContext";
 import { getSinglePhotoService } from "../services";
-import usePhotos from "../hooks/usePhotos";
 import { PhotoCard } from "../components/PhotoCard";
 import "./AllPage.css";
+import usePhotosServices from "../hooks/usePhotosServices";
 
 export const PhotosPage = () => {
   const { id } = useParams();
@@ -16,7 +16,7 @@ export const PhotosPage = () => {
   const [error, setError] = useState("");
   const { token } = useContext(AuthContext);
   const [post, setPost] = useState([]);
-  const { removePhoto } = usePhotos();
+  const { removePhoto } = usePhotosServices();
 
   useEffect(() => {
     const loadPhoto = async () => {

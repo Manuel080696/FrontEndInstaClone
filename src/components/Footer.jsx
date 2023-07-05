@@ -4,11 +4,11 @@ import { useContext } from "react";
 import "./Footer.css";
 import { AuthContext } from "../context/AuthContext";
 import { ModalPhoto } from "./ModalPhoto";
-import usePhotos from "../hooks/usePhotos";
+import usePhotosServices from "../hooks/usePhotosServices";
 
 export const Footer = () => {
   const { toggleShow, show } = useContext(AuthContext);
-  const { addPhoto } = usePhotos();
+  const { addPhoto } = usePhotosServices();
 
   return (
     <footer>

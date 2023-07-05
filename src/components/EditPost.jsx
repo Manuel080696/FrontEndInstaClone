@@ -4,10 +4,10 @@ import { AuthContext } from "../context/AuthContext";
 import "./NewPhoto.css";
 import "./ModalLogin.css";
 import { Alert, Stack } from "@mui/joy";
-import usePhotos from "../hooks/usePhotos";
+import usePhotosServices from "../hooks/usePhotosServices";
 
 export const EditPost = ({ photo, setShowEditPost }) => {
-  const { editPhoto } = usePhotos();
+  const { editPhoto } = usePhotosServices();
   const [error, setError] = useState("");
   const [image, setImage] = useState();
   const { token, setShowEdit } = useContext(AuthContext);

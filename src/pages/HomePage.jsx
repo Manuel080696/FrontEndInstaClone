@@ -3,9 +3,11 @@ import usePhotos from "../hooks/usePhotos";
 import { PhotoList } from "../components/PhotosList";
 import { Loading } from "../components/Loading";
 import "./HomePage.css";
+import usePhotosServices from "../hooks/usePhotosServices";
 
 export const HomePage = () => {
-  const { photos, loading, error, removePhoto } = usePhotos();
+  const { photos, loading, error } = usePhotos();
+  const { removePhoto } = usePhotosServices();
 
   if (loading) {
     return <Loading />;

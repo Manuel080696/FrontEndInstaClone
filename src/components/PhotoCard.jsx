@@ -25,8 +25,8 @@ import { Link } from "react-router-dom";
 import "./PhotoCard.css";
 import AlertDialog from "./AlertDialog";
 import MenuAppBar from "./MenuAppBar";
-import usePhotos from "../hooks/usePhotos";
 import CustomizedSnackbars from "./CustomizedSnackbars";
+import usePhotosServices from "../hooks/usePhotosServices";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -52,7 +52,7 @@ export function PhotoCard({ photo, removePhoto }) {
   const [like, setLike] = useState(photo.dioLike);
   const [deletePhoto, setDeletePhoto] = useState(false);
   const [addFavorite, setAddFavorite] = useState(false);
-  const { addToFavorites, removeFromFavorites } = usePhotos();
+  const { addToFavorites, removeFromFavorites } = usePhotosServices();
 
   const srcImage = `${import.meta.env.VITE_APP_BACKEND}/uploads/posts/${
     photo.photoName
