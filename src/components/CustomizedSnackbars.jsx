@@ -7,18 +7,25 @@ const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
-export default function CustomizedSnackbars({ message, severity, setError }) {
+export default function CustomizedSnackbars({
+  message,
+  severity,
+  setError,
+  setAddFavorite,
+  setRemoveFavorite,
+}) {
   const [open, setOpen] = React.useState(true);
 
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
       return;
     }
-
     setOpen(false);
     if (setError) {
       setError("");
     }
+    if (setAddFavorite) setAddFavorite(false);
+    if (setRemoveFavorite) setRemoveFavorite(false);
   };
 
   return (

@@ -68,6 +68,7 @@
 #btnTitle {
   font-size: 1rem;
   box-shadow: 4px 4px 1px #228cc4;
+  margin-bottom: 10px;
 }
 
 .modal-fg fieldset {
@@ -107,6 +108,7 @@
 button#btnSubmit {
   border-radius: 0;
   box-shadow: 4px 4px 1px #228cc4;
+  margin-bottom: 10px;
 }
 
 em {

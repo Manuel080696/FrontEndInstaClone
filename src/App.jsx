@@ -5,12 +5,12 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
+import Root from "./pages/Root";
 import { HomePage } from "./pages/HomePage";
 import { PhotosPage } from "./pages/PhotosPage";
 import { UserPage } from "./pages/UserPage";
 import { NotFoundPage } from "./pages/NotFoundPage";
 import { CommentsPage } from "./pages/CommentsPage";
-import Root from "./pages/Root";
 import { EditProfilePage } from "./pages/EditProfilePage";
 import { SearchPage } from "./pages/SearchPage";
 import { ModalLogin } from "./components/ModalLogin";

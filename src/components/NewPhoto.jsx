@@ -20,10 +20,9 @@ export const NewPhoto = ({ addPhoto, toggleShow }) => {
 
       const photo = await sendPhotoService({ data, token });
       photo.avatar = user.avatar || user.updateAvatar;
-      photo.userPosted = user.UserName;
+      photo.userPosted = user.UserName || user.userName;
       photo.numComments = 0;
       photo.dioLike = 0;
-
       addPhoto(photo);
       e.target.reset();
       setImage(null);

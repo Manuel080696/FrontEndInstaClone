@@ -1,7 +1,5 @@
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
-// import { NewPhoto } from "./NewPhoto";
-// import { ModalRegister } from "./ModalRegister";
 import "./ModalEditPost.css";
 import { EditPost } from "./EditPost";
 import { ModalContext } from "../context/ModalContext";

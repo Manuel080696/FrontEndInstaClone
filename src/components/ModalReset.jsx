@@ -28,7 +28,7 @@ export const ModalReset = ({ setShowResetModal }) => {
   return (
     <>
       <section className="modal-bg">
-        <section className="modal-fg">
+        <section className="modal-fg login">
           <box-icon name="x" color="#ffffff" onClick={closeModal} />
           <h1>Reset Password</h1>
           <p>Enter the recovery code and the new password</p>

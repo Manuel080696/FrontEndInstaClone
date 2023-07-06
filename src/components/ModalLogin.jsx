@@ -7,6 +7,7 @@ import { ModalRegister } from "./ModalRegister";
 import { ModalRecover } from "./ModalRecover";
 import { ModalReset } from "./ModalReset";
 import { ModalContext } from "../context/ModalContext";
+import { Alert, Stack } from "@mui/joy";
 
 export const ModalLogin = () => {
   const { logIn } = useContext(AuthContext);
@@ -51,7 +52,6 @@ export const ModalLogin = () => {
 
   const handleRecoverClick = () => {
     setShowRecoverModal(true);
-    setShowLogin(showLogin);
   };
 
   return (
@@ -84,7 +84,13 @@ export const ModalLogin = () => {
                 />
               </fieldset>
               <button id="btnTitle">LogIn</button>
-              {error ? <p>{error}</p> : null}
+              {error ? (
+                <Stack sx={{ width: "100%" }} spacing={2}>
+                  <Alert severity="warning" onClose={() => setError("")}>
+                    {error}
+                  </Alert>
+                </Stack>
+              ) : null}
             </form>
             <p onClick={handleRecoverClick}>
               <em>{`Have you forgotten your password?`}</em>

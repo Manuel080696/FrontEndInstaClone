@@ -55,7 +55,9 @@ export const UserPage = () => {
           </li>
         </ul>
       </section>
-      <BasicTabs photoData={photoData} />
+      <section>
+        <BasicTabs photoData={photoData} />
+      </section>
     </section>
   );
 };

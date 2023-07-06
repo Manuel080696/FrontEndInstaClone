@@ -15,7 +15,7 @@ export const HomePage = () => {
   if (loading) {
     return <Loading />;
   }
-  if (error === "You must login again") {
+  if (error) {
     return <ErrorMessage message={error} />;
   }
 

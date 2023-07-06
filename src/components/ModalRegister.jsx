@@ -3,6 +3,7 @@ import { ModalLogin } from "./ModalLogin";
 import { registerUserService } from "../services";
 import "./ModalLogin.css";
 import { ModalContext } from "../context/ModalContext";
+import { Alert, Stack } from "@mui/joy";
 
 export const ModalRegister = () => {
   const { setShowLogin, showLogin, showRegister, setShowRegister } =
@@ -25,7 +26,7 @@ export const ModalRegister = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (pass1 !== pass2) {
-      setError("Las contraseñas no coinciden");
+      setError("Passwords do not match");
       return;
     }
 
@@ -39,17 +40,15 @@ export const ModalRegister = () => {
       data.append("password", e.target.pass1.value);
       data.append("password2", e.target.pass2.value);
       data.append("birthDay", e.target.birthday.value);
-      data.append("avatar", image);
+      if (image) data.append("avatar", image);
 
-      const photo = await registerUserService({ data });
+      await registerUserService({ data });
 
       setImage(null);
       setShowLogin(true);
       handleLoginClick();
     } catch (error) {
-      setError(
-        "Ya existe un usuario con este nombre y correo electrónico, por favor, ve a iniciar sesión"
-      );
+      setError(error.message);
     }
   };
 
@@ -162,7 +161,7 @@ export const ModalRegister = () => {
                             )})`,
                           }
                         : {
-                            backgroundImage: `url("/drop-files-here-extra.jpg")`,
+                            backgroundImage: `url(/drop-files-here-extra.jpg)`,
                           }
                     }
                     onClick={() =>
@@ -175,7 +174,13 @@ export const ModalRegister = () => {
               <button id="btnSubmit" type="submit">
                 Register
               </button>
-              {error && <p>{error}</p>}
+              {error ? (
+                <Stack sx={{ width: "100%" }} spacing={2}>
+                  <Alert severity="warning" onClose={() => setError("")}>
+                    {error}
+                  </Alert>
+                </Stack>
+              ) : null}
               <p>
                 Do you already have an account?
                 <em onClick={handleLoginClick}> Login </em>

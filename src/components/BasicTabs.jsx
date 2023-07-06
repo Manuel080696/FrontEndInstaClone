@@ -6,7 +6,6 @@ import Box from "@mui/material/Box";
 import { UserData } from "./UserData";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
-
 import { AuthContext } from "../context/AuthContext";
 
 function TabPanel(props) {

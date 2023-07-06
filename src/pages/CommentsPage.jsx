@@ -89,7 +89,7 @@ export const CommentsPage = () => {
             <form className="form-comments" onSubmit={handleForm}>
               <Textarea
                 className="form-comments"
-                placeholder={`Comment by @${user.name}`}
+                placeholder={`Comment by ${user.userName || user.UserName}`}
                 required
                 value={input}
                 onChange={(e) => setInput(e.target.value)}

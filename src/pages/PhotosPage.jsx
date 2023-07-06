@@ -1,14 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import { ErrorMessage } from "../components/ErrorMessage";
-
+import "boxicons";
 import { useParams } from "react-router-dom";
 import { Loading } from "../components/Loading";
-import "boxicons";
 import { AuthContext } from "../context/AuthContext";
 import { getSinglePhotoService } from "../services";
 import { PhotoCard } from "../components/PhotoCard";
-import "./AllPage.css";
 import usePhotosServices from "../hooks/usePhotosServices";
+import "./AllPage.css";
 
 export const PhotosPage = () => {
   const { id } = useParams();
@@ -36,7 +35,7 @@ export const PhotosPage = () => {
   if (loading) {
     return <Loading />;
   }
-  // Porsi ocurre algún error
+  // Por si ocurre algún error
   if (error) {
     return <ErrorMessage message={error} />;
   }

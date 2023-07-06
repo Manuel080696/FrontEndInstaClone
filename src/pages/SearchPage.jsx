@@ -2,9 +2,9 @@ import { ErrorMessage } from "../components/ErrorMessage";
 import usePhotos from "../hooks/usePhotos";
 import Search from "../components/Search";
 import { Loading } from "../components/Loading";
-import "./AllPage.css";
 import { useContext } from "react";
 import { PhotoContext } from "../context/PhotosContext";
+import "./AllPage.css";
 
 export const SearchPage = () => {
   const { error } = usePhotos();

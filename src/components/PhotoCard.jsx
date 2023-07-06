@@ -20,11 +20,7 @@ import Stack from "@mui/material/Stack";
 import { useNavigate } from "react-router";
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
-import {
-  commentPhotoService,
-  deletePhotoService,
-  likePhotoService,
-} from "../services";
+import { deletePhotoService, likePhotoService } from "../services";
 import { Link } from "react-router-dom";
 import "./PhotoCard.css";
 import AlertDialog from "./AlertDialog";
@@ -46,7 +42,6 @@ const ExpandMore = styled((props) => {
 
 export function PhotoCard({ photo, removePhoto }) {
   const [expanded, setExpanded] = React.useState(false);
-  const navigate = useNavigate();
   const { user, token } = useContext(AuthContext);
   const { showEdit, setShowEdit } = useContext(ModalContext);
   const [error, setError] = useState("");
@@ -59,7 +54,7 @@ export function PhotoCard({ photo, removePhoto }) {
   const [deletePhoto, setDeletePhoto] = useState(false);
   const [addFavorite, setAddFavorite] = useState(false);
   const { addToFavorites, removeFromFavorites } = usePhotosServices();
-
+  const navigate = useNavigate();
   const srcImage = `${import.meta.env.VITE_APP_BACKEND}/uploads/posts/${
     photo.photoName
   }`;
@@ -92,9 +87,11 @@ export function PhotoCard({ photo, removePhoto }) {
 
   const handleClick = async () => {
     try {
-      await commentPhotoService(token, photo.photoID);
-
-      navigate(`/comments/${photo.photoID}`);
+      if (token) {
+        navigate(`/comments/${photo.photoID}`);
+      } else {
+        setError("You must login or register for comment");
+      }
     } catch (error) {
       setError(error.message);
     }
@@ -105,10 +102,10 @@ export function PhotoCard({ photo, removePhoto }) {
       setShowFavorite(!showFavorite);
       if (showFavorite) {
         addToFavorites(photo);
-        setAddFavorite(!addFavorite);
+        setAddFavorite(true);
       } else {
         removeFromFavorites(photo);
-        setRemoveFavorite(!removeFavorite);
+        setRemoveFavorite(true);
       }
     } else {
       setError("You must login or register for favorites");
@@ -214,12 +211,14 @@ export function PhotoCard({ photo, removePhoto }) {
             <CustomizedSnackbars
               message={"Post added to favorites"}
               severity={"success"}
+              setAddFavorite={setAddFavorite}
             />
           )}
           {removeFavorite && (
             <CustomizedSnackbars
               message={"Post delete from favorites"}
               severity={"error"}
+              setRemoveFavorite={setRemoveFavorite}
             />
           )}
         </section>

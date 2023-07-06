@@ -6,8 +6,8 @@ export const NotFoundPage = () => {
     <section className="notFound">
       <header>
         <h1>Not found</h1>
-        <p>Nuestros sensores no detectan nada... </p>
-        <Link to="/">Volver a inicio</Link>
+        <p>Our sensors detect nothing...</p>
+        <Link to="/">Back to Homer</Link>
       </header>
       <img src="/guerrrera.png" />
     </section>
