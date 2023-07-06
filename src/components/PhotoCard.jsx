@@ -80,6 +80,11 @@ export function PhotoCard({ photo, removePhoto }) {
 
       setLike(data.vote);
       setTotaLikes(data.likes);
+      console.log(data.vote);
+      console.log(photo);
+      photo.dioLike = data.vote;
+      photo.numLikes = data.likes;
+      console.log("cambio" + photo.dioLike);
     } catch (error) {
       setError(error.message);
     }
@@ -111,9 +116,6 @@ export function PhotoCard({ photo, removePhoto }) {
       setError("You must login or register for favorites");
     }
   };
-
-  console.log(like);
-  console.log(totalikes);
 
   return (
     <Card id="postCard">
@@ -157,14 +159,14 @@ export function PhotoCard({ photo, removePhoto }) {
           onClick={() => navigate(`/photos/${photo.photoID}`)}
           onDoubleClick={toggleLike}
         ></CardMedia>
-        {/* 
+
         {like ? (
           <object
             id="animated-object"
             type="image/svg+xml"
             data="/likeAnimated.svg"
           />
-        ) : null} */}
+        ) : null}
       </section>
       {/* Final contenido foto-------------------------- */}
 
