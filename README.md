@@ -37,24 +37,24 @@
   <li>Este es el frontend, del proyecto de InstaClone, para iniciar el proyecto, hay que seguir los siguientes pasos:
 	<ol>
 		<li><article><p>Vamos al repositorio y le damos a code, y copiaremos la clave HTTPS o SSH</p>
-		<img src="https://github.com/Manuel080696/PruebasManu/blob/main/claveHTTPSSSH.png?raw=true"/></article></li>
+		<img src="https://github.com/Manuel080696/PruebasManu/blob/main/claveHTTPSSSHFront.png?raw=true"/></article></li>
 		<p/>
       <li><p>Deberemos elegir la carpeta donde deseamos crear nuestro repositorio. Para este ejemplo, usaremos <a href="https://git-scm.com/">git</a> para windows. Una vez situados en el directorio deseado, haremos click derecho y pulsaremos en la opción "Git Bash Here". Esto iniciará la consola de comandos de git, una vez situados en la cosnola introduciremos el siguiente comando "git clone claveHTTPS o claveSSH":</p>
-      <img src="https://github.com/Manuel080696/PruebasManu/blob/main/gitCloneRepositorio.png?raw=true"/>
+      <img src="https://github.com/Manuel080696/PruebasManu/blob/main/gitCloneFront.png?raw=true"/>
       </li>
       <p/>
-		<li>Una vez tengamos el repositorio descargado, deberemos ejecutarlo mediante algun compilador de código. En este ejemplo usaremos <a href="https://code.visualstudio.com/">visual studio code</a>, simplemente en la misma consola de git usada en el ejemplo anterior, primero accederemos a la carpeta mediante "cd PROYECTO_HACKABOSS_CLON_INSTAGRAM/". Y por último iniciaremos visual mediante el comando "code ."
-    <img src="https://github.com/Manuel080696/PruebasManu/blob/main/gitCodeVisual.png?raw=true"/>
+		<li>Una vez tengamos el repositorio descargado, deberemos ejecutarlo mediante algun compilador de código. En este ejemplo usaremos <a href="https://code.visualstudio.com/">visual studio code</a>, simplemente en la misma consola de git usada en el ejemplo anterior, primero accederemos a la carpeta mediante "cd FrontEndInstaClone/". Y por último iniciaremos visual mediante el comando "code ."
+    <img src="https://github.com/Manuel080696/PruebasManu/blob/main/gitCodeVisualFront.png?raw=true"/>
     </li>
         <p/>
-    <li>Deberemos renombrar el ".env.example" y a ".env", y en el colocar los datos de <a href="https://www.mysql.com/products/workbench/">workbench de sql</a>, la dirección del host, la clave <a href="https://sendgrid.com/">sendgrid</a> y su correo, el puerto que queremos elegir, clave secreta, etc: 
-    <img src="https://github.com/Manuel080696/PruebasManu/blob/main/envBackEnd.png"/>
+    <li>Deberemos renombrar el ".env.example" y a ".env",y en el colocar el puerto y el host que colocamos en el .env de nuestro backend como PORT y HOST.
+    <img src="https://github.com/Manuel080696/PruebasManu/blob/main/envFront.png?raw=true"/>
     </li>
           <p/>
-    <li>Una vez realizados todos estos pasos, solo nos quedará iniciar el terminal de visual, instalar los modulos npm mediante el comando "npm i" y después. Crear la base de datos, mediante "node .\src\database\createDB.js". Y simplemente, ejecutarla mediante el comando "npm run".
-      <img src="https://github.com/Manuel080696/PruebasManu/blob/main/insalacionDelBack.png?raw=true"/>
+    <li>Una vez realizados todos estos pasos, solo nos quedará iniciar el terminal de visual, instalar los modulos npm mediante el comando "npm i" y después simplemente, ejecutar el front mediante el comando "npm run dev". (Para poder inicializar el frontend, deberemos tener inicializado en backend)
+      <img src="https://github.com/Manuel080696/PruebasManu/blob/main/insalacionDelFront.png?raw=true"/>
     </li>
-            <p/>
+<p/>
 </ol>
 </li>
   <p></p>
@@ -117,26 +117,21 @@
 
 <h2>Sumario de errores y dudas, durante esta semana de trabajo</h2>
 
-<h4>06/05/2023 -- Librerías core y npm a usar</h4>
-
-  <h5>-Core</h5>
-    <p>fs/promise: File system, para leer y escribir las imágenes, y los datos requreidos en la base de datos. writeFile, readFile, etc...</p>
-    <p>  Nota: trabajamos con el asíncrono, porque la base de datos también será asíncrona. </p>
-    <p>path: Para normalizar los directorios de los archivos, para los distintos sistemas operativos. path.join(__dirname, "archivo")</p>
-    
+<h4>06/05/2023 -- Librerías npm a usar</h4>
+ 
   <h4>-NPM</h4>
-    <p>express: Para facilitar a la hora de inicializar el servidor y por su middleware de json. app.use(express.json())</p>
-    <p>sharp: Para las imágenes, es lo principal para trabajar con imágenes.</p>
-    <p>bcrypt: Para la proteccicón de los password de los usuarios, mediante la encriptación de la misma al enviarse al servidor.</p>
-    <p>mysql2/promise: Para la creación la conexión a la base de datos mediante un pool de conexiones. (los datos iran en el .env, para más seguridad)</p>
-    <p>dotenv: Para poder pasarle los valores a el pool de conexiones y demás variantes de datos sensibles, desde el archivo .env</p>
-    <p>jsonwebtoken: Para darle un token de permanencia al usuario con la sesión iniciada durante un tiempo determinado</p>
-    <p>joi: Para limitar mediante una reestricción la entrada de valores de campo de texto o de imágenes, en los diferentes envíos de los usuarios:</p>
-    <p>&nbsp;-Ejemplo: Un password, string de como mínimo 8 carácteres y 16 como máximo.</p>
+    <p>boxicons: Para los logos de like, coments, delete, etc.</p>
+    <p>material: Para las tarjetas de las imagenes, los mensajes de error, etc.</p>
     
     
-<h4>08/05/2023 -- Creación de la base de datos en SQL, después la pasamos a NODE.js creando una estructura base. Determinamos los controllers que necesitabamos para: users, photos y likes. Determinamos quién haría cada parte en grupo, y desarrollamos una metodología de trabajo</h4>
+<h4>12/06/2023 -- Errores del backend corregidos, y base de React Vite realizada.</h4>
 
-<h4>09/05/2023 -- Acabamos los controllers de users, y comenzamos con los controllers de photos. Creando también las funciones de cada uno de los controllers, siendo estas, consultas a la base de datos, estando todas ellas en la carpeta db</h4>
+<h4>21/06/2023 -- Añadimos modal de addPhoto e implementación del photoCard mediante material.</h4>
 
-<h4>10/05/2023 -- Se terminó de arreglar los controllers de photos, y se agregó otra ruta : "/photos/:id". Usamos para la búsqueda de photos por las palabras de dicha descripción, entregada la palabra por el usuario, através de req.body. Creamos el controller de newLike con sus funciones en db</h4>
+<h4>22/06/2023 -- Realizamos el merge de todas las ramas, ya que implementamos todos los cambios y partimos de una base general bien construida del proyecto.</h4>
+
+<h4>27/06/2023 -- Implementamos modal para login y register.</h4>
+
+<h4>04/07/2023 -- Implementación de animación de likes sobre las imágenes.</h4>
+
+<h4>05/07/2023 -- Error con el context y hook de usePhotos, repetición multiple de llamadas por un useEffect y muchos datos en AuthContext del usuario. Dividimos tanto el context como el hook, en 3 partes. Se solucionó el error de las llamadas múltiples del useEffect.</h4>
