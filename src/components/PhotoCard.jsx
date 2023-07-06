@@ -112,6 +112,9 @@ export function PhotoCard({ photo, removePhoto }) {
     }
   };
 
+  console.log(like);
+  console.log(totalikes);
+
   return (
     <Card id="postCard">
       {/* Encabezado ----------------------*/}
@@ -154,14 +157,14 @@ export function PhotoCard({ photo, removePhoto }) {
           onClick={() => navigate(`/photos/${photo.photoID}`)}
           onDoubleClick={toggleLike}
         ></CardMedia>
-
+        {/* 
         {like ? (
           <object
             id="animated-object"
             type="image/svg+xml"
             data="/likeAnimated.svg"
           />
-        ) : null}
+        ) : null} */}
       </section>
       {/* Final contenido foto-------------------------- */}
 

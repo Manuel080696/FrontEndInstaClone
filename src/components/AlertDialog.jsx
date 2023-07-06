@@ -2,9 +2,7 @@ import * as React from "react";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
-
 import DialogTitle from "@mui/material/DialogTitle";
-import { useNavigate } from "react-router-dom";
 
 export default function AlertDialog({
   deleteService,
@@ -14,7 +12,6 @@ export default function AlertDialog({
   setIsMenuOpen,
 }) {
   const [open, setOpen] = React.useState(true);
-  const navigate = useNavigate();
 
   const handleClose = () => {
     setState(false);
@@ -24,7 +21,6 @@ export default function AlertDialog({
     id ? deleteService(id) : deleteService();
     setState(false);
     setIsMenuOpen ? setIsMenuOpen(false) : null;
-    navigate("/");
   };
 
   return (
