@@ -33,6 +33,7 @@
   
 
 <h2>Manual de uso</h2>
+<p><strong>Esta aplicación necesita de su <a href="https://github.com/Manuel080696/PROYECTO_HACKABOSS_CLON_INSTAGRAM">backend</a> para su funcionamiento.</strong></p>
 <ol>
   <li>Este es el frontend, del proyecto de InstaClone, para iniciar el proyecto, hay que seguir los siguientes pasos:
 	<ol>
