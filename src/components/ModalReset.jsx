@@ -64,7 +64,7 @@ export const ModalReset = ({ setShowResetModal }) => {
               </Stack>
             ) : null}
           </p>
-          <p>
+          <section>
             {send ? (
               <Stack sx={{ width: "100%" }} spacing={2}>
                 <Alert severity="success" onClose={() => setSend("")}>
@@ -72,7 +72,7 @@ export const ModalReset = ({ setShowResetModal }) => {
                 </Alert>
               </Stack>
             ) : null}
-          </p>
+          </section>
         </section>
       </section>
     </>
