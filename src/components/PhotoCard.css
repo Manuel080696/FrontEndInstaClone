@@ -1,3 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&family=Concert+One&family=Merriweather+Sans:wght@300&family=Neucha&family=Play&display=swap");
+p {
+  font-family: "Play", sans-serif;
+}
 #postCard {
   width: 100vw;
   height: auto;
@@ -90,7 +94,18 @@
   }
 
   #postCard img {
-    max-height: 18rem;
+    max-height: 14rem;
+  }
+}
+
+@media (min-width: 376px) and (max-width: 499px) {
+  #postCard #photo {
+    width: 100%;
+    object-fit: cover;
+  }
+
+  #postCard img {
+    max-height: 25rem;
   }
 }
 
@@ -112,7 +127,18 @@
   }
 
   #postCard img {
-    max-height: 23rem;
+    max-height: 20rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) and (min-height: 1020px) {
+  #postCard #photo {
+    width: 100%;
+    object-fit: cover;
+  }
+
+  #postCard img {
+    max-height: 35rem;
   }
 }
 
@@ -134,7 +160,7 @@
   }
 
   #postCard img {
-    max-height: 32rem;
+    max-height: 30rem;
   }
 }
 
@@ -145,7 +171,7 @@
   }
 
   #postCard img {
-    max-height: 26rem;
+    max-height: 23rem;
   }
 }
 

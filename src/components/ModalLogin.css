@@ -139,3 +139,9 @@ div.drop-area button#avatar {
     max-width: 500px;
   }
 }
+
+@media (max-height: 850px) {
+  #robotDuda {
+    display: none;
+  }
+}
