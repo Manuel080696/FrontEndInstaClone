@@ -122,16 +122,32 @@ export function PhotoCard({ photo, removePhoto }) {
         id="idPhoto"
         // Imagen rendonda con avatar
         avatar={
-          <Link to={`/user/${photo.userID}`}>
-            <Avatar id="avatarImage" className="avatarCard" aria-label="recipe">
-              <img
-                src={`${import.meta.env.VITE_APP_BACKEND}/uploads/avatar/${
-                  photo.avatar
-                }`}
-                alt={photo.description}
-              />
-            </Avatar>
-          </Link>
+          photo.avatar ? (
+            <Link to={`/user/${photo.userID}`}>
+              <Avatar
+                id="avatarImage"
+                className="avatarCard"
+                aria-label="recipe"
+              >
+                <img
+                  src={`${import.meta.env.VITE_APP_BACKEND}/uploads/avatar/${
+                    photo.avatar
+                  }`}
+                  alt={photo.userPosted}
+                />
+              </Avatar>
+            </Link>
+          ) : (
+            <Link to={`/user/${photo.userID}`}>
+              <Avatar
+                id="avatarImage"
+                className="avatarCard"
+                aria-label="recipe"
+              >
+                <img src="/avatarDefault.png" alt={photo.userPosted} />
+              </Avatar>
+            </Link>
+          )
         }
         action={
           <MenuAppBar

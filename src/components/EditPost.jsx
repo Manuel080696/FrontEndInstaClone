@@ -33,7 +33,6 @@ export const EditPost = ({ photo, setShowEditPost }) => {
       data.append("image", image);
     }
 
-    console.log(data);
     try {
       const photoData = await editPostService({
         photoID: photo.photoID,

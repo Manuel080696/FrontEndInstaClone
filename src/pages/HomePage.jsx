@@ -13,7 +13,6 @@ export const HomePage = () => {
   const { removePhoto } = usePhotosServices();
   const { loading } = useContext(PhotoContext);
 
-  console.log(error);
   if (loading) {
     return <Loading />;
   }
