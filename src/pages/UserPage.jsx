@@ -55,7 +55,7 @@ export const UserPage = () => {
           </li>
         </ul>
       </section>
-      <section>
+      <section className="userPageTabs">
         <BasicTabs photoData={photoData} />
       </section>
     </section>

@@ -37,3 +37,8 @@ section.userData ul li.avatar img {
 section.userData ul li p {
   padding: 0.3rem 0;
 }
+
+.userPageTabs {
+  max-width: 1100px;
+  width: 100%;
+}

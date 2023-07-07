@@ -67,7 +67,7 @@ export default function BasicTabs({ photoData }) {
       </TabPanel>
       <TabPanel value={value} index={1}>
         <section className="user-photos-list">
-          <ul>
+          <ul className="userPageTabs">
             {favorites?.map((photo) => (
               <li
                 key={photo.photoID}
