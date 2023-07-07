@@ -87,7 +87,7 @@ p {
   border-radius: 2px;
 }
 
-@media (max-width: 375px) {
+@media (max-width: 375px) and (max-height: 700px) {
   #postCard #photo {
     width: 100%;
     object-fit: cover;
@@ -98,7 +98,7 @@ p {
   }
 }
 
-@media (min-width: 376px) and (max-width: 499px) {
+@media (min-width: 376px) and (max-width: 499px) and (max-height: 900px) {
   #postCard #photo {
     width: 100%;
     object-fit: cover;
@@ -109,7 +109,7 @@ p {
   }
 }
 
-@media (min-width: 500px) and (max-width: 767px) {
+@media (min-width: 500px) and (max-width: 767px) and (max-height: 900px) {
   #postCard #photo {
     width: 100%;
     object-fit: cover;
@@ -131,7 +131,7 @@ p {
   }
 }
 
-@media (min-width: 768px) and (max-width: 1199px) and (min-height: 1020px) {
+@media (min-width: 768px) and (max-width: 1199px) and (min-height: 1020px) and (max-height: 1049px) {
   #postCard #photo {
     width: 100%;
     object-fit: cover;
@@ -142,7 +142,7 @@ p {
   }
 }
 
-@media (min-width: 768px) and (max-width: 1199px) and (min-height: 1050px) {
+@media (min-width: 768px) and (max-width: 1199px) and (min-height: 1050px) and (max-height: 1200px) {
   #postCard #photo {
     width: 100%;
     object-fit: cover;
@@ -171,7 +171,7 @@ p {
   }
 
   #postCard img {
-    max-height: 23rem;
+    max-height: 22rem;
   }
 }
 
@@ -183,5 +183,16 @@ p {
 
   #postCard img {
     max-height: 33rem;
+  }
+}
+
+@media (min-width: 500px) and (max-height: 1100px) {
+  #postCard #photo {
+    width: 100%;
+    object-fit: cover;
+  }
+
+  #postCard img {
+    max-height: 23rem;
   }
 }
