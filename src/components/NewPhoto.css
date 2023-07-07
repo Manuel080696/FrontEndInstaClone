@@ -48,6 +48,7 @@ form.posts button {
   background-color: #385b8bdc;
   font-size: 1rem;
   font-weight: bold;
+  margin-bottom: 10px;
 }
 
 fieldset.avatar button#avatar {

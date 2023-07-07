@@ -116,7 +116,7 @@ export const EditProfile = () => {
         <div
           className="custom-file-input"
           onDragOver={handleDragOver}
-          // onDrop={handleDrop}
+          onDrop={handleDrop}
         >
           <input
             id="avatarUploads"

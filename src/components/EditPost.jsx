@@ -14,16 +14,27 @@ export const EditPost = ({ photo, setShowEditPost }) => {
   const { token } = useContext(AuthContext);
   const { setShowEdit } = useContext(ModalContext);
 
+  const handleDrop = (e) => {
+    e.preventDefault();
+    const file = e.dataTransfer.files[0];
+    setImage(file);
+  };
+
+  const handleDragOver = (e) => {
+    e.preventDefault();
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const data = new FormData();
-      data.append("photoID", photo.photoID);
-      data.append("userPosted", photo.userPosted);
-      data.append("place", e.target.place.value);
-      data.append("description", e.target.description.value);
+    const data = new FormData();
+    data.append("place", e.target.place.value);
+    data.append("description", e.target.description.value);
+    if (image) {
       data.append("image", image);
+    }
 
+    console.log(data);
+    try {
       const photoData = await editPostService({
         photoID: photo.photoID,
         data,
@@ -43,16 +54,6 @@ export const EditPost = ({ photo, setShowEditPost }) => {
   const closeMenu = () => {
     setShowEditPost(false);
     setShowEdit(false);
-  };
-
-  const handleDrop = (e) => {
-    e.preventDefault();
-    const file = e.dataTransfer.files[0];
-    setImage(file);
-  };
-
-  const handleDragOver = (e) => {
-    e.preventDefault();
   };
 
   return (
@@ -82,7 +83,7 @@ export const EditPost = ({ photo, setShowEditPost }) => {
           />
         </fieldset>
         <fieldset>
-          <label htmlFor="image"></label>
+          <label htmlFor="avatar"></label>
           <div
             className="drop-area"
             onDrop={handleDrop}
@@ -93,7 +94,7 @@ export const EditPost = ({ photo, setShowEditPost }) => {
             <input
               id="avatarUploads"
               type="file"
-              name="avatar"
+              name="image"
               accept="image/*"
               style={{ display: "none" }}
               onChange={(e) => setImage(e.target.files[0])}
@@ -114,7 +115,7 @@ export const EditPost = ({ photo, setShowEditPost }) => {
           </div>
         </fieldset>
 
-        <button type="submit">Send</button>
+        <button>Send</button>
         {error ? (
           <Stack sx={{ width: "100%" }} spacing={2}>
             <Alert

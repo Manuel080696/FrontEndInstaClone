@@ -282,6 +282,7 @@ export const resetUserServices = async ({ recoverCode, newPassword }) => {
 };
 
 export const editPostService = async ({ photoID, data, token }) => {
+  console.log(data);
   const response = await fetch(
     `${import.meta.env.VITE_APP_BACKEND}/photos/${photoID}`,
     {

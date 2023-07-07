@@ -4,7 +4,7 @@ import { PhotoContext } from "../context/PhotosContext";
 
 const usePhotosServices = () => {
   const { favorites, setFavorites } = useContext(AuthContext);
-  const { photos, setPhotos, setLoading, loading } = useContext(PhotoContext);
+  const { photos, setPhotos, setLoading } = useContext(PhotoContext);
 
   const addPhoto = (photo) => {
     setPhotos([photo, ...photos]);

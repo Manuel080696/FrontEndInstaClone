@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import { Avatar } from "./Avatar";
 import { useContext } from "react";
-import "./Footer.css";
 import { ModalPhoto } from "./ModalPhoto";
 import usePhotosServices from "../hooks/usePhotosServices";
 import { ModalContext } from "../context/ModalContext";
+import "./Footer.css";
 
 export const Footer = () => {
   const { show, setShow } = useContext(ModalContext);
@@ -18,7 +18,7 @@ export const Footer = () => {
       <ul>
         <li>
           <Link to="/">
-            <img src="/home.png" onClick={() => (show ? toggleShow() : show)} />
+            <img src="/home.png" alt="home" />
           </Link>
         </li>
         <li>
