@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from "react";
-import { ErrorMessage } from "../components/ErrorMessage";
 import "boxicons";
 import { useParams } from "react-router-dom";
 import { Loading } from "../components/Loading";
@@ -8,6 +7,7 @@ import { getSinglePhotoService } from "../services";
 import { PhotoCard } from "../components/PhotoCard";
 import usePhotosServices from "../hooks/usePhotosServices";
 import "./AllPage.css";
+import CustomizedSnackbars from "../components/CustomizedSnackbars";
 
 export const PhotosPage = () => {
   const { id } = useParams();
@@ -35,13 +35,18 @@ export const PhotosPage = () => {
   if (loading) {
     return <Loading />;
   }
-  // Por si ocurre algún error
-  if (error) {
-    return <ErrorMessage message={error} />;
-  }
+
   return (
-    <section className="page-Principal juistify picture-back imge">
-      <PhotoCard photo={post} removePhoto={removePhoto} />
-    </section>
+    <>
+      <section className="page-Principal juistify picture-back imge">
+        <PhotoCard photo={post} removePhoto={removePhoto} />
+      </section>
+      {error ? (
+        <CustomizedSnackbars
+          message={"The session has expired, please log in again"}
+          severity={"info"}
+        />
+      ) : null}
+    </>
   );
 };

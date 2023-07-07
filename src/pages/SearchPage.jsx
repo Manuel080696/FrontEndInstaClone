@@ -1,10 +1,10 @@
-import { ErrorMessage } from "../components/ErrorMessage";
 import usePhotos from "../hooks/usePhotos";
 import Search from "../components/Search";
 import { Loading } from "../components/Loading";
 import { useContext } from "react";
 import { PhotoContext } from "../context/PhotosContext";
 import "./AllPage.css";
+import CustomizedSnackbars from "../components/CustomizedSnackbars";
 
 export const SearchPage = () => {
   const { error } = usePhotos();
@@ -13,13 +13,18 @@ export const SearchPage = () => {
   if (loading) {
     return <Loading />;
   }
-  if (error) {
-    return <ErrorMessage message={error} />;
-  }
 
   return (
-    <section className="page-Principal picture-back">
-      <Search />
-    </section>
+    <>
+      <section className="page-Principal picture-back">
+        <Search />
+      </section>
+      {error ? (
+        <CustomizedSnackbars
+          message={"The session has expired, please log in again"}
+          severity={"info"}
+        />
+      ) : null}
+    </>
   );
 };
