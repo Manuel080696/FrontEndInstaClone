@@ -17,6 +17,7 @@ export const EditPost = ({ photo, setShowEditPost }) => {
   const handleDrop = (e) => {
     e.preventDefault();
     const file = e.dataTransfer.files[0];
+
     setImage(file);
   };
 
@@ -47,8 +48,14 @@ export const EditPost = ({ photo, setShowEditPost }) => {
       setShowEdit(false);
     } catch (error) {
       setError(error.message);
+    } finally {
+      data.append("place", null);
+      data.append("description", null);
+      data.append("image", null);
     }
   };
+
+  console.log(photo);
 
   const closeMenu = () => {
     setShowEditPost(false);
@@ -91,7 +98,7 @@ export const EditPost = ({ photo, setShowEditPost }) => {
             <p>Drag and drop an image here, or click to select a file</p>
 
             <input
-              id="avatarUploads"
+              id={`editPostUpload${photo.photoID}`}
               type="file"
               name="image"
               accept="image/*"
@@ -109,7 +116,11 @@ export const EditPost = ({ photo, setShowEditPost }) => {
                   ? { backgroundImage: `url(${URL.createObjectURL(image)})` }
                   : { backgroundImage: `url("/drop-files-here-extra.jpg")` }
               }
-              onClick={() => document.getElementById("avatarUploads").click()}
+              onClick={() =>
+                document
+                  .getElementById(`editPostUpload${photo.photoID}`)
+                  .click()
+              }
             ></button>
           </div>
         </fieldset>

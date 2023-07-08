@@ -8,6 +8,7 @@ p {
   margin: 0.5rem 0;
 
   max-width: 450px;
+  z-index: 1;
 }
 
 #postCard img {

@@ -53,6 +53,8 @@ export function PhotoCard({ photo, removePhoto }) {
   const [like, setLike] = useState(photo.dioLike);
   const [deletePhoto, setDeletePhoto] = useState(false);
   const [addFavorite, setAddFavorite] = useState(false);
+  const [editPhoto, setEditPhoto] = useState("");
+
   const { addToFavorites, removeFromFavorites } = usePhotosServices();
   const navigate = useNavigate();
   const srcImage = `${import.meta.env.VITE_APP_BACKEND}/uploads/posts/${
@@ -115,12 +117,18 @@ export function PhotoCard({ photo, removePhoto }) {
     }
   };
 
+  const editPhotoFunc = () => {
+    setEditPhoto(photo);
+    console.log(photo);
+  };
+
   return (
-    <Card id="postCard">
+    <Card id="postCard" photo={photo}>
       {/* Encabezado ----------------------*/}
       <CardHeader
         id="idPhoto"
         // Imagen rendonda con avatar
+
         avatar={
           photo.avatar ? (
             <Link to={`/user/${photo.userID}`}>
@@ -150,11 +158,13 @@ export function PhotoCard({ photo, removePhoto }) {
           )
         }
         action={
-          <MenuAppBar
-            showEdit={showEdit}
-            setShowEdit={setShowEdit}
-            photo={photo}
-          />
+          <section onClick={() => setEditPhoto(photo)}>
+            <MenuAppBar
+              showEdit={showEdit}
+              setShowEdit={setShowEdit}
+              photo={editPhoto}
+            />
+          </section>
         }
         title={<p id="headerP">{photo.userPosted}</p>}
         subheader={photo.place}
@@ -167,9 +177,11 @@ export function PhotoCard({ photo, removePhoto }) {
 
       <section id="carMedia">
         <CardMedia
+          id="cardMediaPhoto"
           component="img"
           image={srcImage}
           alt={photo.place}
+          photo={photo}
           onClick={() => navigate(`/photos/${photo.photoID}`)}
           onDoubleClick={toggleLike}
         ></CardMedia>

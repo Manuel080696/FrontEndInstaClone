@@ -79,7 +79,7 @@ export const NewPhoto = ({ addPhoto, toggleShow }) => {
             <p>Drag and drop an image here, or click to select a file</p>
 
             <input
-              id="avatarUploads"
+              id="newPostDrop"
               type="file"
               name="avatar"
               accept="image/*"
@@ -97,7 +97,7 @@ export const NewPhoto = ({ addPhoto, toggleShow }) => {
                   ? { backgroundImage: `url(${URL.createObjectURL(image)})` }
                   : { backgroundImage: `url("/drop-files-here-extra.jpg")` }
               }
-              onClick={() => document.getElementById("avatarUploads").click()}
+              onClick={() => document.getElementById("newPostDrop").click()}
             ></button>
           </div>
         </fieldset>
