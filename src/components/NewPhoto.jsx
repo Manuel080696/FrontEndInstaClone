@@ -27,6 +27,7 @@ export const NewPhoto = ({ addPhoto, toggleShow }) => {
       e.target.reset();
       setImage(null);
       toggleShow();
+      window.scrollTo(0, 0);
     } catch (error) {
       setError(error.message);
     }

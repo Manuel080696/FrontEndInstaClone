@@ -6,7 +6,6 @@ function Root() {
   return (
     <div id="root">
       <Header />
-
       <Outlet />
       <Footer />
     </div>
