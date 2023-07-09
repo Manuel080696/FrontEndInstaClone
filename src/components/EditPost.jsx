@@ -10,7 +10,7 @@ import { ModalContext } from "../context/ModalContext";
 export const EditPost = ({ photo, setShowEditPost }) => {
   const { editPhoto } = usePhotosServices();
   const [error, setError] = useState("");
-  const [image, setImage] = useState();
+  const [image, setImage] = useState("");
   const { token } = useContext(AuthContext);
   const { setShowEdit } = useContext(ModalContext);
 

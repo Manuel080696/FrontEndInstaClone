@@ -117,11 +117,6 @@ export function PhotoCard({ photo, removePhoto }) {
     }
   };
 
-  const editPhotoFunc = () => {
-    setEditPhoto(photo);
-    console.log(photo);
-  };
-
   return (
     <Card id="postCard" photo={photo}>
       {/* Encabezado ----------------------*/}
